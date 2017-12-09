@@ -1,0 +1,6 @@
+package scenes.game;
+
+public enum CardName {
+    VILLAGE, WOODCUTTER, WORKSHOP, SMITHY, COUNCILROOM, FESTIVAL, WITCH, CHANCELLOR, MARKET, LABORATORY
+}
+
