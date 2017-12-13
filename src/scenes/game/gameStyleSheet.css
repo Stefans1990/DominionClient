@@ -1,0 +1,14 @@
+#root {
+
+}
+
+.card {
+    -fx-border-color: transparent;
+    -fx-border-width: 3;
+}
+
+.card:hover {
+    -fx-border-color: #44d17c;
+    -fx-border-width: 3;
+    -fx-border-radius: 5;
+}

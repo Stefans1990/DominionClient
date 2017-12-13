@@ -48,12 +48,9 @@ public class MainController {
     }
 
     private void listenForLogin(VerificationController verificationController) {
-        verificationController.getIsLoggedIn().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(newValue){
-                    showGameLobbyScene();
-                }
+        verificationController.getIsLoggedIn().addListener((observable, oldValue, newValue) -> {
+            if(newValue){
+                showGameLobbyScene();
             }
         });
     }
@@ -63,12 +60,9 @@ public class MainController {
         gameLobbyController.show(stage);
         //TODO When we get the signal to show the game we show the game
         //TODO Listen for game start here
-        gameLobbyController.isGameStarted().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean isGameStarted) {
-                if (isGameStarted.booleanValue() == Boolean.TRUE) {
-                    showGameScene();
-                }
+        gameLobbyController.isGameStarted().addListener((observable, oldValue, isGameStarted) -> {
+            if (isGameStarted.booleanValue() == Boolean.TRUE) {
+                showGameScene();
             }
         });
     }

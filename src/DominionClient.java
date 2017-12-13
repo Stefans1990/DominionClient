@@ -23,7 +23,7 @@ public class DominionClient extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         MainController mainController = new MainController();
         mainController.setStage(stage);
         mainController.runApplication();
