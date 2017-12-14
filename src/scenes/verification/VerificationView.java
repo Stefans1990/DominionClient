@@ -19,6 +19,9 @@ import util.ServiceLocator;
 
 import java.util.ResourceBundle;
 
+import Handlers.ServerLoginMessageHandler;
+import Handlers.ServerRegisterMessageHandler;
+
 public class VerificationView {
     private final VerificationModel model;
     private BorderPane parent;
@@ -54,9 +57,12 @@ public class VerificationView {
             @Override
             public void handle(ActionEvent event) {
                 //TODO: send username and pw to server
-
-                //TODO: delete this part when done
-                model.setIsConnected(true);
+            	
+            	ServerLoginMessageHandler loginHandler = new ServerLoginMessageHandler();
+            	String userName = userNameField.getText();
+            	String password = passwordField.getText();
+            	loginHandler.write(userName+"@"+password, false);
+            	
 
             }
         });
@@ -66,8 +72,11 @@ public class VerificationView {
         signUpButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //TODO send username and password to server
-                //TODO wait for response
+                ServerRegisterMessageHandler registerHandler = new ServerRegisterMessageHandler();
+                String userName = userNameField.getText();
+                String password = passwordField.getText();
+            	registerHandler.write(userName+"@"+password, false);
+            	
             }
         });
         HBox buttonBox = new HBox(30);

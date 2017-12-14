@@ -8,17 +8,23 @@ import scenes.game.GameController;
 import scenes.gameLobby.GameLobbyController;
 import scenes.serverConnection.ServerConnectionController;
 import scenes.verification.VerificationController;
+import util.LogHandling;
 
 import java.net.Socket;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import Handlers.MessageHandler;
+import Handlers.MessageHandlerFactory;
 
 public class MainController {
 
     private Stage stage;
-    private final Logger logger;
+
+    static MessageHandler messageHandler;
 
     public MainController(){
-        logger = Logger.getLogger(this.getClass().getCanonicalName());
+
     }
 
     public void setStage(Stage stage) {
@@ -30,13 +36,15 @@ public class MainController {
         serverConnectionController.show(stage);
 
         Socket socket = serverConnectionController.tryToConnect();
+        
         if (!serverConnectionController.getIsConnected()) {
             System.exit(0);
         } else {
-            MainModel mainModel = new MainModel(socket);
-            //mainModel.tryCreateReader();
-            // mainModel.startListeningForMessages();
-            //mainModel.tryCreaterWriter();
+        	messageHandler = new MessageHandler();
+            MessageHandler.setSocket(socket);
+            
+            MessageHandler.openResources();
+            MessageHandler.read();
             showVerificationScene();
         }
     }
@@ -48,9 +56,12 @@ public class MainController {
     }
 
     private void listenForLogin(VerificationController verificationController) {
-        verificationController.getIsLoggedIn().addListener((observable, oldValue, newValue) -> {
-            if(newValue){
-                showGameLobbyScene();
+        verificationController.getIsLoggedIn().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue){
+                    showGameLobbyScene();
+                }
             }
         });
     }
@@ -60,9 +71,12 @@ public class MainController {
         gameLobbyController.show(stage);
         //TODO When we get the signal to show the game we show the game
         //TODO Listen for game start here
-        gameLobbyController.isGameStarted().addListener((observable, oldValue, isGameStarted) -> {
-            if (isGameStarted.booleanValue() == Boolean.TRUE) {
-                showGameScene();
+        gameLobbyController.isGameStarted().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean isGameStarted) {
+                if (isGameStarted.booleanValue() == Boolean.TRUE) {
+                    showGameScene();
+                }
             }
         });
     }
@@ -70,6 +84,15 @@ public class MainController {
     private void showGameScene(){
         GameController gameController = new GameController();
         gameController.show(stage);
+        
     }
-
+    private void listenForChat(GameLobbyController gameLobbyController) {
+        gameLobbyController.getChat().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+               // gameLobbyController.
+            }
+        });
+    }
+    
 }

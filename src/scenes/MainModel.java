@@ -7,6 +7,12 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Handlers.MessageHandler;
+import Handlers.MessageHandlerFactory;
+import Handlers.UnknownFormatException;
+import javafx.application.Platform;
+import scenes.verification.VerificationModel;
+
 public class MainModel {
 
     private Socket socket;
@@ -26,7 +32,7 @@ public class MainModel {
         }
     }
 
-/*    public void startListeningForMessages() {
+   public void startListeningForMessages() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -35,7 +41,7 @@ public class MainModel {
                     while ((message = in.readLine()) != null){
                         //todo send message to messagehandlerFactory
                         MessageHandler handler = MessageHandlerFactory.getMessageHandler(message);
-                        handler.handleMsg(message);
+                        handler.handleMessage(message);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -44,7 +50,7 @@ public class MainModel {
                 }
             }
         }).start();
-    }*/
+    }
 
     public void tryCreaterWriter() {
         try {
@@ -55,4 +61,5 @@ public class MainModel {
             logger.log(Level.SEVERE, "Could not create BufferedOutputStream writer");
         }
     }
+   
 }

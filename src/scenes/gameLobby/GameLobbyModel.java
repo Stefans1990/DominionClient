@@ -3,9 +3,15 @@ package scenes.gameLobby;
 
 import java.util.ArrayList;
 
+import javafx.application.Platform;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import scenes.verification.VerificationModel;
+
 public class GameLobbyModel {
 
     private ArrayList<String> topFives;
+    private static SimpleStringProperty chatText= new SimpleStringProperty();
 
 
     public ArrayList<String> getTopFive() {
@@ -17,6 +23,28 @@ public class GameLobbyModel {
         }
         return topFives;
     }
+
+
+	public static void addChat(String chatMessage) {
+		 Platform.runLater(new Runnable() {
+		        @Override public void run() {
+		        	GameLobbyModel.updateChat(chatMessage);
+		        }
+		      });
+		
+	}
+	public SimpleStringProperty getChatText() {
+	       
+    	return chatText;
+    }
+
+
+
+	protected static void updateChat(String chatMessage) {
+			chatText.set(chatMessage);
+		
+	}
+	
 
 /*    public ArrayList<String> setTopFive(){
 

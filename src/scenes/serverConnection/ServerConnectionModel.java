@@ -1,6 +1,8 @@
 package scenes.serverConnection;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.concurrent.*;
 import java.util.logging.Level;
@@ -30,16 +32,13 @@ public class ServerConnectionModel {
     }
 
     private Boolean tryConnectToServer() {
-        /*try {
-            //socket = new Socket(HOST, 9000);
-
-            //Todo: Connect to server and wait for answer
-
-
+        try {
+            socket = new Socket(HOST, 9000);
+            
             return true;
         } catch (IOException e) {
             logger.log(Level.SEVERE, ">> Failed to connect to Server");
-        }*/
+        }
         return true;
     }
 

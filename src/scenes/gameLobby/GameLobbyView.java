@@ -18,12 +18,17 @@ import util.ServiceLocator;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import Handlers.ServerChatMessageHandler;
+import Handlers.ServerJoinGameMessageHandler;
+import Handlers.ServerNewGameMessageHandler;
+
 public class GameLobbyView {
 
     private final GameLobbyModel model;
     private ResourceBundle bundle;
     private ArrayList<Label> topLabels;
     private HBox parent;
+    protected static TextArea chat;
 
     private SimpleBooleanProperty isGameStarted;
 
@@ -56,15 +61,20 @@ public class GameLobbyView {
         gameListLabel.setFont(new Font ("Arial", 16));
         ListView<String> gameListView = new ListView<>();
         gameList.setMaxHeight(200);
-        gameListView.getItems().addAll("game1", "game1","game1","game1","game1" );
+        gameListView.getItems().addAll("game1", "game2","game3","game4","game5" );
         Button joinButton = new Button(bundle.getString("gl_joinButton"));
         //TODO Button action
         // TODO remove later
         joinButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                    isGameStartedProperty().setValue(true);
-                    isGameStartedProperty().setValue(false);
+                ServerJoinGameMessageHandler joinHandler= new ServerJoinGameMessageHandler();
+                String joinedGame = gameListView.getSelectionModel().getSelectedItem();
+                joinHandler.write(joinedGame, true);
+            	
+            	
+            	isGameStartedProperty().setValue(true);
+                isGameStartedProperty().setValue(false);
             }
         });
 
@@ -110,8 +120,21 @@ public class GameLobbyView {
         TextField gameNameTextField  = new TextField();
 
         Button createGameButton = new Button(bundle.getString("gl_create_game"));
-        //TODO Button action
+       
+        createGameButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ServerNewGameMessageHandler newGameHandler= new ServerNewGameMessageHandler();
+                String actionCards = cardOptionsToggleGroup.getSelectedToggle().toString(); //TODO how do i get the userinformation?
+                String gameName = gameNameTextField.getText();
+                String message = actionCards + "@"+gameName;
+                newGameHandler.write(message, false);
+            	isGameStartedProperty().setValue(true);
+                isGameStartedProperty().setValue(false);
+            }
+        });
 
+        
         rightOptions.getChildren().addAll(winCondition, shortGame, longGame, actionCards, amountFive, amountTen);
 
         gameOptions.getChildren().addAll(leftOptions, rightOptions);
@@ -149,7 +172,7 @@ public class GameLobbyView {
     private VBox createChatArea() {
         VBox chatArea = new VBox(10);
 
-        TextArea chat = new TextArea();
+        chat= new TextArea();
         chat.setMinWidth(250);
         chat.setMaxWidth(250);
         chat.setEditable(false);
@@ -168,7 +191,8 @@ public class GameLobbyView {
         sendMessage.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //TODO send message to server
+                ServerChatMessageHandler chatHandler = new ServerChatMessageHandler();
+                chatHandler.write(chatText.getText(),false);
             }
         });
 

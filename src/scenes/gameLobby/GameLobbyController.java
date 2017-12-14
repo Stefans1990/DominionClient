@@ -1,6 +1,7 @@
 package scenes.gameLobby;
 
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
@@ -8,7 +9,7 @@ import javafx.stage.Stage;
 
 public class GameLobbyController {
 
-    private GameLobbyModel model;
+    private static GameLobbyModel model;
     private GameLobbyView view;
     private SimpleBooleanProperty gameStarted;
 
@@ -46,5 +47,12 @@ public class GameLobbyController {
 
     public void setGameStarted(SimpleBooleanProperty gameStarted) {
         this.gameStarted = gameStarted;
+    }
+    public static SimpleStringProperty getChat() {
+        return model.getChatText();
+     }
+    public void updateChat(String message) {
+    	message =message +"\n";
+    	view.chat.appendText(message);
     }
 }
