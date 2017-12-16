@@ -24,6 +24,7 @@ public class DominionClient extends Application {
         ServiceLocator.setLocale("en","US");
         Locale.setDefault(ServiceLocator.getLocale());
         //TODO: Logger
+
        LogHandling.logOnFile(Level.INFO, ">> DominionClient Application started");
     }
 

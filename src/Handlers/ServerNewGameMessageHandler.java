@@ -3,6 +3,7 @@ package Handlers;
 import Handlers.MessageHandler;
 import Handlers.ServerMessageType;
 import Handlers.UnknownFormatException;
+import scenes.gameLobby.GameLobbyController;
 
 
 import java.net.Socket;
@@ -37,9 +38,11 @@ public class ServerNewGameMessageHandler extends ServerMessageHandler {
     
         message=msgIn;
         //GameMessageHandler.games.add(new TempGame(...))
-        String gameName = splitMessage(message,4); //todo define position
-        int cardNumbers= Integer.parseInt(splitMessage(message, 5)); //todo define position
-        int  maxPlayers= Integer.parseInt(splitMessage(message, 6));
+        String game = splitMessage(message,2); //todo define position
+        String[] games= game.split("/");
+        for(int i= 0;games.length<0; i++){
+            GameLobbyController.setGameList(games[i]);
+        }
 
 
 

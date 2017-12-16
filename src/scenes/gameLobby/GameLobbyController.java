@@ -1,5 +1,6 @@
 package scenes.gameLobby;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -15,6 +16,20 @@ public class GameLobbyController {
     private static GameLobbyModel model;
     private GameLobbyView view;
     private SimpleBooleanProperty gameStarted;
+    private static SimpleStringProperty gameList = new SimpleStringProperty();
+
+    public static SimpleStringProperty getGameList() {
+        return gameList;
+    }
+    public static void setGameList(String gameName){
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                gameList.set(gameName);
+            }
+        });
+    }
+
+
 
     public GameLobbyController() {
         this.model = new GameLobbyModel();
@@ -54,9 +69,24 @@ public class GameLobbyController {
     public static SimpleStringProperty getChat() {
         return model.getChatText();
      }
+
     public void updateChat(String message) {
     	LogHandling.logOnFile(Level.INFO, "Chat is appended " +message);
         message =message +"\n";
     	view.chat.appendText(message);
+    }
+    public void updateGameList(String gameName){
+        if(!checkForGame(gameName)){
+            view.gameListView.getItems().add(gameName);
+        }
+    }
+    public boolean checkForGame(String gameName){
+        boolean found= false;
+        for(int i= 0;view.gameListView.getItems().size()>i;i++){
+            if(view.gameListView.getItems().get(i).equalsIgnoreCase(gameName)){
+                found= true;
+            }
+        }
+        return found;
     }
 }

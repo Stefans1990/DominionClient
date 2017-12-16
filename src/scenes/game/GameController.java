@@ -2,6 +2,8 @@ package scenes.game;
 
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class GameController {
 
     private GameModel model;
@@ -13,8 +15,11 @@ public class GameController {
     }
 
     public void show(Stage stage) {
-        view.createLayout();
-        view.show(stage);
+	    try {
+		    view.show(stage);
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+	    }
     }
 
 }

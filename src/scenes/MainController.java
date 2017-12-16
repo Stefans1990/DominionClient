@@ -70,6 +70,7 @@ public class MainController {
         GameLobbyController gameLobbyController = new GameLobbyController();
         gameLobbyController.show(stage);
         listenForChat(gameLobbyController);
+        listenForGameList(gameLobbyController);
         //TODO When we get the signal to show the game we show the game
         //TODO Listen for game start here
         gameLobbyController.isGameStarted().addListener(new ChangeListener<Boolean>() {
@@ -91,7 +92,17 @@ public class MainController {
         gameLobbyController.getChat().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-               gameLobbyController.updateChat(newValue);
+                showGameScene();
+                gameLobbyController.updateChat(newValue);
+            }
+        });
+    }
+    private void listenForGameList(GameLobbyController gameLobbyController) {
+        gameLobbyController.getGameList().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                System.out.println(newValue);
+                gameLobbyController.updateGameList(newValue);
             }
         });
     }
