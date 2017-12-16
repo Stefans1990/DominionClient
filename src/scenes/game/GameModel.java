@@ -1,10 +1,15 @@
 package scenes.game;
 
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 
 public class GameModel {
+
+    private static SimpleStringProperty chatText= new SimpleStringProperty();
 
     private int turnCount;
     ArrayList<Player> players;
@@ -20,19 +25,25 @@ public class GameModel {
         this.victoryCardList = new Hashtable<>();
     }
 
+    public static void addChat(String chatMessage) {
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                GameModel.updateChat(chatMessage);
+            }
+        });
+
+    }
+    public SimpleStringProperty getChatText() {
+
+        return chatText;
+    }
 
 
 
+    protected static void updateChat(String chatMessage) {
+        chatText.set(chatMessage);
 
-
-
-
-
-
-
-
-
-
+    }
 
 
     public int getActionCardSize(){
