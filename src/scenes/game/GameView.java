@@ -1,5 +1,6 @@
 package scenes.game;
 
+import Handlers.GameMessageHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ public class GameView {
 
 
 	private GameModel model;
+    GameMessageHandler gameHandler;
 
 	@FXML
     private ImageView provinceCard;
@@ -154,6 +156,7 @@ public class GameView {
     @FXML
     private ImageView playerCard1;
 
+
     @FXML
     private ImageView playerCard2;
 
@@ -183,7 +186,7 @@ public class GameView {
 	}
 
 	public void show(Stage stage) throws IOException {
-
+        gameHandler = new GameMessageHandler();
 		Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/gameView.fxml"));
 		root.setStyle("-fx-background-color: #333333");
 		Scene scene = new Scene(root);
@@ -200,7 +203,7 @@ public class GameView {
 
 	@FXML
     void chancellorClicked(MouseEvent event) {
-
+        gameHandler.write("Buy/",true);
     }
 
     @FXML

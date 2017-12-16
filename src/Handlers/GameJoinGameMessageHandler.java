@@ -12,18 +12,18 @@ import java.net.Socket;
 /**
  * Created by Tim on 14.09.2017.
  */
-public class ServerJoinGameMessageHandler extends ServerMessageHandler {
+public class GameJoinGameMessageHandler extends GameMessageHandler {
 
-    private final String CLASSNAME = ServerMessageType.JOINGAME.toString();
+    private final String CLASSNAME = GameMessageType.JOINGAME.toString();
     private  MessageHandler superHandler;
     private String message =null;
 
-    public ServerJoinGameMessageHandler(String message) throws UnknownFormatException {
+    public GameJoinGameMessageHandler(String message) throws UnknownFormatException {
         if(!CLASSNAME.equals(message)){
             throw new UnknownFormatException(message);
         }
     }
-    public ServerJoinGameMessageHandler() {
+    public GameJoinGameMessageHandler() {
     
     }
     public void write(String message,Boolean privateMessage) {

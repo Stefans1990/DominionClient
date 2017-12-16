@@ -1,25 +1,22 @@
 package scenes.gameLobby;
 
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import util.ServiceLocator;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Handlers.ServerChatMessageHandler;
-import Handlers.ServerJoinGameMessageHandler;
+import Handlers.GameJoinGameMessageHandler;
 import Handlers.ServerNewGameMessageHandler;
 
 public class GameLobbyView {
@@ -71,7 +68,7 @@ public class GameLobbyView {
         joinButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ServerJoinGameMessageHandler joinHandler= new ServerJoinGameMessageHandler();
+                GameJoinGameMessageHandler joinHandler= new GameJoinGameMessageHandler();
                 String joinedGame = gameListView.getSelectionModel().getSelectedItem();
                 joinHandler.write(joinedGame, true);
 
