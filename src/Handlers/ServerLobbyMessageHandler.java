@@ -34,7 +34,7 @@ public class ServerLobbyMessageHandler extends ServerMessageHandler {
     public void handleMessage(String msgIn) throws UnknownFormatException {
       
         message = msgIn;
-        String fiveOrGamesList = splitMessage(message, 4);
+        String fiveOrGamesList = splitMessage(message, 2);
         LogHandling.logOnFile(Level.INFO,"MessageType: " +fiveOrGamesList);
 
      

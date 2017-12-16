@@ -54,7 +54,7 @@ public class MessageHandler  implements Observer {
     }
 
     public static void read() {
-    	ExecutorService executor = Executors.newSingleThreadExecutor();
+    	//ExecutorService executor = Executors.newSingleThreadExecutor();
     	Thread thread1 = new Thread(new Runnable() {
             @Override
             public void run(){           
@@ -63,7 +63,8 @@ public class MessageHandler  implements Observer {
                }
             }
         });
-    	executor.submit(thread1);
+    	thread1.start();
+    	//executor.submit(thread1);
     }
 
     private static void tryReadMessage(BufferedReader input) {
@@ -90,7 +91,6 @@ public class MessageHandler  implements Observer {
         	writer.write(message + "\n");
 			writer.flush();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }

@@ -28,7 +28,7 @@ public class GameLobbyView {
     private ResourceBundle bundle;
     private ArrayList<Label> topLabels;
     private HBox parent;
-    protected static TextArea chat;
+    protected TextArea chat;
 
     private SimpleBooleanProperty isGameStarted;
 
@@ -61,6 +61,8 @@ public class GameLobbyView {
         gameListLabel.setFont(new Font ("Arial", 16));
         ListView<String> gameListView = new ListView<>();
         gameList.setMaxHeight(200);
+
+
         gameListView.getItems().addAll("game1", "game2","game3","game4","game5" );
         Button joinButton = new Button(bundle.getString("gl_joinButton"));
         //TODO Button action
@@ -125,9 +127,18 @@ public class GameLobbyView {
             @Override
             public void handle(ActionEvent event) {
                 ServerNewGameMessageHandler newGameHandler= new ServerNewGameMessageHandler();
-                String actionCards = cardOptionsToggleGroup.getSelectedToggle().toString(); //TODO how do i get the userinformation?
+                String actionCards=null;
+                String maxPlayers= null;
+                if(amountFive.isSelected()){
+                    actionCards = "5";
+                }else if(amountTen.isSelected()){
+                    actionCards = "10";
+                }
+                if(twoPlayer.isSelected()){
+                    maxPlayers="2";
+                }else{ maxPlayers = "4";}
                 String gameName = gameNameTextField.getText();
-                String message = actionCards + "@"+gameName;
+                String message = gameName+ "@"+actionCards + "@"+maxPlayers;
                 newGameHandler.write(message, false);
             	isGameStartedProperty().setValue(true);
                 isGameStartedProperty().setValue(false);

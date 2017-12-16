@@ -69,13 +69,14 @@ public class MainController {
     private void showGameLobbyScene() {
         GameLobbyController gameLobbyController = new GameLobbyController();
         gameLobbyController.show(stage);
+        listenForChat(gameLobbyController);
         //TODO When we get the signal to show the game we show the game
         //TODO Listen for game start here
         gameLobbyController.isGameStarted().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean isGameStarted) {
                 if (isGameStarted.booleanValue() == Boolean.TRUE) {
-                    showGameScene();
+                   // showGameScene();
                 }
             }
         });
@@ -90,7 +91,7 @@ public class MainController {
         gameLobbyController.getChat().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-               // gameLobbyController.
+               gameLobbyController.updateChat(newValue);
             }
         });
     }

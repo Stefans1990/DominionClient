@@ -1,6 +1,9 @@
 package Handlers;
 
 import scenes.gameLobby.GameLobbyModel;
+import util.LogHandling;
+
+import java.util.logging.Level;
 
 /**
  * Created by Tim on 23.09.2017.
@@ -30,7 +33,7 @@ public class ServerChatMessageHandler extends ServerMessageHandler{
 
     @Override
     public void handleMessage(String msgIn) throws UnknownFormatException {
-   
+        LogHandling.logOnFile(Level.INFO, "Message Handling: "+msgIn);
         message = msgIn;
 
         String chatMessage = splitMessage(message, 2);
