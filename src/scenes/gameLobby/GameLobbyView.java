@@ -170,6 +170,7 @@ public class GameLobbyView {
         Label gamesPlayed = new Label(bundle.getString("gl_topfive_playedGames"));
         Label gamesWon = new Label(bundle.getString("gl_topfive_gamesWon"));
         Label gamesHighScore = new Label(bundle.getString("gl_topfive_gamesHighscore"));
+        Label hopefullyitWorks = new Label();
 
         topFive.getChildren().addAll(title, gamesPlayed, gamesWon, gamesHighScore);
         topLabels = new ArrayList<>();
