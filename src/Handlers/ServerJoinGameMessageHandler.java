@@ -14,7 +14,7 @@ import java.net.Socket;
  */
 public class ServerJoinGameMessageHandler extends ServerMessageHandler {
 
-    private final String CLASSNAME = ServerMessageType.NEWGAME.toString();
+    private final String CLASSNAME = ServerMessageType.JOINGAME.toString();
     private  MessageHandler superHandler;
     private String message =null;
 

@@ -27,6 +27,7 @@ public class GameLobbyView {
     private final GameLobbyModel model;
     private ResourceBundle bundle;
     private ArrayList<Label> topLabels;
+    ListView<String> gameListView;
     private HBox parent;
     protected TextArea chat;
 
@@ -59,11 +60,11 @@ public class GameLobbyView {
         VBox gameList = new VBox();
         Label gameListLabel = new Label(bundle.getString("gl_gameListLabel"));
         gameListLabel.setFont(new Font ("Arial", 16));
-        ListView<String> gameListView = new ListView<>();
+        gameListView = new ListView<>();
         gameList.setMaxHeight(200);
 
 
-        gameListView.getItems().addAll("game1", "game2","game3","game4","game5" );
+        gameListView.getItems().addAll("your game could be here" );
         Button joinButton = new Button(bundle.getString("gl_joinButton"));
         //TODO Button action
         // TODO remove later
@@ -73,8 +74,7 @@ public class GameLobbyView {
                 ServerJoinGameMessageHandler joinHandler= new ServerJoinGameMessageHandler();
                 String joinedGame = gameListView.getSelectionModel().getSelectedItem();
                 joinHandler.write(joinedGame, true);
-            	
-            	
+
             	isGameStartedProperty().setValue(true);
                 isGameStartedProperty().setValue(false);
             }
@@ -170,7 +170,7 @@ public class GameLobbyView {
         Label gamesPlayed = new Label(bundle.getString("gl_topfive_playedGames"));
         Label gamesWon = new Label(bundle.getString("gl_topfive_gamesWon"));
         Label gamesHighScore = new Label(bundle.getString("gl_topfive_gamesHighscore"));
-        Label hopefullyitWorks = new Label();
+
 
         topFive.getChildren().addAll(title, gamesPlayed, gamesWon, gamesHighScore);
         topLabels = new ArrayList<>();

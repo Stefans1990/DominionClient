@@ -1,5 +1,6 @@
 package Handlers;
 
+import scenes.gameLobby.GameLobbyController;
 import util.LogHandling;
 
 import java.net.Socket;
@@ -36,7 +37,12 @@ public class ServerLobbyMessageHandler extends ServerMessageHandler {
         message = msgIn;
         String fiveOrGamesList = splitMessage(message, 2);
         LogHandling.logOnFile(Level.INFO,"MessageType: " +fiveOrGamesList);
-
+        String game = splitMessage(message,2); //todo define position
+        String[] games= game.split("/");
+        if(game.contains("GameList")){
+        for(int i= 1;games.length>i; i++){
+            GameLobbyController.setGameList(games[i]);
+        }}
      
     }
 

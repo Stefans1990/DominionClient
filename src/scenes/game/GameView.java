@@ -1,243 +1,330 @@
 package scenes.game;
 
-
-import com.sun.javafx.font.freetype.HBGlyphLayout;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
-import util.ServiceLocator;
 
-import java.util.*;
+import java.io.IOException;
 
 public class GameView {
 
-    private static final double STANDARD_INSET = 30;
-    private final GameModel model;
-    private ResourceBundle bundle;
-    private BorderPane parent;
-    private final double SQUARE_CARD_WIDTH = 100;
-    private final double RECTANGLE_CARD_WIDTH = 80;
-    private final double RECTANGLE_CARD_HEIGHT = 120;
+
+	private GameModel model;
+
+	@FXML
+    private ImageView provinceCard;
+
+    @FXML
+    private Label provinceLabel;
+
+    @FXML
+    private ImageView goldCard;
+
+    @FXML
+    private Label goldLabel;
+
+    @FXML
+    private ImageView duchyCard;
+
+    @FXML
+    private Label duchyLabel;
+
+    @FXML
+    private ImageView silverCard;
+
+    @FXML
+    private Label silverLabel;
+
+    @FXML
+    private ImageView estateCard;
+
+    @FXML
+    private Label estateLabel;
+
+    @FXML
+    private ImageView copperCard;
+
+    @FXML
+    private Label copperLabel;
+
+    @FXML
+    private ImageView curseCard;
+
+    @FXML
+    private Label curseLabel;
+
+    @FXML
+    private Label playerInfoLabel;
+
+    @FXML
+    private ImageView discardCard;
+
+    @FXML
+    private Label discardLabel;
+
+    @FXML
+    private ImageView deckCard;
+
+    @FXML
+    private Label deckLabel;
+
+    @FXML
+    private Label opponent1Label;
+
+    @FXML
+    private Label opponent2Label;
+
+    @FXML
+    private Label opponent3Label;
+
+    @FXML
+    private ImageView chancellorCard;
+
+    @FXML
+    private Label chancellorLabel;
+
+    @FXML
+    private ImageView councilroomCard;
+
+    @FXML
+    private Label councilRoomLabel;
+
+    @FXML
+    private ImageView festivalCard;
+
+    @FXML
+    private Label festivalLabel;
+
+    @FXML
+    private ImageView laboratoryCard;
+
+    @FXML
+    private Label laboratoryLabel;
+
+    @FXML
+    private ImageView marketCard;
+
+    @FXML
+    private Label marketLabel;
+
+    @FXML
+    private ImageView smithyCard;
+
+    @FXML
+    private Label smithyLabel;
+
+    @FXML
+    private ImageView villageCard;
+
+    @FXML
+    private Label villageLabel;
+
+    @FXML
+    private ImageView witchCard;
+
+    @FXML
+    private Label witchLabel;
+
+    @FXML
+    private ImageView woodcutterCard;
+
+    @FXML
+    private Label woodcutterLabel;
+
+    @FXML
+    private ImageView workshopCard;
+
+    @FXML
+    private Label workshopLabel;
+
+    @FXML
+    private Label userMessageLabel;
+
+    @FXML
+    private ImageView playerCard1;
+
+    @FXML
+    private ImageView playerCard2;
+
+    @FXML
+    private ImageView playerCard3;
+
+    @FXML
+    private ImageView playerCard4;
+
+    @FXML
+    private ImageView playerCard5;
+
+    @FXML
+    private TextArea chatTextArea;
+
+    @FXML
+    private TextField chatTextInputField;
+
+    @FXML
+    private Button playButton;
+
+	public GameView() {
+	}
+
+	public GameView(GameModel model) {
+		this.model = model;
+	}
+
+	public void show(Stage stage) throws IOException {
+
+		Parent root = FXMLLoader.load(getClass().getResource("/resources/fxml/gameView.fxml"));
+		root.setStyle("-fx-background-color: #333333");
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add("/scenes/game/gameStyleSheet.css");
+		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+		stage.setWidth(primaryScreenBounds.getWidth() / 1.2);
+		stage.setHeight(primaryScreenBounds.getHeight() / 1.2);
+		stage.setX(primaryScreenBounds.getMinX() + primaryScreenBounds.getMaxX() / 10);
+		stage.setY(primaryScreenBounds.getMinY() + primaryScreenBounds.getMaxY() / 10);
+		stage.setScene(scene);
+		stage.show();
+	}
 
 
-    public GameView(GameModel model) {
-        this.model = model;
-        this.bundle = ServiceLocator.getResourceBundle();
+	@FXML
+    void chancellorClicked(MouseEvent event) {
+
     }
 
-    public void createLayout() {
-        parent = new BorderPane();
-        parent.setLeft(createLeft());
-        parent.setTop(createTop());
-        parent.setCenter(createCenter());
-        parent.setRight(createRight());
-        parent.setBottom(createBottom());
-
+    @FXML
+    void chatTextInputClicked(ActionEvent event) {
 
     }
 
-    private Node createLeft() {
-
-
-        StackPane province = new StackPane();
-        StackPane duchy = new StackPane();
-        StackPane estate = new StackPane();
-        StackPane curse = new StackPane();
-
-        VBox victoryCardsVBox = new VBox(20);
-        victoryCardsVBox.setPadding(new Insets(STANDARD_INSET));
-        victoryCardsVBox.getChildren().addAll(province, duchy, estate, curse);
-
-        for (Node node : victoryCardsVBox.getChildren()) {
-            StackPane pane = (StackPane) node;
-            pane.setStyle("-fx-background-color: aqua");
-            pane.setPrefSize(100, 100);
-        }
-
-        StackPane gold = new StackPane();
-        StackPane silver = new StackPane();
-        StackPane copper = new StackPane();
-
-        VBox coinCardsVBox = new VBox(20);
-
-        coinCardsVBox.setPadding(new Insets(STANDARD_INSET));
-
-        coinCardsVBox.getChildren().addAll(gold, silver, copper);
-
-        for (Node node : coinCardsVBox.getChildren()) {
-            StackPane pane = (StackPane) node;
-            pane.setStyle("-fx-background-color: darkslategrey");
-            pane.setPrefSize(SQUARE_CARD_WIDTH, SQUARE_CARD_WIDTH);
-        }
-
-
-        return new HBox(victoryCardsVBox, coinCardsVBox);
-    }
-
-    private Node createTop() {
-        HBox otherPlayerHBox = new HBox();
-        return otherPlayerHBox;
-    }
-
-    private Node createCenter() {
-        VBox centerBox = new VBox(10);
-        centerBox.setPadding(new Insets(STANDARD_INSET));
-
-        final int actionCardsPerRow = 5;
-        int numberOfActionCardRows = 2;// model.getActionCardSize() / actionCardsPerRow;
-
-        //TODO: DELETE WHEN IMPLEMENTATION WORKS
-        model.getActionCardList().put(CardName.CHANCELLOR, 10);
-        model.getActionCardList().put(CardName.VILLAGE, 10);
-        model.getActionCardList().put(CardName.LABORATORY, 10);
-        model.getActionCardList().put(CardName.FESTIVAL, 10);
-        model.getActionCardList().put(CardName.WOODCUTTER, 10);
-        model.getActionCardList().put(CardName.SMITHY, 10);
-        model.getActionCardList().put(CardName.COUNCILROOM, 10);
-        model.getActionCardList().put(CardName.MARKET, 10);
-        model.getActionCardList().put(CardName.WORKSHOP, 10);
-        model.getActionCardList().put(CardName.WITCH, 10);
-
-        Hashtable<CardName, Integer> actionCardList = model.getActionCardList();
-
-        Set<CardName> cardNames = actionCardList.keySet();
-
-        Iterator<CardName> iterator = cardNames.iterator();
-
-        for (int i = 0; i < numberOfActionCardRows; i++) {
-            HBox actionCardRowBox = new HBox(10);
-            while (actionCardRowBox.getChildren().size() < actionCardsPerRow) {
-                CardName next = iterator.next();
-                if (next != null && actionCardList.get(next) != 0) {
-                    StackPane stackPane = new StackPane();
-                    // TODO: Get the according image for the card to add to the stackPane
-                    stackPane.setMinSize(SQUARE_CARD_WIDTH, SQUARE_CARD_WIDTH);
-                    stackPane.setMaxSize(SQUARE_CARD_WIDTH, SQUARE_CARD_WIDTH);
-                    stackPane.setStyle("-fx-background-color: darkgreen");
-                    actionCardRowBox.getChildren().add(stackPane);
-                }
-            }
-            centerBox.getChildren().add(actionCardRowBox);
-        }
-
-        HBox yourCards = new HBox();
-        VBox turnButtons = new VBox();
-        Button playCards = new Button(bundle.getString("g_playCards_message"));
-        Button endTurn = new Button(bundle.getString("g_endTurn_message"));
-        turnButtons.getChildren().addAll(playCards, endTurn);
-
-        Label actionAndBuys = new Label();
-        return new VBox(centerBox, yourCards, actionAndBuys, turnButtons);
+    @FXML
+    void copperCardClicked(MouseEvent event) {
 
     }
 
-    private Node createRight() {
-        VBox chatArea = new VBox(10);
-        chatArea.setPadding(new Insets(STANDARD_INSET));
-        TextArea chat = new TextArea();
-        chat.setMinWidth(250);
-        chat.setMaxWidth(250);
-        chat.setMinHeight(600);
-        chat.setMaxHeight(600);
+    @FXML
+    void councilroomClicked(MouseEvent event) {
 
-
-        chat.setEditable(false);
-
-        HBox textInsert = new HBox();
-
-        TextField chatText = new TextField();
-        chatText.setMinWidth(150);
-
-        chatText.setEditable(true);
-
-        Button sendMessage = new Button(bundle.getString("g_send_message"));
-
-        textInsert.getChildren().addAll(chatText, sendMessage);
-
-        sendMessage.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                //TODO send message to server
-            }
-        });
-        chatArea.getChildren().addAll(chat, textInsert);
-        return chatArea;
     }
 
+    @FXML
+    void curseCardClicked(MouseEvent event) {
 
-    private Node createBottom() {
-		return null;
-        /*
-    	HBox bottomHBox = new HBox();
-        VBox deckAndPoints = new VBox();
-        HBox deckAndTray = new HBox(10);
-        int winningPoints=0;//get the winningpoints
-        Label points = new Label(bundle.getString("g_winning_points")+" " + winningPoints);
-        StackPane trayStack = new StackPane();
-        trayStack.setMinSize(SQUARE_CARD_WIDTH, SQUARE_CARD_WIDTH);
-        trayStack.setMaxSize(SQUARE_CARD_WIDTH, SQUARE_CARD_WIDTH);
-        trayStack.setStyle("-fx-background-color: darkslategrey");
-        StackPane deck = new StackPane();
-        deck.setMinSize(SQUARE_CARD_WIDTH, SQUARE_CARD_WIDTH);
-        deck.setMaxSize(SQUARE_CARD_WIDTH, SQUARE_CARD_WIDTH);
-        deck.setStyle("-fx-background-color: darkslategrey");
-        deckAndTray.getChildren().addAll(trayStack, deck);
-        deckAndPoints.getChildren().addAll(points, deckAndTray);
-
-        int handCards = 5;
-        VBox handCardsBox = new VBox(10);
-        //TODO: DELETE WHEN IMPLEMENTATION WORKS
-        
-        model.getDeckCardList().put(CardName.CHANCELLOR, 10);
-        model.getDeckCardList().put(CardName.VILLAGE, 10);
-        model.getDeckCardList().put(CardName.LABORATORY, 10);
-        model.getDeckCardList().put(CardName.FESTIVAL, 10);
-        model.getDeckCardList().put(CardName.WOODCUTTER, 10);
-        model.getDeckCardList().put(CardName.SMITHY, 10);
-        model.getDeckCardList().put(CardName.COUNCILROOM, 10);
-        model.getDeckCardList().put(CardName.MARKET, 10);
-        model.getDeckCardList().put(CardName.WORKSHOP, 10);
-        model.getDeckCardList().put(CardName.WITCH, 10);
-	
-        Hashtable<CardName, Integer> deckCardList = model.getDeckCardList();
-
-        Set<CardName> cardNames = deckCardList.keySet();
-
-        Iterator<CardName> iterator = cardNames.iterator();
-
-        while (handCardsBox.getChildren().size() < handCards) {
-            CardName next = iterator.next();
-            if (next != null && actionCardList.get(next) != 0) {
-                StackPane stackPane = new StackPane();
-                // TODO: Get the according image for the card to add to the stackPane
-                stackPane.setMinSize(SQUARE_CARD_WIDTH, SQUARE_CARD_WIDTH);
-                stackPane.setMaxSize(SQUARE_CARD_WIDTH, SQUARE_CARD_WIDTH);
-                stackPane.setStyle("-fx-background-color: darkgreen");
-                actionCardRowBox.getChildren().add(stackPane);
-            }
-        }
-
-        bottomHBox.getChildren().addAll(deckAndPoints);
-        return bottomHBox;
-        */
     }
 
-    public void show(Stage stage) {
-        Scene scene = new Scene(parent);
-        stage.setTitle("Dominion");
-        stage.setScene(scene);
-        stage.show();
-        stage.setMaximized(true);
+    @FXML
+    void deckCardClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void discardCardClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void duchyCardClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void estateCardClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void festivalClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void goldCardClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void laboratoryClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void marketClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void playButtonClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void playerCard1Clicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void playerCard2Clicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void playerCard3Clicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void playerCard4Clicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void playerCard5Clicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void provinceCardClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void silverCardClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void smithyClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void villageClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void witchClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void woodcutterClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void workshopClicked(MouseEvent event) {
+
     }
 }
