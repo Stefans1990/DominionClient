@@ -3,11 +3,9 @@
   <component name="ResourceBundleManager">
     <file url="file://$PROJECT_DIR$/src/util/lang/language.properties" />
     <file url="file://$PROJECT_DIR$/src/util/lang/language_de_CH.properties" />
-    <file url="file://$PROJECT_DIR$/src/util/lang/language_it_IT.properties" />
     <custom-resource-bundle>
       <file value="file://$PROJECT_DIR$/src/util/lang/language.properties" />
       <file value="file://$PROJECT_DIR$/src/util/lang/language_de_CH.properties" />
-      <file value="file://$PROJECT_DIR$/src/util/lang/language_it_IT.properties" />
       <base-name>language</base-name>
     </custom-resource-bundle>
   </component>

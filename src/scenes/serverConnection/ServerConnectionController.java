@@ -9,7 +9,9 @@ public class ServerConnectionController {
     private final ServerConnectionModel model;
     private final ServerConnectionView view;
 
-
+    /* @Stefan
+    Instantiates a new model and a new view which is depending on the model
+     */
     public ServerConnectionController(){
         this.model = new ServerConnectionModel();
         this.view = new ServerConnectionView(model);
