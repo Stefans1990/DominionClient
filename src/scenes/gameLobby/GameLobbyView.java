@@ -167,7 +167,11 @@ public class GameLobbyView {
     private VBox createTopFive() {
         VBox topFive = new VBox(5);
         Label title = new Label(bundle.getString("gl_topfive_title"));
-        topFive.getChildren().add(title);
+        Label gamesPlayed = new Label(bundle.getString("gl_topfive_playedGames"));
+        Label gamesWon = new Label(bundle.getString("gl_topfive_gamesWon"));
+        Label gamesHighScore = new Label(bundle.getString("gl_topfive_gamesHighscore"));
+
+        topFive.getChildren().addAll(title, gamesPlayed, gamesWon, gamesHighScore);
         topLabels = new ArrayList<>();
 
         Label top1 = new Label("Peter Mayer");
