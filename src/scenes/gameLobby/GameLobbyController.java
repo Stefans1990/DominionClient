@@ -5,6 +5,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
+import util.LogHandling;
+
+import java.util.logging.Level;
 
 
 public class GameLobbyController {
@@ -30,8 +33,8 @@ public class GameLobbyController {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean isGameStarted) {
                 if (isGameStarted.booleanValue() == Boolean.TRUE) {
-                    gameStarted.setValue(true);
-                    gameStarted.setValue(false);
+                    //gameStarted.setValue(true);
+                    //gameStarted.setValue(false);
                 }
             }
         });
@@ -52,7 +55,8 @@ public class GameLobbyController {
         return model.getChatText();
      }
     public void updateChat(String message) {
-    	message =message +"\n";
+    	LogHandling.logOnFile(Level.INFO, "Chat is appended " +message);
+        message =message +"\n";
     	view.chat.appendText(message);
     }
 }
