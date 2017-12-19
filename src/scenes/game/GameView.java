@@ -50,7 +50,7 @@ public class GameView {
 	public void init(Stage stage, int actionCards) {
 		this.stage = stage;
 		Parent root = tryToLoadFXML();
-		correctForActionCards(actionCards);
+		//correctForActionCards(actionCards);
 		correctForNumberOfPlayers();
 		initProperties();
 		initStage(stage, root);
@@ -60,6 +60,8 @@ public class GameView {
 	private void correctForActionCards(int actionCards) {
 		if (actionCards == 5) {
 			controller.cardRowBox.getChildren().get(1).setVisible(false);
+		}else{
+			controller.cardRowBox.getChildren().get(1).setVisible(true);
 		}
 	}
 
