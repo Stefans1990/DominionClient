@@ -102,8 +102,9 @@ public class GameLobbyController {
     public static void setTopFive(String[] listNames) {
         LogHandling.logOnFile(Level.INFO, "TopFive is updated"+listNames.length);
         for (int i = 0; i < listNames.length; i++) {
+
             if(!GameLobbyView.topLabels.isEmpty()) {
-                GameLobbyView.topLabels.get(i).setText(listNames[i]);
+                GameLobbyView.topLabels.get(i).setText(i+1+". "+listNames[i]);
             }
         }
     }

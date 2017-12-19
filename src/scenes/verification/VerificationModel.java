@@ -25,11 +25,7 @@ public class VerificationModel {
     }
     public static void setLoggedIn()
     {
-      Platform.runLater(new Runnable() {
-        @Override public void run() {
-        	VerificationModel.setIsConnected(true);
-        }
-      });
+      Platform.runLater(() -> VerificationModel.setIsConnected(true));
     }
 
 }

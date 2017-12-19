@@ -1,15 +1,14 @@
 package scenes.verification;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,6 +16,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import util.ServiceLocator;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import Handlers.ServerLoginMessageHandler;
@@ -27,7 +27,7 @@ public class VerificationView {
     private BorderPane parent;
 
     public VerificationView(VerificationModel model) {
-        this.model= model;
+        this.model = model;
 
     }
 
@@ -49,25 +49,41 @@ public class VerificationView {
         PasswordField passwordField = new PasswordField();
         passwordField.setMaxWidth(200);
 
-        userPassBox.getChildren().addAll(userNameLabel,userNameField, passwordLabel, passwordField);
+        userPassBox.getChildren().addAll(userNameLabel, userNameField, passwordLabel, passwordField);
 
         Button loginButton = new Button(bundle.getString("vs_button_login"));
+
+        Label comboBoxLabel = new Label(bundle.getString("vs_language"));
+
+        ChoiceBox<String> languageChoiceBox = new ChoiceBox();
+
+        languageChoiceBox.getItems().addAll("English", "Deutsch");
+
+        languageChoiceBox.setOnAction(e -> {
+            if (languageChoiceBox.getValue().equalsIgnoreCase("English")) {
+                ServiceLocator.setLocale("en", "US");
+
+            } else if (languageChoiceBox.getValue().equalsIgnoreCase("Deutsch")) {
+                ServiceLocator.setLocale("de", "CH");
+            }Locale.setDefault(ServiceLocator.getLocale());
+
+        });
 
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 //TODO: send username and pw to server
-            	
-            	ServerLoginMessageHandler loginHandler = new ServerLoginMessageHandler();
-            	String userName = userNameField.getText();
-            	String password = passwordField.getText();
-            	loginHandler.write(userName+"@"+password, false);
-            	
+
+                ServerLoginMessageHandler loginHandler = new ServerLoginMessageHandler();
+                String userName = userNameField.getText();
+                String password = passwordField.getText();
+                loginHandler.write(userName + "@" + password, false);
+
 
             }
         });
 
-        Button signUpButton = new Button (bundle.getString("vs_button_signup"));
+        Button signUpButton = new Button(bundle.getString("vs_button_signup"));
 
         signUpButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -75,21 +91,25 @@ public class VerificationView {
                 ServerRegisterMessageHandler registerHandler = new ServerRegisterMessageHandler();
                 String userName = userNameField.getText();
                 String password = passwordField.getText();
-            	registerHandler.write(userName+"@"+password, false);
-            	
+                registerHandler.write(userName + "@" + password, false);
+
             }
         });
         HBox buttonBox = new HBox(30);
         buttonBox.setAlignment(Pos.CENTER);
-        buttonBox.getChildren().addAll(loginButton,signUpButton);
+        buttonBox.getChildren().addAll(loginButton, signUpButton);
+        HBox languageBox = new HBox(30);
+        languageBox.setAlignment(Pos.CENTER);
+        languageBox.getChildren().addAll(comboBoxLabel, languageChoiceBox);
         VBox content = new VBox(30);
-        content.getChildren().addAll(title,userPassBox, buttonBox);
+        content.getChildren().addAll(title, userPassBox, buttonBox);
         content.setMaxWidth(300);
         content.setAlignment(Pos.CENTER);
         parent = new BorderPane();
         BorderPane.setAlignment(content, Pos.CENTER);
         BorderPane.setMargin(content, new Insets(100));
         parent.setCenter(content);
+        parent.setTop(languageBox);
 
     }
 

@@ -1,5 +1,6 @@
 package scenes.game;
 
+import Handlers.GameMessageHandler;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,7 +39,7 @@ public class GameView {
 	private HashMap<String, Label> labelStringHashMap;
 	private HashMap<String, String> cardMap;
 	private ArrayList<Label> opponentLabels;
-
+	GameMessageHandler gameMessageHandler= new GameMessageHandler();
 	public GameView() {
 	}
 
@@ -128,7 +129,6 @@ public class GameView {
 		labelStringHashMap.put("duchy", controller.duchyLabel);
 		labelStringHashMap.put("estate", controller.estateLabel);
 		labelStringHashMap.put("curse", controller.curseLabel);
-
 		labelStringHashMap.put("gold", controller.goldLabel);
 		labelStringHashMap.put("silver", controller.silverLabel);
 		labelStringHashMap.put("copper", controller.copperLabel);
@@ -173,7 +173,7 @@ public class GameView {
 
 	private void listenForDeckCardChange() {
 		controller.numberOfDeckCards = new SimpleIntegerProperty();
-		controller.numberOfDeckCards.addListener((observable, oldValue, newValue) -> deckLabel.setText(newValue.toString()));
+		controller.numberOfDeckCards.addListener((observable, oldValue, newValue) -> controller.deckLabel.setText(newValue.toString()));
 	}
 
 	private void listenForPlayerChange() {
@@ -219,6 +219,9 @@ public class GameView {
 	}
 
 	public void setNumberOfDeckCards(int numberOfDeckCards) {
+		if(controller.numberOfDeckCards==null){
+			controller.numberOfDeckCards = new SimpleIntegerProperty();
+		}
 		controller.numberOfDeckCards.set(numberOfDeckCards);
 	}
 
@@ -569,6 +572,7 @@ public class GameView {
 	}
 
 	private void buy(String cardName) {
+		gameMessageHandler.write("buy@"+cardName, false);
 		// TODO: Damiano has to adjust his methods to accept only complete lowercase names: councilroom instead of councilRoom
 		// TODO: Send "buy@cardName" with PlayerName, Ask Damiano
 
@@ -578,7 +582,7 @@ public class GameView {
 	void treasureButtonClicked(ActionEvent event) {
 
 		//TODO: send message to Damiano: "playTreasure" with playername. Ask Damiano
-
+		gameMessageHandler.write("playTreasure", false);
 		Button treasureButton = (Button) event.getSource();
 		treasureButton.setVisible(false);
 	}
@@ -589,6 +593,7 @@ public class GameView {
 		String localPlayerName = model.getLocalPlayerName();
 
 		if (localPlayerName.equals(currentPlayerName)) {
+			gameMessageHandler.write("endturn", false);
 			// TODO: Message to send: "endTurn" and playerName. Ask Damiano
 		}
 	}
@@ -638,10 +643,10 @@ public class GameView {
 	private ArrayList<ImageView> handDeckList;
 
 	public void updateHandCards() {
-		if (handDeckList == null) {
-			handDeckList = new ArrayList<>();
+		if (controller.handDeckList == null) {
+			controller.handDeckList = new ArrayList<>();
 		}
-		handDeckList.clear();
+		controller.handDeckList.clear();
 		for (Player player : model.getPlayers()) {
 			if (player.getPlayerName().equals(model.getLocalPlayerName())) {
 				for (String cardName : player.getHandCards()) {
@@ -660,8 +665,9 @@ public class GameView {
 		ObservableList<Node> childNode = controller.handHBox.getChildren();
 		childNode.removeIf(node -> node instanceof ImageView);
 
-		for (ImageView cardImageView : handDeckList) {
-			controller.handHBox.getChildren().add(0, cardImageView);
+		for (ImageView cardImageView : controller.handDeckList) {
+			controller.handHBox.getChildren().add(cardImageView); //index = 0
+			controller.handHBox.toFront();
 			listenForHandCardClicked(cardImageView);
 		}
 	}
@@ -675,6 +681,7 @@ public class GameView {
 					if (player.getPlayerName().equals(model.getLocalPlayerName())) {
 						//TODO: DO nothing else here, except sending the cardName to Damiano
 						//TODO: send: "cardName" maybe with the playerName
+						gameMessageHandler.write("play@"+cardName, false);
 					}
 				}
 			}

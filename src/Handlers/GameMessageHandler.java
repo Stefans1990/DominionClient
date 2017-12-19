@@ -2,6 +2,8 @@ package Handlers;
 
 
 
+import scenes.game.GameController;
+
 import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -31,8 +33,14 @@ public class GameMessageHandler extends MessageHandler implements Observer {
     @Override
     public void handleMessage(String message) throws UnknownFormatException {
         String subHandler = splitMessage(message, SUB_HANDLER_INDEX);
-        MessageHandler handler = MessageHandlerFactory.getMessageHandler(subHandler);
-        handler.handleMessage(message);
+
+        if(subHandler.equalsIgnoreCase("startgame")||subHandler.equalsIgnoreCase("Joingame")||subHandler.equalsIgnoreCase("endgame")){
+            MessageHandler handler = MessageHandlerFactory.getMessageHandler(subHandler);
+            handler.handleMessage(message);
+        }else{
+            setGameMessage(message);
+        }
+
         //get the game name --> String gameName = splitMessage(message,3);
         //GameHandlers game = GameManager.getGame(gameName);
         //returnMessage = game.handleMessage()
@@ -87,5 +95,8 @@ public class GameMessageHandler extends MessageHandler implements Observer {
     public Socket getClientSocket() {
         return superHandler.getClientSocket();
     }
-
+    private void setGameMessage(String message) {
+        int i= message.indexOf("/");
+        GameController.setNewMessage(message.substring(i+1));
+    }
 }

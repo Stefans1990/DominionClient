@@ -2,6 +2,7 @@ package scenes.serverConnection;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -30,6 +31,7 @@ public class ServerConnectionView {
         Label label = new Label(bundle.getString("sc_connecting") + " " + model.getHostAddress());
 
         parent.getChildren().add(label);
+
     }
 
     public void show(Stage stage) {

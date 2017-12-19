@@ -45,7 +45,7 @@ public class GameStartGameMessageHandler extends GameMessageHandler {
         if (message.contains("config")) {
             setConfig(message);
         }else{
-            setGameMessage(message);
+            //setGameMessage(message);
         }
         GameLobbyController.setGameStarted(true);
 

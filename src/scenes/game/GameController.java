@@ -3,9 +3,11 @@ package scenes.game;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.stage.Stage;
+import util.LogHandling;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.logging.Level;
 
 public class GameController {
 
@@ -55,11 +57,11 @@ public class GameController {
     private void listenForMessages() {
         newMessage.addListener((observable, oldMessage, newMessage) -> processMessage(newMessage));
         // TODO: Delete the next line. It is an example to test.
-        newMessage.set("newCards@playername@hand/councilroom,3;estate,2@deck,5");
+        //newMessage.set("newCards@playername@hand/councilroom,3;estate,2@deck,5");
     }
 
     private void processMessage(String newMessage) {
-
+        LogHandling.logOnFile(Level.INFO, "Message being processed: "+newMessage);
         int index = newMessage.indexOf("@");
 
         String messageType = newMessage.substring(0, index);

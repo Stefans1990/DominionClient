@@ -21,9 +21,9 @@ public class DominionClient extends Application {
         //super.init();
   
         //TODO: load language from last session
-        ServiceLocator.setLocale("en","US");
+        ServiceLocator.setLocale("de","CH");
         Locale.setDefault(ServiceLocator.getLocale());
-        //TODO: Logger
+
 
        LogHandling.logOnFile(Level.INFO, ">> DominionClient Application started");
     }

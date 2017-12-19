@@ -6,7 +6,8 @@ import javafx.stage.Stage;
 public class VerificationController {
 
     private final VerificationModel model;
-    private final VerificationView view; private static String localName;
+    private final VerificationView view;
+    private static String localName;
 
 
 
