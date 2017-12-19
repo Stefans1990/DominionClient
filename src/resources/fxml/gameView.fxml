@@ -9,599 +9,549 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="root" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scenes.game.GameView">
+<AnchorPane id="root" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scenes.game.GameView">
    <children>
-      <HBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane fx:id="mainStackPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefWidth="200.0" HBox.hgrow="NEVER">
+            <FlowPane id="overlayPane" fx:id="overlayPane" alignment="CENTER" columnHalignment="CENTER" onMouseClicked="#overlayPaneClicked" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                     <children>
-                        <StackPane style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="provinceCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#provinceCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <image>
-                                    <Image url="@../../assets/victoryCards/ProvinceSmall.JPG" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                              <Label fx:id="provinceLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
-                                 <font>
-                                    <Font name="Arial Black" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="goldCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#goldCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                                 <image>
-                                    <Image url="@../../assets/victoryCards/CopperSmall.JPG" />
-                                 </image>
-                              </ImageView>
-                              <Label fx:id="goldLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
-                                 <font>
-                                    <Font name="Arial Black" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-                  <Pane prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                     <children>
-                        <StackPane style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="duchyCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#duchyCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <image>
-                                    <Image url="@../../assets/victoryCards/DuchySmall.JPG" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                              <Label fx:id="duchyLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
-                                 <font>
-                                    <Font name="Arial Black" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="silverCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#silverCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <image>
-                                    <Image url="@../../assets/victoryCards/SilverSmall.JPG" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                              <Label fx:id="silverLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
-                                 <font>
-                                    <Font name="Arial Black" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-                  <Pane prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                  <HBox layoutX="10.0" layoutY="130.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                     <children>
-                        <StackPane style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="estateCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#estateCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <image>
-                                    <Image url="@../../assets/victoryCards/EstateSmall.JPG" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                              <Label fx:id="estateLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
-                                 <font>
-                                    <Font name="Arial Black" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="copperCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#copperCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <image>
-                                    <Image url="@../../assets/victoryCards/SilverSmall.JPG" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                              <Label fx:id="copperLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
-                                 <font>
-                                    <Font name="Arial Black" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-                  <Pane prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                  <HBox layoutX="10.0" layoutY="250.0" prefWidth="200.0" spacing="10.0">
-                     <children>
-                        <StackPane style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="curseCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#curseCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <image>
-                                    <Image url="@../../assets/victoryCards/CurseSmall.JPG" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                              <Label fx:id="curseLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
-                                 <font>
-                                    <Font name="Arial Black" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-                  <Pane prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                  <Label fx:id="playerInfoLabel" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-radius: 2; -fx-background-radius: 2; -fx-border-color: white;" text="Player Info Label" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets bottom="2.0" left="15.0" right="2.0" top="2.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Pane layoutX="10.0" layoutY="490.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                  <HBox alignment="CENTER" prefWidth="200.0" spacing="10.0" VBox.vgrow="NEVER">
-                     <children>
-                        <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="discardCard" fitHeight="200.0" fitWidth="100.0" onMouseClicked="#discardCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card" StackPane.alignment="TOP_CENTER">
-                                 <image>
-                                    <Image url="@../../assets/actionCards/Market.JPG" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                              <Label fx:id="discardLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
-                                 <font>
-                                    <Font name="Arial Black" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                        <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="deckCard" fitHeight="200.0" fitWidth="100.0" onMouseClicked="#deckCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card" StackPane.alignment="TOP_CENTER">
-                                 <image>
-                                    <Image url="@../../assets/actionCards/Workshop.JPG" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                              <Label fx:id="deckLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
-                                 <font>
-                                    <Font name="Arial Black" size="12.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </StackPane>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="30.0" left="15.0" />
-                     </VBox.margin>
-                  </HBox>
+                  <ImageView fx:id="overlayImageView" fitHeight="350.0" fitWidth="218.0" onMouseClicked="#overlayImageClicked" pickOnBounds="true" preserveRatio="true" />
                </children>
-            </VBox>
-            <VBox maxWidth="1.7976931348623157E308" prefWidth="680.0" HBox.hgrow="ALWAYS">
+            </FlowPane>
+            <HBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                <children>
-                  <HBox alignment="CENTER" maxHeight="180.0" prefHeight="180.0" spacing="30.0">
+                  <VBox prefWidth="200.0" HBox.hgrow="NEVER">
                      <children>
-                        <Label fx:id="opponent1Label" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Opponent 1 Info" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="opponent2Label" alignment="TOP_CENTER" layoutX="12.0" layoutY="12.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Opponent 2 Info" textFill="WHITE" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="opponent3Label" alignment="TOP_CENTER" layoutX="12.0" layoutY="12.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Opponent 3 Info" textFill="WHITE" visible="false">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <HBox.margin>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <VBox alignment="CENTER" spacing="30.0">
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                            <children>
-                              <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                              <StackPane style="-fx-background-color: transparent;" styleClass="card">
                                  <children>
-                                    <ImageView fx:id="chancellorCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#chancellorClicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="provinceCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#provinceCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
                                        <image>
-                                          <Image url="@../../assets/actionCards/ChancellorSmall.JPG" />
+                                          <Image url="@../../assets/victoryCards/provincesmall.JPG" />
                                        </image>
                                        <StackPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </StackPane.margin>
                                     </ImageView>
-                                    <Label fx:id="chancellorLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                    <Label fx:id="provinceLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                                        <font>
                                           <Font name="Arial Black" size="12.0" />
                                        </font>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" top="10.0" />
-                                       </StackPane.margin>
                                     </Label>
                                  </children>
                               </StackPane>
-                              <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                              <StackPane style="-fx-background-color: transparent;" styleClass="card">
                                  <children>
-                                    <ImageView fx:id="councilroomCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#councilroomClicked" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../assets/actionCards/CouncilroomSmall.JPG" />
-                                       </image>
+                                    <ImageView fx:id="goldCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#goldCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
                                        <StackPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </StackPane.margin>
-                                    </ImageView>
-                                    <Label fx:id="councilRoomLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
-                                       <font>
-                                          <Font name="Arial Black" size="12.0" />
-                                       </font>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" top="10.0" />
-                                       </StackPane.margin>
-                                    </Label>
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
-                                 <children>
-                                    <ImageView fx:id="festivalCard" fitHeight="150.0" fitWidth="150.0" layoutX="10.0" layoutY="25.0" onMouseClicked="#festivalClicked" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../assets/actionCards/FestivalSmall.JPG" />
-                                       </image>
-                                       <StackPane.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </StackPane.margin>
-                                    </ImageView>
-                                    <Label fx:id="festivalLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
-                                       <font>
-                                          <Font name="Arial Black" size="12.0" />
-                                       </font>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" top="10.0" />
-                                       </StackPane.margin>
-                                    </Label>
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
-                                 <children>
-                                    <ImageView fx:id="laboratoryCard" fitHeight="150.0" fitWidth="150.0" layoutX="10.0" layoutY="25.0" onMouseClicked="#laboratoryClicked" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../assets/actionCards/LaboratorySmall.JPG" />
-                                       </image>
-                                       <StackPane.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </StackPane.margin>
-                                    </ImageView>
-                                    <Label fx:id="laboratoryLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
-                                       <font>
-                                          <Font name="Arial Black" size="12.0" />
-                                       </font>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" top="10.0" />
-                                       </StackPane.margin>
-                                    </Label>
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
-                                 <children>
-                                    <ImageView fx:id="marketCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#marketClicked" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../assets/actionCards/MarketSmall.JPG" />
+                                          <Image url="@../../assets/victoryCards/goldsmall.JPG" />
                                        </image>
                                     </ImageView>
-                                    <Label fx:id="marketLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                    <Label fx:id="goldLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                                        <font>
                                           <Font name="Arial Black" size="12.0" />
                                        </font>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" top="5.0" />
-                                       </StackPane.margin>
                                     </Label>
                                  </children>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <padding>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </padding>
                               </StackPane>
                            </children>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
+                        <Pane prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane style="-fx-background-color: transparent;" styleClass="card">
+                                 <children>
+                                    <ImageView fx:id="duchyCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#duchyCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
+                                       <image>
+                                          <Image url="@../../assets/victoryCards/duchysmall.JPG" />
+                                       </image>
+                                       <StackPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </StackPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="duchyLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+                                       <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane style="-fx-background-color: transparent;" styleClass="card">
+                                 <children>
+                                    <ImageView fx:id="silverCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#silverCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
+                                       <image>
+                                          <Image url="@../../assets/victoryCards/silversmall.JPG" />
+                                       </image>
+                                       <StackPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </StackPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="silverLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+                                       <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <Pane prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <HBox layoutX="10.0" layoutY="130.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane style="-fx-background-color: transparent;" styleClass="card">
+                                 <children>
+                                    <ImageView fx:id="estateCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#estateCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
+                                       <image>
+                                          <Image url="@../../assets/victoryCards/estatesmall.JPG" />
+                                       </image>
+                                       <StackPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </StackPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="estateLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+                                       <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                              <StackPane style="-fx-background-color: transparent;" styleClass="card">
+                                 <children>
+                                    <ImageView fx:id="copperCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#copperCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
+                                       <image>
+                                          <Image url="@../../assets/victoryCards/coppersmall.JPG" />
+                                       </image>
+                                       <StackPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </StackPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="copperLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+                                       <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <Pane prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <HBox layoutX="10.0" layoutY="250.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <StackPane style="-fx-background-color: transparent;" styleClass="card">
+                                 <children>
+                                    <ImageView fx:id="curseCard" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#curseCardClicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
+                                       <image>
+                                          <Image url="@../../assets/victoryCards/cursesmall.JPG" />
+                                       </image>
+                                       <StackPane.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </StackPane.margin>
+                                    </ImageView>
+                                    <Label fx:id="curseLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+                                       <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <Pane prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="playerInfoLabel" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-radius: 2; -fx-background-radius: 2; -fx-border-color: white;" text="Player Info Label" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="15.0" right="2.0" top="2.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Pane layoutX="10.0" layoutY="490.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="CENTER" prefWidth="200.0" spacing="10.0" VBox.vgrow="NEVER">
                            <children>
                               <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
                                  <children>
-                                    <ImageView fx:id="smithyCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#smithyClicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="discardCard" fitHeight="200.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="card" StackPane.alignment="TOP_CENTER">
                                        <image>
-                                          <Image url="@../../assets/actionCards/SmithySmall.JPG" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="smithyLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
-                                       <font>
-                                          <Font name="Arial Black" size="12.0" />
-                                       </font>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" top="5.0" />
-                                       </StackPane.margin>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </padding>
-                              </StackPane>
-                              <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
-                                 <children>
-                                    <ImageView fx:id="villageCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#villageClicked" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../assets/actionCards/VillageSmall.JPG" />
+                                          <Image url="@../../assets/cardback.jpg" />
                                        </image>
                                        <StackPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </StackPane.margin>
                                     </ImageView>
-                                    <Label fx:id="villageLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                    <Label fx:id="discardLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
                                        <font>
                                           <Font name="Arial Black" size="12.0" />
                                        </font>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" top="10.0" />
-                                       </StackPane.margin>
                                     </Label>
                                  </children>
                               </StackPane>
-                              <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                              <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
                                  <children>
-                                    <ImageView fx:id="witchCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#witchClicked" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="deckCard" fitHeight="200.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="card" StackPane.alignment="TOP_CENTER">
                                        <image>
-                                          <Image url="@../../assets/actionCards/WitchSmall.JPG" />
+                                          <Image url="@../../assets/cardback.jpg" />
                                        </image>
                                        <StackPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </StackPane.margin>
                                     </ImageView>
-                                    <Label fx:id="witchLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                    <Label fx:id="deckLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
                                        <font>
                                           <Font name="Arial Black" size="12.0" />
                                        </font>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" top="10.0" />
-                                       </StackPane.margin>
-                                    </Label>
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="210.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
-                                 <children>
-                                    <ImageView fx:id="woodcutterCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#woodcutterClicked" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../assets/actionCards/WoodcutterSmall.JPG" />
-                                       </image>
-                                       <StackPane.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </StackPane.margin>
-                                    </ImageView>
-                                    <Label fx:id="woodcutterLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
-                                       <font>
-                                          <Font name="Arial Black" size="12.0" />
-                                       </font>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" top="10.0" />
-                                       </StackPane.margin>
-                                    </Label>
-                                 </children>
-                              </StackPane>
-                              <StackPane layoutX="180.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
-                                 <children>
-                                    <ImageView fx:id="workshopCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#workshopClicked" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../assets/actionCards/WorkshopSmall.JPG" />
-                                       </image>
-                                       <StackPane.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </StackPane.margin>
-                                    </ImageView>
-                                    <Label fx:id="workshopLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
-                                       <font>
-                                          <Font name="Arial Black" size="12.0" />
-                                       </font>
-                                       <StackPane.margin>
-                                          <Insets right="10.0" top="10.0" />
-                                       </StackPane.margin>
                                     </Label>
                                  </children>
                               </StackPane>
                            </children>
                            <VBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                              <Insets bottom="30.0" left="15.0" />
                            </VBox.margin>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
                         </HBox>
                      </children>
                   </VBox>
-                  <Pane VBox.vgrow="ALWAYS" />
-                  <HBox alignment="CENTER" maxHeight="180.0" maxWidth="1.7976931348623157E308" prefHeight="90.0" prefWidth="200.0">
+                  <VBox maxWidth="1.7976931348623157E308" prefWidth="680.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label fx:id="userMessageLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="400.0" text="Messages to the user label" textFill="WHITE">
-                           <font>
-                              <Font name="Arial" size="20.0" />
-                           </font>
+                        <HBox alignment="CENTER" maxHeight="50.0" prefHeight="50.0" spacing="30.0">
+                           <children>
+                              <Label fx:id="opponent1Label" alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Opponent 1 Info" textFill="WHITE">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="opponent2Label" alignment="TOP_CENTER" layoutX="12.0" layoutY="12.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Opponent 2 Info" textFill="WHITE" visible="false">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="opponent3Label" alignment="TOP_CENTER" layoutX="12.0" layoutY="12.0" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Opponent 3 Info" textFill="WHITE" visible="false">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                                 <HBox.margin>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <VBox fx:id="cardRowBox" alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                                       <children>
+                                          <ImageView fx:id="villageCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#villageClicked" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../assets/actionCards/villagesmall.JPG" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                          <Label fx:id="villageLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" top="10.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                                       <children>
+                                          <ImageView fx:id="woodcutterCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#woodcutterClicked" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../assets/actionCards/woodcuttersmall.JPG" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                          <Label fx:id="woodcutterLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" top="10.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                                       <children>
+                                          <ImageView fx:id="smithyCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#smithyClicked" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../assets/actionCards/smithysmall.JPG" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="smithyLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" top="5.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                                       <children>
+                                          <ImageView fx:id="councilroomCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#councilroomClicked" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../assets/actionCards/councilroomsmall.JPG" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                          <Label fx:id="councilRoomLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" top="10.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                                       <children>
+                                          <ImageView fx:id="workshopCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#workshopClicked" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../assets/actionCards/workshopsmall.JPG" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                          <Label fx:id="workshopLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" top="10.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                                       <children>
+                                          <ImageView fx:id="festivalCard" fitHeight="150.0" fitWidth="150.0" layoutX="10.0" layoutY="25.0" onMouseClicked="#festivalClicked" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../assets/actionCards/festivalsmall.JPG" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                          <Label fx:id="festivalLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" top="10.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                                       <children>
+                                          <ImageView fx:id="laboratoryCard" fitHeight="150.0" fitWidth="150.0" layoutX="10.0" layoutY="25.0" onMouseClicked="#laboratoryClicked" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../assets/actionCards/laboratorysmall.JPG" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                          <Label fx:id="laboratoryLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" top="10.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                                       <children>
+                                          <ImageView fx:id="witchCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#witchClicked" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../assets/actionCards/witchsmall.JPG" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                          <Label fx:id="witchLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" top="10.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;" styleClass="card">
+                                       <children>
+                                          <ImageView fx:id="chancellorCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#chancellorClicked" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../assets/actionCards/chancellorsmall.JPG" />
+                                             </image>
+                                             <StackPane.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                          <Label fx:id="chancellorLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" top="10.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="card">
+                                       <children>
+                                          <ImageView fx:id="marketCard" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#marketClicked" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../assets/actionCards/marketsmall.JPG" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="marketLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="10" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                             <font>
+                                                <Font name="Arial Black" size="12.0" />
+                                             </font>
+                                             <StackPane.margin>
+                                                <Insets right="10.0" top="5.0" />
+                                             </StackPane.margin>
+                                          </Label>
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </StackPane>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" maxHeight="150.0" maxWidth="1.7976931348623157E308" minHeight="150.0" prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <HBox fx:id="playedCards" prefHeight="100.0" prefWidth="200.0" />
+                              <Label fx:id="userMessageLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="400.0" text="Messages to the user label" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <Button fx:id="treasureButton" mnemonicParsing="false" onAction="#treasureButtonClicked" text="TreasureButton" />
+                           </children>
+                        </HBox>
+                        <Pane VBox.vgrow="ALWAYS" />
+                        <HBox fx:id="handHBox" prefHeight="100.0" prefWidth="200.0" spacing="10.0" />
+                        <HBox alignment="CENTER" maxHeight="120.0" maxWidth="1.7976931348623157E308" prefWidth="200.0" spacing="30.0">
+                           <VBox.margin>
+                              <Insets bottom="50.0" top="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="250.0" HBox.hgrow="NEVER">
+                     <children>
+                        <TextArea fx:id="chatTextArea" prefHeight="540.0" prefWidth="170.0" style="-fx-border-color: black;" />
+                        <TextField fx:id="chatTextInputField" onAction="#chatTextInputClicked" promptText="Type here to chat" style="-fx-background-radius: 2; -fx-border-radius: 2;">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
-                        </Label>
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Separator prefHeight="150.0" prefWidth="200.0" />
+                        <Button id="playButton" fx:id="playButton" minHeight="75.0" mnemonicParsing="false" onAction="#playButtonClicked" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: green;" text="Button">
+                           <VBox.margin>
+                              <Insets bottom="50.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Bell MT" size="40.0" />
+                           </font>
+                        </Button>
                      </children>
-                  </HBox>
-                  <Pane VBox.vgrow="ALWAYS" />
-                  <HBox alignment="CENTER" maxHeight="120.0" maxWidth="1.7976931348623157E308" prefWidth="200.0" spacing="30.0">
-                     <children>
-                        <StackPane prefHeight="150.0" style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="playerCard1" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#playerCard1Clicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <image>
-                                    <Image url="@../../assets/cardBack.jpg" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="playerCard2" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#playerCard2Clicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <image>
-                                    <Image url="@../../assets/cardBack.jpg" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="playerCard3" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#playerCard3Clicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <image>
-                                    <Image url="@../../assets/cardBack.jpg" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="playerCard4" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#playerCard4Clicked" pickOnBounds="true" preserveRatio="true" styleClass="card">
-                                 <image>
-                                    <Image url="@../../assets/cardBack.jpg" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                        <StackPane layoutX="10.0" layoutY="10.0" prefHeight="150.0" style="-fx-background-color: transparent;" styleClass="card">
-                           <children>
-                              <ImageView fx:id="playerCard5" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#playerCard5Clicked" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/cardBack.jpg" />
-                                 </image>
-                                 <StackPane.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                 </StackPane.margin>
-                              </ImageView>
-                           </children>
-                        </StackPane>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="50.0" top="30.0" />
-                     </VBox.margin>
-                  </HBox>
+                     <HBox.margin>
+                        <Insets left="20.0" right="10.0" top="30.0" />
+                     </HBox.margin>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="250.0" HBox.hgrow="NEVER">
-               <children>
-                  <TextArea fx:id="chatTextArea" prefHeight="540.0" prefWidth="170.0" style="-fx-border-color: black;" />
-                  <TextField fx:id="chatTextInputField" onAction="#chatTextInputClicked" promptText="Type here to chat" style="-fx-background-radius: 2; -fx-border-radius: 2;">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </VBox.margin>
-                  </TextField>
-                  <Separator prefHeight="150.0" prefWidth="200.0" />
-                  <Button id="playButton" fx:id="playButton" minHeight="75.0" mnemonicParsing="false" onAction="#playButtonClicked" prefHeight="75.0" prefWidth="200.0" style="-fx-background-color: green;" text="Button">
-                     <VBox.margin>
-                        <Insets bottom="50.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Bell MT" size="40.0" />
-                     </font>
-                  </Button>
-               </children>
-               <HBox.margin>
-                  <Insets left="20.0" right="10.0" top="30.0" />
-               </HBox.margin>
-            </VBox>
+            </HBox>
          </children>
-      </HBox>
+      </StackPane>
    </children>
 </AnchorPane>

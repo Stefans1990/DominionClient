@@ -43,6 +43,10 @@ public class ServerLobbyMessageHandler extends ServerMessageHandler {
         for(int i= 1;games.length>i; i++){
             GameLobbyController.setGameList(games[i]);
         }}
+        if(fiveOrGamesList.equalsIgnoreCase("topfive")){
+            GameLobbyController.updateTopFive(game);
+           // GameLobbyController.updateTopFive(splitMessage(message, 3));
+        }
      
     }
 

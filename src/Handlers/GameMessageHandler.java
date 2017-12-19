@@ -30,18 +30,20 @@ public class GameMessageHandler extends MessageHandler implements Observer {
 
     @Override
     public void handleMessage(String message) throws UnknownFormatException {
-        this.superHandler = superHandler;
+        String subHandler = splitMessage(message, SUB_HANDLER_INDEX);
+        MessageHandler handler = MessageHandlerFactory.getMessageHandler(subHandler);
+        handler.handleMessage(message);
         //get the game name --> String gameName = splitMessage(message,3);
         //GameHandlers game = GameManager.getGame(gameName);
         //returnMessage = game.handleMessage()
 
         //die unteren muessen zu damiano in das jeweilige GameHandlers
-        String subHandler = splitMessage(message, SUB_HANDLER_INDEX);
+
 
         /*Player player = socketPlayerHashMap.get(getClientSocket().getInetAddress());
         if (gameList.get(player) == null || subHandler.equalsIgnoreCase("ENDGAME")) {
             MessageHandler handler = MessageHandlerFactory.getMessageHandler(subHandler);
-            handler.handleMessage(message, this);
+            ;
         } else {
             gameList.get(player).readMessage(message);
         }*/

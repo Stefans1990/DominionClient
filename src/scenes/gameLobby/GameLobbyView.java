@@ -13,6 +13,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import util.ServiceLocator;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import Handlers.ServerChatMessageHandler;
@@ -23,10 +24,13 @@ public class GameLobbyView {
 
     private final GameLobbyModel model;
     private ResourceBundle bundle;
-    private ArrayList<Label> topLabels;
+    protected static ArrayList<Label> topLabels = new ArrayList<>();
     ListView<String> gameListView;
     private HBox parent;
     protected TextArea chat;
+    protected static ArrayList<Label> topPlayed = new ArrayList<>();
+   protected static ArrayList<Label> topWon = new ArrayList<>();
+protected static ArrayList<Label> topHighScore =new ArrayList<>();
 
     private SimpleBooleanProperty isGameStarted;
 
@@ -163,22 +167,38 @@ public class GameLobbyView {
 
     private VBox createTopFive() {
         VBox topFive = new VBox(5);
+        HBox topFiveLabels = new HBox( 10);
+        HBox topFiveOne = new HBox(10);
+        HBox topFiveTwo = new HBox(10);
+        HBox topFiveThree = new HBox(10);
+        HBox topFiveFour = new HBox(10);
+        HBox topFiveFive = new HBox(10);
+
+
         Label title = new Label(bundle.getString("gl_topfive_title"));
         Label gamesPlayed = new Label(bundle.getString("gl_topfive_playedGames"));
         Label gamesWon = new Label(bundle.getString("gl_topfive_gamesWon"));
         Label gamesHighScore = new Label(bundle.getString("gl_topfive_gamesHighscore"));
 
 
-        topFive.getChildren().addAll(title, gamesPlayed, gamesWon, gamesHighScore);
+        topFiveLabels.getChildren().addAll(title, gamesPlayed, gamesWon, gamesHighScore);
         topLabels = new ArrayList<>();
 
-        Label top1 = new Label("Peter Mayer");
-        Label top2 = new Label("Peter Mayer");
-        Label top3 = new Label("Peter Mayer");
-        Label top4 = new Label("Peter Mayer");
-        Label top5 = new Label("Peter Mayer");
+        for(int i = 0; i<5; i++){
+            topLabels.add(new Label(""));
+            topPlayed.add(new Label(""));
+            topWon.add(new Label(""));
+            topHighScore.add(new Label(""));
+        }
 
-        topFive.getChildren().addAll(top1, top2, top3, top4, top5);
+        topFiveOne.getChildren().addAll(topLabels.get(0),topPlayed.get(0),topWon.get(0), topHighScore.get(0));
+        topFiveTwo.getChildren().addAll(topLabels.get(1),topPlayed.get(1),topWon.get(1), topHighScore.get(1));
+        topFiveThree.getChildren().addAll(topLabels.get(2),topPlayed.get(2),topWon.get(2), topHighScore.get(2));
+        topFiveFour.getChildren().addAll(topLabels.get(3),topPlayed.get(3),topWon.get(3), topHighScore.get(3));
+        topFiveFive.getChildren().addAll(topLabels.get(4),topPlayed.get(4),topWon.get(4), topHighScore.get(4));
+
+
+        topFive.getChildren().addAll(topFiveLabels, topFiveOne, topFiveTwo, topFiveThree, topFiveFour, topFiveFive);
 
         return topFive;
     }

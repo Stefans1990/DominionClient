@@ -33,21 +33,18 @@ public class MainModel {
     }
 
    public void startListeningForMessages() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String message ;
-                try {
-                    while ((message = in.readLine()) != null){
-                        //todo send message to messagehandlerFactory
-                        MessageHandler handler = MessageHandlerFactory.getMessageHandler(message);
-                        handler.handleMessage(message);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (UnknownFormatException e) {
-                    e.printStackTrace();
+        new Thread(() -> {
+            String message ;
+            try {
+                while ((message = in.readLine()) != null){
+                    //todo send message to messagehandlerFactory
+                    MessageHandler handler = MessageHandlerFactory.getMessageHandler(message);
+                    handler.handleMessage(message);
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (UnknownFormatException e) {
+                e.printStackTrace();
             }
         }).start();
     }
