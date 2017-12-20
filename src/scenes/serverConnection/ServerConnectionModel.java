@@ -1,5 +1,7 @@
 package scenes.serverConnection;
 
+import util.LogHandling;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -10,14 +12,12 @@ import java.util.logging.Logger;
 
 
 public class ServerConnectionModel {
-    public boolean isConnected;
+    public boolean isConnected=false;
     private final String HOST = "127.0.0.1";
     private final int PORT = 9000;
-    private final Logger logger;
     private Socket socket;
 
     public ServerConnectionModel() {
-        logger = Logger.getLogger("ServerConnectionModel");
     }
 
     public void tryConnect() {
@@ -37,9 +37,10 @@ public class ServerConnectionModel {
             
             return true;
         } catch (IOException e) {
-            logger.log(Level.SEVERE, ">> Failed to connect to Server");
+            LogHandling.logOnFile(Level.SEVERE, ">> Failed to connect to Server");
+            return false;
         }
-        return true;
+
     }
 
     private void tryTake(ExecutorCompletionService<Boolean> service) {
@@ -55,12 +56,11 @@ public class ServerConnectionModel {
         try {
             return result.get();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            LogHandling.logOnFile(Level.SEVERE, e.toString()); return false;
         } catch (ExecutionException e) {
-            //TODO: log this
-            System.out.println("");
-            e.printStackTrace();
-        } return false;
+            LogHandling.logOnFile(Level.SEVERE, e.toString()); return false;
+        }
+
     }
 
 

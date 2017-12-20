@@ -9,7 +9,7 @@ public class ServiceLocator {
 
     private static ResourceBundle bundle;
     private static BufferedOutputStream writer;
-    private static Locale locale = new Locale("en", "EN");
+    private static Locale locale;
 
     public static ResourceBundle getResourceBundle() {
         if (ServiceLocator.bundle == null || !ServiceLocator.bundle.getLocale().equals(locale)){

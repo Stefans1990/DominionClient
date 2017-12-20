@@ -7,6 +7,8 @@ public class VerificationController {
 
     private final VerificationModel model;
     private final VerificationView view;
+    private static String localName;
+
 
 
     public VerificationController(){
@@ -21,5 +23,11 @@ public class VerificationController {
 
     public SimpleBooleanProperty getIsLoggedIn() {
        return model.isConnectedProperty();
+    }
+    public static void setLocalName(String name){
+        localName= name;
+    }
+    public String getLocalName(){
+        return localName;
     }
 }
