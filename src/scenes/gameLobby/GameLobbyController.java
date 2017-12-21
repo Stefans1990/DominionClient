@@ -92,6 +92,9 @@ public class GameLobbyController {
                 found = true;
             }
         }
+        if(gameName.equalsIgnoreCase("")){
+            found=true;
+        }
         return found;
     }
 

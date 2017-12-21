@@ -99,6 +99,9 @@ public class GameMessageHandler extends MessageHandler implements Observer {
         return superHandler.getClientSocket();
     }
     private void setGameMessage(String message) {
+        if(message.charAt(message.length()-1)=='@'){
+            message = message.substring(0, message.length()-1);
+        }
         int i= message.indexOf("/");
         GameController.setNewMessage(message.substring(i+1));
     }

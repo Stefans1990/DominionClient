@@ -102,65 +102,6 @@ public class GameController {
 
     }
 
-    private void playTreasure(String message) {
-        //playername@playedCard/copper,3;gold,1@hand/estate,1@coinValue,1
-        String[] messageParts = split(message, "@");
-
-        // 0: playerName
-        // 1: playedCard/copper,3;gold,1
-        // 2: hand/estate,1
-        // 3: coinValue,1
-
-
-        String playerName = messageParts[0];
-        System.out.println("" + localPlayerName + playerName + model.getCurrentPlayerName() + model.getLocalPlayerName());
-        if (playerName.equals(localPlayerName)) {
-            for (Player player : model.getPlayers()) {
-                if (player.getPlayerName().equals(localPlayerName)) {
-                    // 1: playedCard/copper,3;gold,1
-
-                    String[] playedCards = split(messageParts[1], "/");
-                    String[] cardSplit = split(playedCards[1], ";");
-
-                    for (String cardAndAmount : cardSplit) {
-                        String[] cardAndAmountParts = split(cardAndAmount, ",");
-                        String cardPlayed = cardAndAmountParts[0];
-                        int cardAmount = Integer.parseInt(cardAndAmountParts[1]);
-                        for (int i = 0; i < cardAmount; i++) {
-                            LogHandling.logOnFile(Level.INFO, cardPlayed + "is removed from Hand");
-                            player.removeCardFromHand(cardPlayed);
-                            LogHandling.logOnFile(Level.INFO, cardPlayed + "is added to PlayedArea");
-                            view.showCardInPlayedArea(cardPlayed);
-                        }
-                    }
-                    // 2: hand/estate,1
-
-                    String[] handCardsParts = split(messageParts[2], "/"); //todo semicolon trennen
-                    String[] cardNamesSplit = split(handCardsParts[1], ";");
-                    String[] cardNames = Arrays.copyOfRange(handCardsParts, 1, messageParts.length);
-
-                    player.getHandCards().clear();
-                    for (String cardAndAmount : cardNamesSplit) {
-                        String[] cardAndAmountParts = split(cardAndAmount, ",");
-                        System.out.println(cardAndAmountParts);
-                        String cardName = cardAndAmountParts[0];
-                        int cardAmount = Integer.parseInt(cardAndAmountParts[1]);
-                        for (int i = 0; i < cardAmount; i++) {
-                            player.addCard(cardName);
-                        }
-                    }
-
-                    // 3: coinValue,1
-                    String[] coinParts = split(messageParts[2], ",");
-                    player.setCoins(Integer.parseInt(coinParts[1]));
-
-                    view.updateHandCards();
-                }
-            }
-        }
-
-
-    }
 
     // TODO: Damiano needs to send this message for each player separately in the beginning
     // TODO: I need to know the initial hand cards to display. We forgot that these are different
@@ -194,18 +135,20 @@ public class GameController {
         // 2: deck,5
 
         String playerName = messageParts[0];
-        for (Player player : model.getPlayers()) {
-            if (playerName.equals(player.getPlayerName())) {
+        if (playerName.equals(localPlayerName)) {
+            for (Player player : model.getPlayers()) {
+                if (playerName.equals(player.getPlayerName())) {
 
-                // 1: hand/copper,3;estate,2
-                HashMap<String, Integer> handCardsMap = processNewHand(messageParts[1]);
-                player.newCards(handCardsMap);
-                view.updateHandCards();
+                    // 1: hand/copper,3;estate,2
+                    HashMap<String, Integer> handCardsMap = processNewHand(messageParts[1]);
+                    player.newCards(handCardsMap);
+                    view.updateHandCards();
 
-                // 2: deck,5
-                String[] deckInfo = split(messageParts[2], ",");
-                int numberOfDeckCards = Integer.parseInt(deckInfo[1]);
-                view.setNumberOfDeckCards(numberOfDeckCards);
+                    // 2: deck,5
+                    String[] deckInfo = split(messageParts[2], ",");
+                    int numberOfDeckCards = Integer.parseInt(deckInfo[1]);
+                    view.setNumberOfDeckCards(numberOfDeckCards);
+                }
             }
         }
     }
@@ -270,6 +213,87 @@ public class GameController {
 
     }
 
+    private void playTreasure(String message) {
+        //playername@playedCard/copper,3;gold,1@hand/estate,1@coinValue,1
+        String[] messageParts = split(message, "@");
+
+        // 0: playerName
+        // 1: playedCard/copper,3;gold,1
+        // 2: hand/estate,1
+        // 3: coinValue,1
+        String playerName = messageParts[0];
+        String[] playedCards = split(messageParts[1], "/");
+        String[] cardSplit = split(playedCards[1], ";");
+
+        for (String cardAndAmount : cardSplit) {
+            String[] cardAndAmountParts = split(cardAndAmount, ",");
+            String cardPlayed = cardAndAmountParts[0];
+            int cardAmount = Integer.parseInt(cardAndAmountParts[1]);
+            for (int i = 0; i < cardAmount; i++) {
+                if (playerName.equals(localPlayerName)) {
+                    for (Player player : model.getPlayers()) {
+                        if (player.getPlayerName().equals(localPlayerName)) {
+                            LogHandling.logOnFile(Level.INFO, cardPlayed + "is removed from Hand");
+                            player.removeCardFromHand(cardPlayed);
+                        }
+                    }
+                }
+                LogHandling.logOnFile(Level.INFO, cardPlayed + "is added to PlayedArea");
+                view.showCardInPlayedArea(cardPlayed);
+            }
+        }
+
+
+        playerName = messageParts[0];
+        System.out.println("" + localPlayerName + playerName + model.getCurrentPlayerName() + model.getLocalPlayerName());
+        if (playerName.equals(localPlayerName)) {
+            for (Player player : model.getPlayers()) {
+                if (player.getPlayerName().equals(localPlayerName)) {
+                    // 1: playedCard/copper,3;gold,1
+                    /*
+                    String[] playedCards = split(messageParts[1], "/");
+                    String[] cardSplit = split(playedCards[1], ";");
+
+                    for (String cardAndAmount : cardSplit) {
+                        String[] cardAndAmountParts = split(cardAndAmount, ",");
+                        String cardPlayed = cardAndAmountParts[0];
+                        int cardAmount = Integer.parseInt(cardAndAmountParts[1]);
+                        for (int i = 0; i < cardAmount; i++) {
+                            LogHandling.logOnFile(Level.INFO, cardPlayed + "is removed from Hand");
+                            player.removeCardFromHand(cardPlayed);
+                            LogHandling.logOnFile(Level.INFO, cardPlayed + "is added to PlayedArea");
+                            view.showCardInPlayedArea(cardPlayed);
+                        }
+                    }
+                    */
+                    // 2: hand/estate,1;woodcutter,1
+
+                    String[] handCardsParts = split(messageParts[2], "/"); //todo semicolon trennen
+                    String[] cardNamesSplit = split(handCardsParts[1], ";");
+                    //String[] cardNames = Arrays.copyOfRange(handCardsParts, 1, messageParts.length);
+
+                    player.getHandCards().clear();
+                    for (String cardAndAmount : cardNamesSplit) {
+                        String[] cardAndAmountParts = split(cardAndAmount, ",");
+                        System.out.println(cardAndAmountParts);
+                        String cardName = cardAndAmountParts[0];
+                        int cardAmount = Integer.parseInt(cardAndAmountParts[1]);
+                        for (int i = 0; i < cardAmount; i++) {
+                            player.addCard(cardName);
+                        }
+                    }
+
+                    // 3: coinValue,1
+                    String[] coinParts = split(messageParts[2], ",");
+                    player.setCoins(Integer.parseInt(coinParts[1]));
+
+                    view.updateHandCards();
+                }
+            }
+        }
+
+
+    }
     // Player plays a card which needs to disappear from his hand but show up in the center
     // space to show that it is being played. The center Label for action value changes too.
 
@@ -311,7 +335,7 @@ public class GameController {
         // 1: victoryPoints,1
         // 2: discard,5
         view.clearCardInPlayedArea();
-//todo clear Handcards
+
 
 
         String playerName = messageParts[0];
@@ -328,6 +352,7 @@ public class GameController {
                     int discard = Integer.parseInt(split(messageParts[2], ",")[1]);
                     player.setNumberOfDiscardedCards(discard);
                     player.resetValues();
+
                 }
             }
         }

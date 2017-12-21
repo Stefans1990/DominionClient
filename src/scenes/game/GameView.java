@@ -595,7 +595,7 @@ public class GameView {
         if (model.getLocalPlayerName().equals(model.getCurrentPlayerName())) {
             gameMessageHandler.write("playTreasure", false);
             Button treasureButton = (Button) event.getSource();
-            treasureButton.setVisible(false);
+            treasureButton.setVisible(true);
         }
     }
 
