@@ -238,7 +238,7 @@ public class GameController {
                         }
                     }
                 }
-                LogHandling.logOnFile(Level.INFO, cardPlayed + "is added to PlayedArea");
+                LogHandling.logOnFile(Level.INFO, cardPlayed + " is added to PlayedArea");
                 view.showCardInPlayedArea(cardPlayed);
             }
         }
@@ -269,19 +269,24 @@ public class GameController {
                     // 2: hand/estate,1;woodcutter,1
 
                     String[] handCardsParts = split(messageParts[2], "/"); //todo semicolon trennen
+
                     String[] cardNamesSplit = split(handCardsParts[1], ";");
                     //String[] cardNames = Arrays.copyOfRange(handCardsParts, 1, messageParts.length);
-
-                    player.getHandCards().clear();
-                    for (String cardAndAmount : cardNamesSplit) {
-                        String[] cardAndAmountParts = split(cardAndAmount, ",");
-                        System.out.println(cardAndAmountParts);
-                        String cardName = cardAndAmountParts[0];
-                        int cardAmount = Integer.parseInt(cardAndAmountParts[1]);
-                        for (int i = 0; i < cardAmount; i++) {
-                            player.addCard(cardName);
+                    if(cardNamesSplit[0].equalsIgnoreCase("empty")){
+                        player.getHandCards().clear();
+                    }else{
+                        player.getHandCards().clear();
+                        for (String cardAndAmount : cardNamesSplit) {
+                            String[] cardAndAmountParts = split(cardAndAmount, ",");
+                            System.out.println(cardAndAmountParts);
+                            String cardName = cardAndAmountParts[0];
+                            int cardAmount = Integer.parseInt(cardAndAmountParts[1]);
+                            for (int i = 0; i < cardAmount; i++) {
+                                player.addCard(cardName);
+                            }
                         }
                     }
+
 
                     // 3: coinValue,1
                     String[] coinParts = split(messageParts[2], ",");

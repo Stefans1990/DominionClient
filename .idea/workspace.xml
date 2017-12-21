@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7b629b2-7783-4554-917c-6e7b6990d103" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/DominionClient/scenes/gameLobby/GameLobbyModel$1.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/Handlers/GameMessageHandler.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/Handlers/GameMessageHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/Handlers/GameStartGameMessageHandler.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/Handlers/GameStartGameMessageHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/Handlers/ServerNewGameMessageHandler.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/Handlers/ServerNewGameMessageHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/Handlers/ServerRegisterMessageHandler.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/Handlers/ServerRegisterMessageHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/scenes/MainController.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/scenes/MainController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/scenes/game/GameController.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/scenes/game/GameController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/scenes/game/GameModel.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/scenes/game/GameModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/scenes/game/GameView.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/scenes/game/GameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/scenes/gameLobby/GameLobbyController.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/scenes/gameLobby/GameLobbyController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/scenes/gameLobby/GameLobbyModel.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/scenes/gameLobby/GameLobbyModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/scenes/gameLobby/GameLobbyView.class" afterPath="$PROJECT_DIR$/out/production/DominionClient/scenes/gameLobby/GameLobbyView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DominionClient/resources/fxml/gameView.fxml" afterPath="$PROJECT_DIR$/out/production/DominionClient/resources/fxml/gameView.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Handlers/GameMessageHandler.java" afterPath="$PROJECT_DIR$/src/Handlers/GameMessageHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Handlers/ServerRegisterMessageHandler.java" afterPath="$PROJECT_DIR$/src/Handlers/ServerRegisterMessageHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/fxml/gameView.fxml" afterPath="$PROJECT_DIR$/src/resources/fxml/gameView.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/game/GameController.java" afterPath="$PROJECT_DIR$/src/scenes/game/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/game/GameView.java" afterPath="$PROJECT_DIR$/src/scenes/game/GameView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/scenes/gameLobby/GameLobbyController.java" afterPath="$PROJECT_DIR$/src/scenes/gameLobby/GameLobbyController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,16 +49,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/scenes/game/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="256" column="33" lean-forward="false" selection-start-line="256" selection-start-column="33" selection-end-line="256" selection-end-column="33" />
+            <state relative-caret-position="202">
+              <caret line="277" column="54" lean-forward="true" selection-start-line="277" selection-start-column="54" selection-end-line="277" selection-end-column="54" />
               <folding>
                 <element signature="e#1530#1531#0" expanded="true" />
                 <element signature="e#1563#1564#0" expanded="true" />
-                <element signature="e#15448#15449#0" expanded="true" />
-                <element signature="e#15494#15495#0" expanded="true" />
+                <element signature="e#15663#15664#0" expanded="true" />
+                <element signature="e#15709#15710#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,10 +94,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameLobbyController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameLobbyController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scenes/gameLobby/GameLobbyController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="78">
               <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
               <folding />
             </state>
@@ -237,9 +220,9 @@
         <option value="$PROJECT_DIR$/src/scenes/game/GameModel.java" />
         <option value="$PROJECT_DIR$/src/scenes/game/GameView.java" />
         <option value="$PROJECT_DIR$/src/resources/fxml/gameView.fxml" />
-        <option value="$PROJECT_DIR$/src/scenes/game/GameController.java" />
         <option value="$PROJECT_DIR$/src/Handlers/ServerRegisterMessageHandler.java" />
         <option value="$PROJECT_DIR$/src/scenes/gameLobby/GameLobbyController.java" />
+        <option value="$PROJECT_DIR$/src/scenes/game/GameController.java" />
       </list>
     </option>
   </component>
@@ -879,7 +862,7 @@
       <workItem from="1513606884415" duration="12129000" />
       <workItem from="1513683204877" duration="7468000" />
       <workItem from="1513693236777" duration="15718000" />
-      <workItem from="1513783867331" duration="31562000" />
+      <workItem from="1513783867331" duration="35601000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1513414366471</created>
@@ -930,11 +913,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513842358318</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update with new GUI">
+      <created>1513860332791</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1513860332791</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189574000" />
+    <option name="totallyTimeSpent" value="193613000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2063,10 +2053,10 @@
         <state relative-caret-position="356">
           <caret line="253" column="37" lean-forward="true" selection-start-line="253" selection-start-column="37" selection-end-line="253" selection-end-column="37" />
           <folding>
-            <element signature="e#9632#9633#0" expanded="true" />
-            <element signature="e#9668#9669#0" expanded="true" />
-            <element signature="e#9726#9727#0" expanded="true" />
-            <element signature="e#9770#9771#0" expanded="true" />
+            <element signature="e#9632#9633#0" expanded="false" />
+            <element signature="e#9668#9669#0" expanded="false" />
+            <element signature="e#9726#9727#0" expanded="false" />
+            <element signature="e#9770#9771#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2187,24 +2177,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/game/GameController.java">
+    <entry file="file://$PROJECT_DIR$/src/scenes/gameLobby/GameLobbyController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="256" column="33" lean-forward="false" selection-start-line="256" selection-start-column="33" selection-end-line="256" selection-end-column="33" />
-          <folding>
-            <element signature="e#1530#1531#0" expanded="true" />
-            <element signature="e#1563#1564#0" expanded="true" />
-            <element signature="e#15448#15449#0" expanded="true" />
-            <element signature="e#15494#15495#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="78">
+          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scenes/gameLobby/GameLobbyController.java">
+    <entry file="file://$PROJECT_DIR$/src/scenes/game/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="202">
+          <caret line="277" column="54" lean-forward="true" selection-start-line="277" selection-start-column="54" selection-end-line="277" selection-end-column="54" />
+          <folding>
+            <element signature="e#1530#1531#0" expanded="true" />
+            <element signature="e#1563#1564#0" expanded="true" />
+            <element signature="e#15663#15664#0" expanded="true" />
+            <element signature="e#15709#15710#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
