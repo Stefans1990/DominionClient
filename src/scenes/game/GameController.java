@@ -3,6 +3,7 @@ package scenes.game;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.stage.Stage;
+import sun.rmi.runtime.Log;
 import util.LogHandling;
 
 import java.util.Arrays;
@@ -146,6 +147,7 @@ public class GameController {
 
                     // 2: deck,5
                     String[] deckInfo = split(messageParts[2], ",");
+                    LogHandling.logOnFile(Level.INFO, "Expected: deck, 5 in this case: "+deckInfo[0]+", "+deckInfo[1]);
                     int numberOfDeckCards = Integer.parseInt(deckInfo[1]);
                     view.setNumberOfDeckCards(numberOfDeckCards);
                 }
@@ -180,6 +182,7 @@ public class GameController {
         // 2: coinValue,2
         // 3: actionCards/woodcutter,9
         // 4: discard,4
+
 
         // Update only for localPlayer
         String playerName = messageParts[0];
@@ -289,7 +292,8 @@ public class GameController {
 
 
                     // 3: coinValue,1
-                    String[] coinParts = split(messageParts[2], ",");
+                    String[] coinParts = split(messageParts[3], ",");
+                    //LogHandling.logOnFile(Level.INFO, "The coins are"+ coinParts[0]+", "+coinParts[1] + "expected is coinValue, 1");
                     player.setCoins(Integer.parseInt(coinParts[1]));
 
                     view.updateHandCards();
@@ -308,22 +312,36 @@ public class GameController {
         // 0: playerName
         // 1: woodcutter
         // 2: actionValue,1
+        // 3: coinValue,1
+        // 4: buyValue,1
 
         //playerName
         String playerName = messageParts[0];
+        String playedCard = messageParts[1];
+        view.showCardInPlayedArea(playedCard);
         if (playerName.equals(localPlayerName)) {
             for (Player player : model.getPlayers()) {
                 if (player.getPlayerName().equals(localPlayerName)) {
 
                     // 1: woodcutter
-                    String playedCard = messageParts[1];
+
                     player.removeCardFromHand(playedCard);
                     view.updateHandCards();
-                    view.showCardInPlayedArea(playedCard);
 
                     // 2: actionValue,1
                     String[] actionParts = split(messageParts[2], ",");
                     player.setActions(Integer.parseInt(actionParts[1]));
+
+                    // 3: coinValue,1
+                    String[] coinParts = split(messageParts[3], ",");
+                    player.setCoins(Integer.parseInt(coinParts[1]));
+
+                    // 4: buyValue,1
+                    String[] buyParts = split(messageParts[4], ",");
+                    player.setBuy(Integer.parseInt(buyParts[1]));
+
+
+
                 }
             }
         }

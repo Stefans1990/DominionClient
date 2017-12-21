@@ -115,7 +115,7 @@ public class GameView {
                 controller.playerInfoLabel.setText(player.getPlayerName() + " VP:" + player.getVictoryPoints());
                 controller.userMessageLabel.setText("Buy: " + player.getBuy() + " Coins: " + player.getCoins() + " Actions: " + player.getActions());
                 controller.discardLabel.setText("0");
-                controller.deckLabel.setText("0");
+                //controller.deckLabel.setText("0");
             }
         }
     }
@@ -664,13 +664,13 @@ public class GameView {
             if (player.getPlayerName().equals(model.getLocalPlayerName())) {
                 for (String cardName : player.getHandCards()) {
                     String path = controller.cardMap.get(cardName);
-                    LogHandling.logOnFile(Level.INFO, "ImagePath is: " + path);
+                    //LogHandling.logOnFile(Level.INFO, "ImagePath is: " + path);
                     Image card = new Image(path);
                     ImageView imageView = new ImageView(card);
                     if (imageView.getImage() == null) {
-                        LogHandling.logOnFile(Level.SEVERE, "Image is null");
+                       // LogHandling.logOnFile(Level.SEVERE, "Image is null");
                     } else {
-                        LogHandling.logOnFile(Level.SEVERE, "Image is " + imageView.getImage());
+                        //LogHandling.logOnFile(Level.SEVERE, "Image is " + imageView.getImage());
                     }
                     imageView.setId(cardName);
                     controller.handDeckList.add(imageView);
@@ -682,17 +682,17 @@ public class GameView {
 
     private void reDrawHandCards() {
         ObservableList<Node> childNode = controller.handHBox.getChildren();
-        LogHandling.logOnFile(Level.INFO, "Size: " + controller.handHBox.getChildren().size());
+        //LogHandling.logOnFile(Level.INFO, "Size: " + controller.handHBox.getChildren().size());
         childNode.removeIf(node -> node instanceof ImageView);
-        LogHandling.logOnFile(Level.INFO, "Size after delete: " + controller.handHBox.getChildren().size());
+        //LogHandling.logOnFile(Level.INFO, "Size after delete: " + controller.handHBox.getChildren().size());
         for (ImageView cardImageView : controller.handDeckList) {
-            cardImageView.setStyle("-fx-background-color: brown");
+            //cardImageView.setStyle("-fx-background-color: brown");
             cardImageView.setFitHeight(150);
             cardImageView.setFitWidth(100);
             cardImageView.setVisible(true);
-            LogHandling.logOnFile(Level.INFO, "Imageview is: " + cardImageView.getImage() + "Card ID: " + cardImageView.getId());
+            //LogHandling.logOnFile(Level.INFO, "Imageview is: " + cardImageView.getImage() + "Card ID: " + cardImageView.getId());
             controller.handHBox.getChildren().add(cardImageView); //index = 0
-            LogHandling.logOnFile(Level.INFO, "Size in loop: " + controller.handHBox.getChildren().size());
+            //LogHandling.logOnFile(Level.INFO, "Size in loop: " + controller.handHBox.getChildren().size());
 
             listenForHandCardClicked(cardImageView);
         }

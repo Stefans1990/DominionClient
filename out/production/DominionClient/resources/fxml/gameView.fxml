@@ -227,7 +227,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </StackPane.margin>
                                     </ImageView>
-                                    <Label fx:id="deckLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="3" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
+                                    <Label fx:id="deckLabel" alignment="CENTER" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-border-radius: 5; -fx-background-radius: 5;" text="5" textFill="WHITE" StackPane.alignment="TOP_RIGHT">
                                        <font>
                                           <Font name="Arial Black" size="12.0" />
                                        </font>
