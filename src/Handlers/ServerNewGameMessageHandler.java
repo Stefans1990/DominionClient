@@ -28,6 +28,7 @@ public class ServerNewGameMessageHandler extends ServerMessageHandler {
     }
 
     public void write(String message,Boolean privateMessage) {
+        GameMessageHandler.setGameName(splitMessage(message, 0));
         message = addDelimiter(message);
         String newMessage = CLASSNAME + message;
         super.write(newMessage,privateMessage);

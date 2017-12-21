@@ -27,6 +27,7 @@ public class GameJoinGameMessageHandler extends GameMessageHandler {
     
     }
     public void write(String message,Boolean privateMessage) {
+        GameMessageHandler.setGameName(message);
         message = addDelimiter(message);
         String newMessage = CLASSNAME + message;
         super.write(newMessage,privateMessage);

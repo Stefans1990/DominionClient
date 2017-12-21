@@ -75,7 +75,7 @@ public class MainController {
         listenForChat(gameLobbyController);
         listenForGameList(gameLobbyController);
         listenForTopFive(gameLobbyController);
-        listenForStartGame();
+        listenForStartGame(gameLobbyController);
         //TODO When we get the signal to show the game we show the game
         //TODO Listen for game start here
         gameLobbyController.isGameStarted().addListener((observable, oldValue, isGameStarted) -> {
@@ -94,14 +94,14 @@ public class MainController {
             try {
                 Thread.sleep(100);
             } catch (Exception e) {
-                break;
+                LogHandling.logOnFile(Level.SEVERE, e.getMessage());
             }
         }
         String init = GameStartGameMessageHandler.getConfig();
-        gameController.init(init);
+        //gameController.init(init);
         //TODO: We need the game options somehow here, to pass to initGame();
 
-        gameController.initGame(stage, 5);
+        gameController.initGame(stage, init);
         gameController.show();
     }
 
@@ -125,8 +125,8 @@ public class MainController {
             gameLobbyController.setTopFive(list);
         });
     }
-    private void listenForStartGame() {
-        GameController.getNewMessage().addListener((observable, oldValue, newValue) -> showGameScene());
+    private void listenForStartGame(GameLobbyController gameLobbyController) {
+        gameLobbyController.getGameStarted().addListener(((observable, oldValue, newValue) -> showGameScene()));
     }
 
 

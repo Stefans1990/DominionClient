@@ -3,6 +3,7 @@ package Handlers;
 
 import scenes.game.GameController;
 import scenes.gameLobby.GameLobbyController;
+import scenes.gameLobby.GameLobbyModel;
 import util.LogHandling;
 
 import java.util.ArrayList;
@@ -39,13 +40,14 @@ public class GameStartGameMessageHandler extends GameMessageHandler {
 
     @Override
     public void handleMessage(String msgIn) throws UnknownFormatException {
+        GameLobbyController.setGameStarted(true);
         LogHandling.logOnFile(Level.INFO, "Game is starting");
         message = msgIn;
 
         if (message.contains("config")) {
             setConfig(message);
-        }else{
-            //setGameMessage(message);
+        }else {
+            setGameMessage(message);
         }
         GameLobbyController.setGameStarted(true);
 

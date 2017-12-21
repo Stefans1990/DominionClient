@@ -3,18 +3,21 @@ package Handlers;
 
 
 import scenes.game.GameController;
+import util.LogHandling;
 
 import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
 
 /**
  * Created by Tim on 23.08.2017.
  */
 public class GameMessageHandler extends MessageHandler implements Observer {
     private MessageHandler superHandler;
+    private static String gameName;
 
     private final String CLASSNAME = MessageType.GAME.toString();
 
@@ -98,5 +101,12 @@ public class GameMessageHandler extends MessageHandler implements Observer {
     private void setGameMessage(String message) {
         int i= message.indexOf("/");
         GameController.setNewMessage(message.substring(i+1));
+    }
+    public static String getGameName(){
+        return gameName;
+    }
+    public static void setGameName(String name){
+        LogHandling.logOnFile(Level.INFO, "GameName is set to: "+name);
+       gameName=name;
     }
 }

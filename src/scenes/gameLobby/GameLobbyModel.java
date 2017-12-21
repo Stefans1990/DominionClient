@@ -26,11 +26,7 @@ public class GameLobbyModel {
 
 
 	public static void addChat(String chatMessage) {
-		 Platform.runLater(new Runnable() {
-		        @Override public void run() {
-		        	GameLobbyModel.updateChat(chatMessage);
-		        }
-		      });
+		 Platform.runLater(() -> GameLobbyModel.updateChat(chatMessage));
 		
 	}
 	public SimpleStringProperty getChatText() {

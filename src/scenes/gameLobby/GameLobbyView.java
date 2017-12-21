@@ -33,7 +33,7 @@ public class GameLobbyView {
     protected static ArrayList<Label> topWon = new ArrayList<>();
     protected static ArrayList<Label> topHighScore = new ArrayList<>();
 
-    private SimpleBooleanProperty isGameStarted;
+    private static SimpleBooleanProperty isGameStarted;
 
     public GameLobbyView(GameLobbyModel model) {
         this.model = model;
@@ -249,6 +249,9 @@ public class GameLobbyView {
 
     public SimpleBooleanProperty isGameStartedProperty() {
         return isGameStarted;
+    }
+    public static void setGameStarted(boolean isStarted){
+        isGameStarted.set(isStarted);
     }
 
 }

@@ -1,8 +1,12 @@
 package scenes.game;
 
+import util.LogHandling;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.logging.Level;
 
 
 public class GameModel {
@@ -40,6 +44,25 @@ public class GameModel {
 
 	public void setCurrentPlayerName(String currentPlayerName) {
 		this.currentPlayerName = currentPlayerName;
+	}
+
+	public void setNextPlayerCurrentPlayer(){
+		boolean isChanged=false;
+		Iterator<Player> iterator = players.iterator();
+		while(iterator.hasNext()){
+			Player player = iterator.next();
+			if(player.getPlayerName().equalsIgnoreCase(getCurrentPlayerName())){
+                if(iterator.hasNext()){
+                    setCurrentPlayerName(iterator.next().getPlayerName());
+                    isChanged = true;
+                }
+			}
+		}
+		if(!isChanged){
+            setCurrentPlayerName(players.get(0).getPlayerName());
+        }
+        LogHandling.logOnFile(Level.INFO, "The current player is: "+getCurrentPlayerName());
+
 	}
 
 	public ArrayList<Player> getPlayers() {
