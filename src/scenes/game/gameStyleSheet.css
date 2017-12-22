@@ -18,3 +18,13 @@
     -fx-border-radius: 5;
 }
 
+.winnerStyle {
+    -fx-font: bold;
+    -fx-text-fill: springgreen;
+    -fx-font-size: 50px;
+}
+
+.loserStyle {
+    -fx-font-size: 40px;
+    -fx-text-fill: white;
+}

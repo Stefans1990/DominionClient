@@ -429,7 +429,7 @@ public class GameController {
         // 1: playerName,5
         // 2: playerName,6
 
-        //TODO: how to set the end window?.
+        view.showGameOver(messageParts);
 
 
     }

@@ -624,7 +624,6 @@ public class GameView {
         isOverlayVisible = false;
         overlayImageView.setImage(null);
         swapOverlay();
-
     }
 
     @FXML
@@ -746,12 +745,18 @@ public class GameView {
         for (String playerName  :messageParts ) {
             String[] playerSplit = playerName.split(",");
             Label label = new Label();
-            if (playerName.equals(winner)){
-                label.setText(playerSplit[0]+ " Victory Points: "+ playerSplit[1]+ " winner");
-                label.setStyle("-fx-font: bold");
-                label.setStyle("-fx-text-fill: springgreen");
+
+            if (playerSplit[0].equals(winner)){
+                label.setText("  " + playerSplit[0]+ " Victory Points: "+ playerSplit[1]+ " winner  ");
+                label.setId("winnerStyle");
+                label.setStyle("-fx-text-fill: white");
+                label.setStyle("-fx-font-size: 40px");
+
             } else {
-                label.setText(playerSplit[0]+ " Victory Points: "+ playerSplit[1]);
+                label.setText("  " + playerSplit[0]+ " Victory Points: "+ playerSplit[1] + "  ");
+                label.setId("loserStyle");
+                label.setStyle("-fx-font-size: 20px");
+                label.setStyle("-fx-text-fill: white");
             }
             playerLabels.add(label);
         }
