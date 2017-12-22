@@ -37,6 +37,7 @@ public class GameController {
         int numberOfActionsCards = Integer.parseInt(splitMessage[1]);
         model.setNumberOfActionCards(numberOfActionsCards);
         String[] playerNames = splitMessage[2].split("/");
+        listenForCurrentPlayer();
         model.setCurrentPlayerName(playerNames[0]);
         for (String name : playerNames) {
             Player player = new Player(name);
@@ -44,6 +45,13 @@ public class GameController {
         }
 
         view.init(stage, numberOfActionsCards);
+
+    }
+
+    private void listenForCurrentPlayer() {
+        GameModel.getCurrentPlayerProperty().addListener(((observable, oldValue, newValue) -> {
+            view.updateUserText(newValue);
+        }));
     }
 
     public void show() {

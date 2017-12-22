@@ -2,13 +2,12 @@ package scenes.serverConnection;
 
 import util.LogHandling;
 
-import java.io.BufferedWriter;
+
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.concurrent.*;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 public class ServerConnectionModel {
@@ -34,7 +33,7 @@ public class ServerConnectionModel {
     private Boolean tryConnectToServer() {
         try {
             socket = new Socket(HOST, 9000);
-            
+
             return true;
         } catch (IOException e) {
             LogHandling.logOnFile(Level.SEVERE, ">> Failed to connect to Server");
@@ -57,11 +56,12 @@ public class ServerConnectionModel {
             return result.get();
         } catch (InterruptedException e) {
             LogHandling.logOnFile(Level.SEVERE, e.toString()); return false;
+            //LogHandling.closeResources();
         } catch (ExecutionException e) {
             LogHandling.logOnFile(Level.SEVERE, e.toString()); return false;
         }
-
     }
+
 
 
     public String getHostAddress() {

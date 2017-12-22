@@ -1,5 +1,6 @@
 package scenes.game;
 
+import javafx.beans.property.SimpleStringProperty;
 import util.LogHandling;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class GameModel {
 
 
     private String localPlayerName;
-    private String currentPlayerName;
+    private static SimpleStringProperty currentPlayerName;
     private ArrayList<Player> players;
 
     private int numberOfActionCards;
@@ -39,11 +40,20 @@ public class GameModel {
 	}
 
 	public String getCurrentPlayerName() {
-		return currentPlayerName;
+		return currentPlayerName.getValue();
 	}
 
-	public void setCurrentPlayerName(String currentPlayerName) {
-		this.currentPlayerName = currentPlayerName;
+	public void setCurrentPlayerName(String currentPlayer) {
+		if(currentPlayerName==null){
+			currentPlayerName=new SimpleStringProperty();
+		}
+		currentPlayerName.set(currentPlayer);
+	}
+	public static SimpleStringProperty getCurrentPlayerProperty(){
+		if(currentPlayerName==null){
+			currentPlayerName=new SimpleStringProperty();
+		}
+		return currentPlayerName;
 	}
 
 	public void setNextPlayerCurrentPlayer(){

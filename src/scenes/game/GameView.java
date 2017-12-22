@@ -120,6 +120,14 @@ public class GameView {
         }
     }
 
+    protected void updateUserText(String currentPlayer) {
+        for (Player player : model.getPlayers()) {
+            if(player.getPlayerName().equalsIgnoreCase(model.getLocalPlayerName())){
+                controller.playerInfoLabel.setText(player.getPlayerName()+ " VP: " + player.getVictoryPoints() + "\n" + "Current player: " + "\n"+currentPlayer);
+            }
+        }
+    }
+
     private void initLabelMap() {
         labelStringHashMap = new HashMap<>();
         labelStringHashMap.put("village", controller.villageLabel);
@@ -668,7 +676,7 @@ public class GameView {
                     Image card = new Image(path);
                     ImageView imageView = new ImageView(card);
                     if (imageView.getImage() == null) {
-                       // LogHandling.logOnFile(Level.SEVERE, "Image is null");
+                        // LogHandling.logOnFile(Level.SEVERE, "Image is null");
                     } else {
                         //LogHandling.logOnFile(Level.SEVERE, "Image is " + imageView.getImage());
                     }
@@ -720,7 +728,8 @@ public class GameView {
         imageView.setFitHeight(75);
         controller.playedCards.getChildren().add(0, imageView);
     }
-    public void clearCardInPlayedArea(){
+
+    public void clearCardInPlayedArea() {
         controller.playedCards.getChildren().clear();
     }
 
