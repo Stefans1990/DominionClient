@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.logging.Level;
-
+/*
+@Tim
+ */
 
 public class GameModel {
 
@@ -55,7 +57,9 @@ public class GameModel {
 		}
 		return currentPlayerName;
 	}
-
+	//@Tim
+	//iterates through the players and sets the currentPlayer to the next player
+	//if there is no next player it is set to the first player
 	public void setNextPlayerCurrentPlayer(){
 		boolean isChanged=false;
 		Iterator<Player> iterator = players.iterator();
