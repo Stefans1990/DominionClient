@@ -19,7 +19,7 @@ public class DominionClient extends Application {
     public void init() throws Exception {
         //super.init();
         //TODO: load language from last session
-        ServiceLocator.setLocale("de", "CH");
+        ServiceLocator.setLocale("en", "UK");
         Locale.setDefault(ServiceLocator.getLocale());
         LogHandling.logOnFile(Level.INFO, ">> DominionClient Application started");
     }

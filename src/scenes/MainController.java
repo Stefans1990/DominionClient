@@ -40,7 +40,6 @@ public class MainController {
         } else {
             messageHandler = new MessageHandler();
             MessageHandler.setSocket(socket);
-
             MessageHandler.openResources();
             MessageHandler.read();
             showVerificationScene();
@@ -69,7 +68,6 @@ public class MainController {
         listenForGameList(gameLobbyController);
         listenForTopFive(gameLobbyController);
         listenForStartGame(gameLobbyController);
-
     }
     private void showGameScene() {
         GameController gameController = new GameController(localPlayerName);

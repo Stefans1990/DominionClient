@@ -68,33 +68,29 @@ public class VerificationView {
                 ServiceLocator.setLocale("en", "US");
             } else if (languageChoiceBox.getValue().equalsIgnoreCase("Deutsch")) {
                 ServiceLocator.setLocale("de", "CH");
-            }Locale.setDefault(ServiceLocator.getLocale());
+            }
+            Locale.setDefault(ServiceLocator.getLocale());
+            createLayout();
 
         });
 
-        loginButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                ServerLoginMessageHandler loginHandler = new ServerLoginMessageHandler();
-                String userName = userNameField.getText();
-                String password = passwordField.getText();
-                loginHandler.write(userName + "@" + password);
+        loginButton.setOnAction(event -> {
+            ServerLoginMessageHandler loginHandler = new ServerLoginMessageHandler();
+            String userName = userNameField.getText();
+            String password = passwordField.getText();
+            loginHandler.write(userName + "@" + password);
 
 
-            }
         });
 
         Button signUpButton = new Button(bundle.getString("vs_button_signup"));
 
-        signUpButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                ServerRegisterMessageHandler registerHandler = new ServerRegisterMessageHandler();
-                String userName = userNameField.getText();
-                String password = passwordField.getText();
-                registerHandler.write(userName + "@" + password);
+        signUpButton.setOnAction(event -> {
+            ServerRegisterMessageHandler registerHandler = new ServerRegisterMessageHandler();
+            String userName = userNameField.getText();
+            String password = passwordField.getText();
+            registerHandler.write(userName + "@" + password);
 
-            }
         });
         HBox buttonBox = new HBox(30);
         buttonBox.setAlignment(Pos.CENTER);
@@ -119,7 +115,6 @@ public class VerificationView {
         scene.getStylesheets().add("scenes/verification/verificationStyleSheet.css");
         stage.setTitle("Dominion");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-
         stage.setX(primaryScreenBounds.getMinX() + primaryScreenBounds.getMaxX() / 4);
         stage.setY(primaryScreenBounds.getMinY() + primaryScreenBounds.getMaxY() / 4);
         stage.setWidth(primaryScreenBounds.getWidth() / 2);
