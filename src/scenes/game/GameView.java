@@ -50,11 +50,11 @@ public class GameView {
 
     public GameView() {
     }
-
+    // @stefan makes a new gameview with the model as logic behind it
     GameView(GameModel model) {
         this.model = model;
     }
-
+    // @stefan Loads the fxml file to display the correct gameview
     public void init(Stage stage, int actionCards) {
         this.stage = stage;
         Parent root = tryToLoadFXML();
@@ -64,14 +64,14 @@ public class GameView {
         initStage(stage, root);
     }
 
-
+    // @stefan shows only 5 actioncards, if the option 5 actioncards was clicked on and sets the 2nd row to invisible
     private void correctForActionCards(int actionCards) {
         if (actionCards == 5) {
             controller.cardRowBox.getChildren().get(1).setVisible(false);
         }
 
     }
-
+    // @stefan sets up the opponent labels for all selected opponent players (1,2 or 3)
     private void correctForNumberOfPlayers() {
         opponentLabels = new ArrayList<>();
         opponentLabels.add(controller.opponent1Label);
@@ -83,11 +83,13 @@ public class GameView {
             if (!player.getPlayerName().equals(model.getLocalPlayerName())) {
                 Label opponentLabel = iterator.next();
                 opponentLabel.setVisible(true);
-                opponentLabel.setText(player.getPlayerName() + " VP: 0");
+                opponentLabel.setText(player.getPlayerName() + " VP: 3");
             }
         }
     }
-
+    /*
+     @stefan tries to load the fxml file and sets it on the root, trying to get the controller and the model from the fxml file
+      */
     private Parent tryToLoadFXML() {
         Parent root = null;
         try {
@@ -100,7 +102,7 @@ public class GameView {
         }
         return root;
     }
-
+    // @stefan sets up the initialised properties to start the game
     private void initProperties() {
         initUserText();
         initLabelMap();
@@ -109,7 +111,7 @@ public class GameView {
         listenForPlayerChange();
 
     }
-
+    // @stefan gets the logic in the model for each player, each player has a name, buys and deck as well as discard
     private void initUserText() {
         for (Player player : model.getPlayers()) {
             if (player.getPlayerName().equals(model.getLocalPlayerName())) {
@@ -120,7 +122,7 @@ public class GameView {
             }
         }
     }
-
+    // @stefan Updates the victory points for the players and who's turn it is(current player)
     protected void updateUserText(String currentPlayer) {
         for (Player player : model.getPlayers()) {
             if(player.getPlayerName().equalsIgnoreCase(model.getLocalPlayerName())){
@@ -128,7 +130,7 @@ public class GameView {
             }
         }
     }
-
+    // @stefan makes a map with the card name and the corresponding label showing the amount of them on the field
     private void initLabelMap() {
         labelStringHashMap = new HashMap<>();
         labelStringHashMap.put("village", controller.villageLabel);
@@ -153,11 +155,11 @@ public class GameView {
         labelStringHashMap.put("copper", controller.copperLabel);
     }
 
-
+    // @stefan updates the label of the above cards, when a card gets bought from a player
     public void updatePlayFieldCard(String cardName, String amountLeft) {
         labelStringHashMap.get(cardName).setText(amountLeft);
     }
-
+    // @stefan connects the card name to the corresponding image of the card
     private void initCardMap() {
         controller.cardMap = new HashMap<>();
 
@@ -180,7 +182,7 @@ public class GameView {
         controller.cardMap.put("copper", "assets/victoryCards/coppersmall.JPG");
     }
 
-
+    // @stefan creates the labels of the number of buys, coins and actions left of the player
     private void createUserMessageLabelMessage(Player player) {
 
         int buy = player.getBuy();
@@ -189,12 +191,12 @@ public class GameView {
 
         controller.userMessageLabel.setText("Buy: " + buy + " Coins: " + coins + " Actions: " + actions);
     }
-
+    // @stefan updates the label showing the amount of cards remaining in the deck
     private void listenForDeckCardChange() {
         controller.numberOfDeckCards = new SimpleIntegerProperty();
         controller.numberOfDeckCards.addListener((observable, oldValue, newValue) -> controller.deckLabel.setText(newValue.toString()));
     }
-
+    // @stefan this method displays changes on the label from the opponents turns, like the amount of victorypoints
     private void listenForPlayerChange() {
         for (Player player : model.getPlayers()) {
             if (player.getPlayerName().equals(model.getLocalPlayerName())) {
@@ -219,12 +221,13 @@ public class GameView {
             if (!player.getPlayerName().equals(model.getLocalPlayerName())) {
                 player.getOpponentVictoryPoints().addListener((observable, oldValue, newValue) -> {
                     Label opponentLabel = iterator.next();
+                    System.out.print(newValue);
                     opponentLabel.setText(player.getPlayerName() + " VP: " + newValue);
                 });
             }
         }
     }
-
+    // @stefan sets the init stage with the scene and instantiates the gamestylesheet
     private void initStage(Stage stage, Parent root) {
         root.setStyle("-fx-background-color: #333333");
         Scene scene = new Scene(root);
@@ -404,7 +407,9 @@ public class GameView {
 
     @FXML
     private VBox cardRowBox;
-
+    /*
+     @stefan all of the next ...clicked display on rightclick a bigger, detailed version of the card and on leftclick it buys the card
+      */
     @FXML
     void chancellorClicked(MouseEvent event) {
         String cardName = "chancellor";
@@ -593,7 +598,7 @@ public class GameView {
     private void buy(String cardName) {
         gameMessageHandler.write("buy@" + cardName);
     }
-
+    // @stefan makes the message for the logger of which player clicked on the treasurebutton
     @FXML
     void treasureButtonClicked(ActionEvent event) {
         if (model.getLocalPlayerName().equals(model.getCurrentPlayerName())) {
@@ -602,7 +607,7 @@ public class GameView {
             treasureButton.setVisible(true);
         }
     }
-
+    // @stefan logs which player clicked the endTurn button
     @FXML
     void playButtonClicked(ActionEvent event) {
         String currentPlayerName = model.getCurrentPlayerName();
@@ -649,14 +654,14 @@ public class GameView {
             overlayPane.toBack();
         }
     }
-
+    // @stefan shows the stage of the game
     public void show() {
         stage.show();
     }
 
 
     private ArrayList<ImageView> handDeckList;
-
+    // @stefan updates which handcards are shown to the player
     public void updateHandCards() {
         if (controller.handDeckList == null) {
             controller.handDeckList = new ArrayList<>();
@@ -675,13 +680,14 @@ public class GameView {
                         //LogHandling.logOnFile(Level.SEVERE, "Image is " + imageView.getImage());
                     }
                     imageView.setId(cardName);
+                    imageView.getStyleClass().add("card");
                     controller.handDeckList.add(imageView);
                 }
                 reDrawHandCards();
             }
         }
     }
-
+    // @stefan Creates a box for each handcard that gets drawn
     private void reDrawHandCards() {
         ObservableList<Node> childNode = controller.handHBox.getChildren();
         //LogHandling.logOnFile(Level.INFO, "Size: " + controller.handHBox.getChildren().size());
@@ -699,7 +705,7 @@ public class GameView {
             listenForHandCardClicked(cardImageView);
         }
     }
-
+    // @stefan listens if the player clicks on an actioncard
     private void listenForHandCardClicked(ImageView cardImageView) {
         cardImageView.setOnMouseClicked(event -> {
             ImageView clickedCardImage = (ImageView) event.getSource();
@@ -713,14 +719,16 @@ public class GameView {
             }
         });
     }
-
+    // @stefan determines how the played cards are seen by the user in the played area
     public void showCardInPlayedArea(String playedCard) {
-        ImageView imageView = new ImageView(controller.cardMap.get(playedCard));
-        imageView.setFitWidth(50);
-        imageView.setFitHeight(75);
-        controller.playedCards.getChildren().add(0, imageView);
+        if (playedCard != null) {
+            ImageView imageView = new ImageView(controller.cardMap.get(playedCard));
+            imageView.setFitWidth(50);
+            imageView.setFitHeight(75);
+            controller.playedCards.getChildren().add(0, imageView);
+        }
     }
-
+    // @stefan clears the card after getting invoked by the logic
     public void clearCardInPlayedArea() {
         controller.playedCards.getChildren().clear();
     }
@@ -728,7 +736,7 @@ public class GameView {
     public void setModel(GameModel model) {
         this.model = model;
     }
-
+    // @stefan Creates the message about the end of the game, which player got how many victory points and who won this round
     public void showGameOver(String[] messageParts) {
         ArrayList<Label> playerLabels = new ArrayList<>();
         String winner = null;
@@ -760,9 +768,6 @@ public class GameView {
             }
             playerLabels.add(label);
         }
-
-
-
         controller.overlayPane.getChildren().clear();
         ObservableList<Label> labels = FXCollections.observableArrayList(playerLabels);
         controller.overlayPane.getChildren().addAll(labels);

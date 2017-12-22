@@ -5,7 +5,9 @@ import javafx.beans.property.SimpleBooleanProperty;
 
 public class VerificationModel {
 
-
+    /*@stefan the isLoggedin boolean is false as we first have to login, but gets set to true
+    * as soon as the game is connected to the server
+    */
     private static SimpleBooleanProperty isLoggedIn = new SimpleBooleanProperty(false);
 
     public boolean isLoggedIn() {

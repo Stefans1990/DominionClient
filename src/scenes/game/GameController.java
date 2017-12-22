@@ -15,7 +15,6 @@ public class GameController {
     private final String localPlayerName;
     private GameModel model;
     private GameView view;
-
     private static SimpleStringProperty newMessage = new SimpleStringProperty();
     private static SimpleStringProperty chatText = new SimpleStringProperty();
 
@@ -26,6 +25,10 @@ public class GameController {
         this.view = new GameView(model);
     }
 
+    //@Tim
+    //incoming Message: config@5@player1/player2/player3
+    //the Game is initialized with the
+    //the number of action cards is sent to the view, to show the right actionCard amount
     public void initGame(Stage stage, String initConfig) {
         String[] splitMessage = initConfig.split("@");
         int numberOfActionsCards = Integer.parseInt(splitMessage[1]);
@@ -37,11 +40,11 @@ public class GameController {
             Player player = new Player(name);
             model.getPlayers().add(player);
         }
-
         view.init(stage, numberOfActionsCards);
-
     }
 
+    //@Tim
+    //if the currentPlayerProperty is changed, the label with the current player is changed
     private void listenForCurrentPlayer() {
         GameModel.getCurrentPlayerProperty().addListener(((observable, oldValue, newValue) -> {
             view.updateUserText(newValue);
@@ -51,9 +54,11 @@ public class GameController {
     public void show() {
         view.show();
         listenForMessages();
-        listenForChatMessages();
     }
 
+    //@Tim
+    //messages which are set over the MessageHandler
+    //Platform.runLater is used as it is executed by a not JavaFX application
     public static void setNewMessage(String message) {
         Platform.runLater(() -> newMessage.set(message));
 
@@ -63,10 +68,15 @@ public class GameController {
         return newMessage;
     }
 
+    //@Tim
+    //if the newMessage is added it is being processed
     private void listenForMessages() {
         newMessage.addListener((observable, oldMessage, newMessage) -> processMessage(newMessage));
     }
 
+    //@Tim
+    //incoming Message: endTurn@player2@victoryPoints,3@discard,6@curse,10
+    //the message is split and with the switch statement the right method to execute is selected
     private void processMessage(String newMessage) {
         LogHandling.logOnFile(Level.INFO, "Message being processed: " + newMessage);
         int index = newMessage.indexOf("@");
@@ -110,8 +120,11 @@ public class GameController {
 
     }
 
-
-    // playername@woodcutter@gold@market@market
+    //@Tim
+    //incoming Message: playername@woodcutter@gold@market@market
+    //the cards are added to the hand
+    //this method is only executed in the first round
+    //it is always checked if the playerName is the localPlayer
     private void initCards(String message) {
         String[] messageParts = split(message, "@");
 
@@ -130,6 +143,7 @@ public class GameController {
 
     }
 
+    //@Tim
     // Player gets a new card: His hand and number of cards in his deck get updated
     // playername@hand/copper,3;estate,2@deck,5
     private void newCards(String message) {
@@ -158,6 +172,9 @@ public class GameController {
         }
     }
 
+    //@Tim
+    //incoming message: 1: hand/copper,3;estate,2
+    //the message is split and the hand is updated with the new cards
     private HashMap<String, Integer> processNewHand(String messagePart) {
         // 1: hand/copper,3;estate,2
         int index = messagePart.indexOf("/");
@@ -173,11 +190,10 @@ public class GameController {
         return handCardsMap;
     }
 
-    // Player buys a card and has a new buy value and a new coin value. And the center action
-    // card numbers need to be updated. For each card that has changed. There is max. 1
-    // actionCard. The card that has been bought goes into the discard deck.
-
-    // playername@buyValue,0@coinValue,2@actionCards/woodcutter,9@discard,4
+    //@Tim
+    //incoming message: playername@buyValue,0@coinValue,2@actionCards/woodcutter,9@discard,4
+    //message is split and the different values are updated. Furthermore is the actioncard which is bought
+    //displayed on all clients -1
     private void buyCards(String message) {
         String[] messageParts = split(message, "@");
         // 0: playerName
@@ -219,8 +235,13 @@ public class GameController {
 
     }
 
+    //@Tim
+    //incoming message: playername@playedCard/copper,3;gold,1@hand/estate,1@coinValue,1
+    //messages are split
+    //the hand cards and the coinValue are updated just for the player who is addressed
+    //the played Cards are updated for all clients
     private void playTreasure(String message) {
-        //playername@playedCard/copper,3;gold,1@hand/estate,1@coinValue,1
+
         String[] messageParts = split(message, "@");
 
         // 0: playerName
@@ -255,23 +276,7 @@ public class GameController {
         if (playerName.equals(localPlayerName)) {
             for (Player player : model.getPlayers()) {
                 if (player.getPlayerName().equals(localPlayerName)) {
-                    // 1: playedCard/copper,3;gold,1
-                    /*
-                    String[] playedCards = split(messageParts[1], "/");
-                    String[] cardSplit = split(playedCards[1], ";");
 
-                    for (String cardAndAmount : cardSplit) {
-                        String[] cardAndAmountParts = split(cardAndAmount, ",");
-                        String cardPlayed = cardAndAmountParts[0];
-                        int cardAmount = Integer.parseInt(cardAndAmountParts[1]);
-                        for (int i = 0; i < cardAmount; i++) {
-                            LogHandling.logOnFile(Level.INFO, cardPlayed + "is removed from Hand");
-                            player.removeCardFromHand(cardPlayed);
-                            LogHandling.logOnFile(Level.INFO, cardPlayed + "is added to PlayedArea");
-                            view.showCardInPlayedArea(cardPlayed);
-                        }
-                    }
-                    */
                     // 2: hand/estate,1;woodcutter,1
 
                     String[] handCardsParts = split(messageParts[2], "/");
@@ -306,10 +311,11 @@ public class GameController {
 
 
     }
-    // Player plays a card which needs to disappear from his hand but show up in the center
-    // space to show that it is being played. The center Label for action value changes too.
 
-    //playername@woodcutter@actionValue,1
+    //@Tim
+    //incoming: playername@woodcutter@actionValue,1
+    //the message is split and the played card is added in the playedArea for all clients
+    //for addresses client the action, buy and coin values are updated
     private void playCard(String message) {
         String[] messageParts = split(message, "@");
         // 0: playerName
@@ -325,9 +331,7 @@ public class GameController {
         if (playerName.equals(localPlayerName)) {
             for (Player player : model.getPlayers()) {
                 if (player.getPlayerName().equals(localPlayerName)) {
-
                     // 1: woodcutter
-
                     player.removeCardFromHand(playedCard);
                     view.updateHandCards();
 
@@ -342,34 +346,34 @@ public class GameController {
                     // 4: buyValue,1
                     String[] buyParts = split(messageParts[4], ",");
                     player.setBuy(Integer.parseInt(buyParts[1]));
-
-
                 }
             }
         }
     }
 
-    // Player finished a his round. Make sure to reset the BuyValue:1, ActionValue:1 and
-    // CoinValue:0 This will not be in the message endTurn, because it is always the same. In
-    // the player class there is a reset method
-
-    // playername@victoryPoints,1@discard,5
+    //@Tim
+    //incoming message: playername@victoryPoints,1@discard,5
+    //for the addressed Player the victoryPoints and the discard Deck Label are updated
+    //for all clients the played cards area is cleared and the curse card Label is updated
+    //the current player is set to the next player
     private void endTurn(String message) {
         String[] messageParts = split(message, "@");
         // 0: playerName
         // 1: victoryPoints,1
         // 2: discard,5
+        // 3: curse, 6
         view.clearCardInPlayedArea();
 
 
         String playerName = messageParts[0];
-        String victoryPointsString = split(messageParts[1], ",")[1];
-        int victoryPoints = Integer.parseInt(victoryPointsString);
+
 
         for (Player player : model.getPlayers()) {
             if (playerName.equals(localPlayerName)) {
                 if (player.getPlayerName().equals(localPlayerName)) {
                     // 1: victoryPoints,1
+                    String victoryPointsString = split(messageParts[1], ",")[1];
+                    int victoryPoints = Integer.parseInt(victoryPointsString);
                     player.setVictoryPoints(victoryPoints);
 
                     // 2: discard,5
@@ -378,26 +382,22 @@ public class GameController {
                     player.resetValues();
                 }
             }
-            if (!player.getPlayerName().equals(localPlayerName)) {
-                player.setOpponentVictoryPoints(victoryPoints);
-
-            }
         }
-        model.setNextPlayerCurrentPlayer();
+        // 3: curse, 6
+        String curseCount = split(messageParts[3], ",")[1];
+        view.updatePlayFieldCard("curse", curseCount);
 
+        model.setNextPlayerCurrentPlayer();
     }
 
-    // Sometime the discard Deck and the Player deck have to be updated with a new value.
-    // Update only the labels of the decks in the lower left corner through the view class
-    // with a simpleIntProperty and the settText method of the corresponding label in the view.
-
-    // playername@discard,2@deck,3
+    //@Tim
+    //incoming message: playername@discard,2@deck,3
+    //message is split and for the player addressed the discard and deck label are updated
     private void newDeckValues(String message) {
         String[] messageParts = split(message, "@");
         // 0: playerName
         // 1: discard,2
         // 2: deck,3
-
 
         String playerName = messageParts[0];
         if (playerName.equals(localPlayerName)) {
@@ -418,45 +418,21 @@ public class GameController {
         }
     }
 
-    // When the game is over show a game over screen with all the player names and their
-    // victory points provided in the message. The winner is the one with the most victory
-    // points. There can also be draws.
-
-    // playername1,3@playername,5@playername,6
+    //@Tim
+    //incoming message: playername1,12@playername,5@playername,6
+    //the message is split and sent to the view
     private void end(String message) {
         String[] messageParts = split(message, "@");
         // 0: playerName1,3
         // 1: playerName,5
         // 2: playerName,6
-
         view.showGameOver(messageParts);
 
-
     }
-
+    //@Tim
+    //the message is split with the delimiter
     private String[] split(String message, String splitter) {
         return message.split(splitter);
-    }
-
-    private void listenForChatMessages() {
-        chatText.addListener((observable, oldMessage, newMessage) -> {
-            System.out.println(newMessage);
-            if (view.chatTextArea == null) {
-                view.chatTextArea = new TextArea();
-            }
-            newMessage = newMessage + "\n";
-            view.chatTextArea.appendText(newMessage);
-        });
-    }
-
-    public static void setChatText(String chatText) {
-        GameController.chatText.set(chatText);
-    }
-
-    public static void addChat(String message) {
-        Platform.runLater(() -> {
-            setChatText(message);
-        });
     }
 
 }

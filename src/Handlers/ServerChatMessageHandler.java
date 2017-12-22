@@ -19,6 +19,7 @@ public class ServerChatMessageHandler extends ServerMessageHandler {
             throw new UnknownFormatException(message);
         }
     }
+
     public ServerChatMessageHandler() {
 
     }
@@ -34,13 +35,12 @@ public class ServerChatMessageHandler extends ServerMessageHandler {
         LogHandling.logOnFile(Level.INFO, "Message Handling: " + msgIn);
         message = msgIn;
         String chatMessage = splitMessage(message, 2);
-        if (GameLobbyController.isGameStarted()) {
-            GameController.addChat(chatMessage);
-        } else {
-            GameLobbyModel.addChat(chatMessage);
-        }
+
+        GameLobbyModel.addChat(chatMessage);
+
         //code with observable and observer -- notify and update() -- send this with it write getMessage Method to return the string to the model
     }
+
     public String getMessage() {
         return message;
     }

@@ -9,13 +9,13 @@
 
 .card {
     -fx-border-color: transparent;
-    -fx-border-width: 3;
+    -fx-border-width: 3px;
 }
 
 .card:hover {
     -fx-border-color: #44d17c;
-    -fx-border-width: 3;
-    -fx-border-radius: 5;
+    -fx-border-width: 3px;
+    -fx-border-radius: 5px;
 }
 
 .winnerStyle {

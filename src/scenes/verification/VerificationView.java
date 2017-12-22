@@ -30,11 +30,17 @@ public class VerificationView {
     private final VerificationModel model;
     private BorderPane parent;
 
+    /*
+    *@stefan gets the logic of the model by instantiating it
+     */
     public VerificationView(VerificationModel model) {
         this.model = model;
 
     }
-
+    /*
+    * @stefan creates the layout of the view with username and passwordfield as well as the language choicebox.
+    * Furthermore it creates the buttons to login as user or register as user in the database.
+     */
     public void createLayout() {
 
         ResourceBundle bundle = ServiceLocator.getResourceBundle();
@@ -108,7 +114,9 @@ public class VerificationView {
         parent.setCenter(content);
 
     }
-
+    /*
+    * // @stefan sets up and shows the view and inherits the style of the css file
+     */
     public void show(Stage stage) {
         parent.setStyle("-fx-background-color: #333333");
         Scene scene = new Scene(parent);

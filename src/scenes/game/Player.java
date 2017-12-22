@@ -7,11 +7,12 @@ import java.util.HashMap;
 
 public class Player {
 
+    /*
+    @Tim
+    the Player has its own values and deck/discard/hand
 
+     */
     private final String playerName;
-
-    //These need to be simpleIntegerProperties so that the view can listen for changed and update
-    // the center label with the: "Buy: 6 Action: 5 Coin: 3"
     private SimpleIntegerProperty coins;
     private SimpleIntegerProperty actions;
     private SimpleIntegerProperty buy;
@@ -29,7 +30,8 @@ public class Player {
         victoryPoints = new SimpleIntegerProperty(0);
         discardedCards = new SimpleIntegerProperty(0);
     }
-
+    //@Tim
+    //the values are reset to the original state
     public void resetValues() {
         coins.set(0);
         buy.set(1);
@@ -109,6 +111,8 @@ public class Player {
         return handCards;
     }
 
+    //@Tim
+    //the card is removed from the hand
     public void removeCardFromHand(String playedCard) {
         int index = handCards.indexOf(playedCard.toLowerCase());
         if (index != -1) {
@@ -129,9 +133,8 @@ public class Player {
             }
         }
     }
-
-    public void setOpponentVictoryPoints(int opponentVictoryPoints) {
-        this.opponentVictoryPoints.set(opponentVictoryPoints);
+    public void setOpponentVictoryPoints(int opponentVictoryPoint) {
+        this.opponentVictoryPoints.set(opponentVictoryPoint);
     }
     public SimpleIntegerProperty getOpponentVictoryPoints(){
         if(opponentVictoryPoints==null){

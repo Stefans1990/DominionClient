@@ -10,12 +10,12 @@ public class VerificationController {
     private static String localName;
 
 
-
+    //@Stefan: instantiates a new model and a new view which is dependent on the model
     public VerificationController(){
         this.model = new VerificationModel();
         this.view = new VerificationView(model);
     }
-
+    // @stefan sets up the verification stage
     public void show(Stage stage) {
         view.createLayout();
         view.show(stage);

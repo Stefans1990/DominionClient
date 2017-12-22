@@ -34,12 +34,12 @@ public class GameLobbyView {
     protected static ArrayList<Label> topHighScore = new ArrayList<>();
 
     private static SimpleBooleanProperty isGameStarted;
-
+    // @stefan sets up the view by instantiating the logic from the model and sets the isgamestarted boolean to false
     public GameLobbyView(GameLobbyModel model) {
         this.model = model;
         this.isGameStarted = new SimpleBooleanProperty(false);
     }
-
+    // @stefan creates the layout, the parent is an HBOX with 2 VBOXes in it, it also instantiates the resourcebundle
     public void createLayout() {
         bundle = ServiceLocator.getResourceBundle();
         parent = new HBox(30);
@@ -49,7 +49,7 @@ public class GameLobbyView {
         VBox right = createRight();
         parent.getChildren().addAll(left, right);
     }
-
+    // @stefan creates the left VBOX with the gamelist and the options to create a game
     private VBox createLeft() {
         VBox left = new VBox(10);
         VBox topLeft = createGameList();
@@ -57,7 +57,7 @@ public class GameLobbyView {
         left.getChildren().addAll(topLeft, bottomLeft);
         return left;
     }
-
+    // @stefan shows the gamelist to the user with a button to join a game
     private VBox createGameList() {
         VBox gameList = new VBox();
         Label gameListLabel = new Label(bundle.getString("gl_gameListLabel"));
@@ -80,12 +80,13 @@ public class GameLobbyView {
         gameList.getChildren().addAll(gameListLabel, gameListView, joinButton);
         return gameList;
     }
-
+    // @stefan in this VBOX are the gameoptions shown to start a new game with two or more players and other options
     private VBox createGame() {
         VBox createGameBox = new VBox(10);
         HBox gameOptions = new HBox(10);
         VBox leftOptions = new VBox(10);
         VBox rightOptions = new VBox(10);
+
 
         Label newGame = new Label(bundle.getString("gl_gameoptions_title"));
         newGame.setFont(new Font("Arial", 16));
@@ -144,7 +145,7 @@ public class GameLobbyView {
         return createGameBox;
     }
 
-
+    // @stefan  creates the VBOX with the topfive and the chat in it
     private VBox createRight() {
         VBox right = new VBox(10);
         VBox topRight = createTopFive();
@@ -152,7 +153,7 @@ public class GameLobbyView {
         right.getChildren().addAll(topRight, bottomRight);
         return right;
     }
-
+    // @stefan creates the list with the top five players
     private VBox createTopFive() {
         VBox topFive = new VBox(5);
         HBox topFiveLabels = new HBox(10);
@@ -176,19 +177,9 @@ public class GameLobbyView {
         }
 
         topFive.getChildren().addAll(topFiveLabels, topLabels.get(0), topLabels.get(1), topLabels.get(2), topLabels.get(3), topLabels.get(4));
-        /*
-        topFiveOne.getChildren().addAll(topLabels.get(0),topPlayed.get(0),topWon.get(0), topHighScore.get(0));
-        topFiveTwo.getChildren().addAll(topLabels.get(1),topPlayed.get(1),topWon.get(1), topHighScore.get(1));
-        topFiveThree.getChildren().addAll(topLabels.get(2),topPlayed.get(2),topWon.get(2), topHighScore.get(2));
-        topFiveFour.getChildren().addAll(topLabels.get(3),topPlayed.get(3),topWon.get(3), topHighScore.get(3));
-        topFiveFive.getChildren().addAll(topLabels.get(4),topPlayed.get(4),topWon.get(4), topHighScore.get(4));
-
-
-        topFive.getChildren().addAll(topFiveLabels, topFiveOne, topFiveTwo, topFiveThree, topFiveFour, topFiveFive);*/
-
         return topFive;
     }
-
+    // @stefan creates the chat area with the button to send messages
     private VBox createChatArea() {
         VBox chatArea = new VBox(10);
 
@@ -221,7 +212,7 @@ public class GameLobbyView {
 
     }
 
-
+    // @stefan shows the stage and inherits the css stylesheet
     public void show(Stage stage) {
         Scene scene = new Scene(parent);
         scene.getStylesheets().add("scenes/gameLobby/gameLobbyStyleSheet.css");

@@ -16,12 +16,16 @@ public class ServerConnectionController {
         this.model = new ServerConnectionModel();
         this.view = new ServerConnectionView(model);
     }
-
+    /*
+    * sets up the layout and the stage in the view model
+     */
     public void show(Stage stage) {
         view.createLayout();
         view.show(stage);
     }
-
+    /*
+    * Tries to connect to the server via the model and the view and gets the logic behind it from the model
+     */
     public Socket tryToConnect() {
         model.tryConnect();
         view.showConnectionAlert(getIsConnected());

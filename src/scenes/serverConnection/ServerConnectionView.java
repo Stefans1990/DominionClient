@@ -21,7 +21,7 @@ public class ServerConnectionView {
     public ServerConnectionView(ServerConnectionModel model) {
         this.model = model;
     }
-
+    //@stefan, shows the message that the connection tries to get established
     public void createLayout() {
 
         bundle = ServiceLocator.getResourceBundle();
@@ -33,7 +33,7 @@ public class ServerConnectionView {
         parent.getChildren().add(label);
 
     }
-
+    // sets up the stage of the above message
     public void show(Stage stage) {
         Scene scene = new Scene(parent);
         stage.setTitle("Dominion");
@@ -42,7 +42,7 @@ public class ServerConnectionView {
         stage.show();
     }
 
-
+    //shows an alert when the connectiion failed and when it succeeded to connect
     public void showConnectionAlert(boolean isConnected) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         if (isConnected) {

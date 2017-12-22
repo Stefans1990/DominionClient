@@ -6,17 +6,17 @@
     -fx-background-size: cover, auto;
 }
 .label {
-    -fx-font-size: 11pt;
+    -fx-font-size: 11px;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
-    -fx-opacity: 1;
+    -fx-opacity: 1px;
     -fx-font: bold;
 }
 .radio-button{
-    -fx-font-size: 11pt;
+    -fx-font-size: 11px;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
-    -fx-opacity: 1;
+    -fx-opacity: 1px;
 }
 .button {
     -fx-background-color:
