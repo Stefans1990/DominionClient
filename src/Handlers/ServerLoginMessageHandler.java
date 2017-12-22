@@ -3,7 +3,6 @@ package Handlers;
 
 import java.net.Socket;
 
-import scenes.MainModel;
 import scenes.verification.VerificationController;
 import scenes.verification.VerificationModel;
 

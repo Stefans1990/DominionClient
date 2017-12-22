@@ -2,7 +2,6 @@ package scenes.verification;
 
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
-import scenes.MainModel;
 
 public class VerificationModel {
 

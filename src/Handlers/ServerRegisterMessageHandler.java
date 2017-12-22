@@ -1,12 +1,8 @@
 package Handlers;
 
 import scenes.verification.VerificationController;
-import util.LogHandling;
 
 
-import java.util.logging.Level;
-
-import scenes.MainModel;
 import scenes.verification.VerificationModel;
 
 /**
