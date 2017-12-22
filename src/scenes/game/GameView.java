@@ -217,7 +217,7 @@ public class GameView {
         for (int i = 0; i < model.getPlayers().size(); i++) {
             Player player = model.getPlayers().get(i);
             if (!player.getPlayerName().equals(model.getLocalPlayerName())) {
-                player.victoryPointsProperty().addListener((observable, oldValue, newValue) -> {
+                player.getOpponentVictoryPoints().addListener((observable, oldValue, newValue) -> {
                     Label opponentLabel = iterator.next();
                     opponentLabel.setText(player.getPlayerName() + " VP: " + newValue);
                 });

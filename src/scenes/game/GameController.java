@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import sun.rmi.runtime.Log;
 import util.LogHandling;
 
 import java.util.Arrays;
@@ -151,7 +150,7 @@ public class GameController {
 
                     // 2: deck,5
                     String[] deckInfo = split(messageParts[2], ",");
-                    LogHandling.logOnFile(Level.INFO, "Expected: deck, 5 in this case: "+deckInfo[0]+", "+deckInfo[1]);
+                    LogHandling.logOnFile(Level.INFO, "Expected: deck, 5 in this case: " + deckInfo[0] + ", " + deckInfo[1]);
                     int numberOfDeckCards = Integer.parseInt(deckInfo[1]);
                     view.setNumberOfDeckCards(numberOfDeckCards);
                 }
@@ -279,9 +278,9 @@ public class GameController {
 
                     String[] cardNamesSplit = split(handCardsParts[1], ";");
                     //String[] cardNames = Arrays.copyOfRange(handCardsParts, 1, messageParts.length);
-                    if(cardNamesSplit[0].equalsIgnoreCase("empty")){
+                    if (cardNamesSplit[0].equalsIgnoreCase("empty")) {
                         player.getHandCards().clear();
-                    }else{
+                    } else {
                         player.getHandCards().clear();
                         for (String cardAndAmount : cardNamesSplit) {
                             String[] cardAndAmountParts = split(cardAndAmount, ",");
@@ -345,7 +344,6 @@ public class GameController {
                     player.setBuy(Integer.parseInt(buyParts[1]));
 
 
-
                 }
             }
         }
@@ -364,23 +362,25 @@ public class GameController {
         view.clearCardInPlayedArea();
 
 
-
         String playerName = messageParts[0];
-        if (playerName.equals(localPlayerName)) {
-            for (Player player : model.getPlayers()) {
-                if (player.getPlayerName().equals(localPlayerName)) {
+        String victoryPointsString = split(messageParts[1], ",")[1];
+        int victoryPoints = Integer.parseInt(victoryPointsString);
 
+        for (Player player : model.getPlayers()) {
+            if (playerName.equals(localPlayerName)) {
+                if (player.getPlayerName().equals(localPlayerName)) {
                     // 1: victoryPoints,1
-                    String victoryPointsString = split(messageParts[1], ",")[1];
-                    int victoryPoints = Integer.parseInt(victoryPointsString);
                     player.setVictoryPoints(victoryPoints);
 
                     // 2: discard,5
                     int discard = Integer.parseInt(split(messageParts[2], ",")[1]);
                     player.setNumberOfDiscardedCards(discard);
                     player.resetValues();
-
                 }
+            }
+            if (!player.getPlayerName().equals(localPlayerName)) {
+                player.setOpponentVictoryPoints(victoryPoints);
+
             }
         }
         model.setNextPlayerCurrentPlayer();
@@ -441,10 +441,10 @@ public class GameController {
     private void listenForChatMessages() {
         chatText.addListener((observable, oldMessage, newMessage) -> {
             System.out.println(newMessage);
-            if(view.chatTextArea==null){
-                view.chatTextArea=new TextArea();
+            if (view.chatTextArea == null) {
+                view.chatTextArea = new TextArea();
             }
-            newMessage = newMessage+ "\n";
+            newMessage = newMessage + "\n";
             view.chatTextArea.appendText(newMessage);
         });
     }
@@ -453,8 +453,8 @@ public class GameController {
         GameController.chatText.set(chatText);
     }
 
-    public static void addChat(String message){
-        Platform.runLater(()->{
+    public static void addChat(String message) {
+        Platform.runLater(() -> {
             setChatText(message);
         });
     }

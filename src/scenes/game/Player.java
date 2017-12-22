@@ -17,7 +17,7 @@ public class Player {
     private SimpleIntegerProperty buy;
     private SimpleIntegerProperty victoryPoints;
     private SimpleIntegerProperty discardedCards;
-
+    private SimpleIntegerProperty opponentVictoryPoints;
     private ArrayList<String> handCards;
 
     public Player(String playerName) {
@@ -130,4 +130,13 @@ public class Player {
         }
     }
 
+    public void setOpponentVictoryPoints(int opponentVictoryPoints) {
+        this.opponentVictoryPoints.set(opponentVictoryPoints);
+    }
+    public SimpleIntegerProperty getOpponentVictoryPoints(){
+        if(opponentVictoryPoints==null){
+            opponentVictoryPoints=new SimpleIntegerProperty();
+        }
+        return opponentVictoryPoints;
+    }
 }
