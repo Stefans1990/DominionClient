@@ -321,7 +321,6 @@ public class GameController {
         //playerName
         String playerName = messageParts[0];
         String playedCard = messageParts[1];
-        view.showCardInPlayedArea(playedCard);
         if (playerName.equals(localPlayerName)) {
             for (Player player : model.getPlayers()) {
                 if (player.getPlayerName().equals(localPlayerName)) {
@@ -347,6 +346,7 @@ public class GameController {
                 }
             }
         }
+        view.showCardInPlayedArea(playedCard);
     }
 
     // Player finished a his round. Make sure to reset the BuyValue:1, ActionValue:1 and
@@ -378,7 +378,7 @@ public class GameController {
                     player.resetValues();
                 }
             }
-            if (!player.getPlayerName().equals(localPlayerName)) {
+            if (!playerName.equals(localPlayerName)) {
                 player.setOpponentVictoryPoints(victoryPoints);
 
             }

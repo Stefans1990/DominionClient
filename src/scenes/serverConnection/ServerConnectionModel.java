@@ -18,7 +18,7 @@ public class ServerConnectionModel {
 
     public ServerConnectionModel() {
     }
-
+    //@stefan tryconnect establishes the connection with the server via thread and listens if the service stops
     public void tryConnect() {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         ExecutorCompletionService<Boolean> service =  new ExecutorCompletionService<>(executor);
@@ -29,7 +29,7 @@ public class ServerConnectionModel {
             tryTake(service);
         }
     }
-
+    //tries to connect to the server via socket
     private Boolean tryConnectToServer() {
         try {
             socket = new Socket(HOST, 9000);
@@ -41,7 +41,7 @@ public class ServerConnectionModel {
         }
 
     }
-
+    // checks if the connection stays established
     private void tryTake(ExecutorCompletionService<Boolean> service) {
         try {
             Future<Boolean> result = service.take();

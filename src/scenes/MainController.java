@@ -12,7 +12,10 @@ import java.net.Socket;
 import java.util.logging.Level;
 import Handlers.MessageHandler;
 
-
+/*
+* @Stefan
+* this class instantiates all scenes
+ */
 public class MainController {
 
     private Stage stage;
@@ -28,7 +31,7 @@ public class MainController {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-
+    //instantiates a new serverconnection
     public void runApplication() {
         ServerConnectionController serverConnectionController = new ServerConnectionController();
         serverConnectionController.show(stage);

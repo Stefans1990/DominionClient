@@ -30,7 +30,7 @@ public class GameLobbyController {
         Platform.runLater(() -> gameList.set(gameName));
     }
 
-
+    // @stefan instantiates the model and the view
     public GameLobbyController() {
         this.model = new GameLobbyModel();
         this.view = new GameLobbyView(model);
@@ -38,13 +38,13 @@ public class GameLobbyController {
         gameList = new SimpleStringProperty();
 
     }
-
+    // @stefan  get the view to show the layout and the stage
     public void show(Stage stage) {
         view.createLayout();
         view.show(stage);
     }
 
-
+    // @stefan returns the information if the game got started or not
     public static boolean isGameStarted() {
         return gameStarted.getValue();
     }
@@ -60,19 +60,19 @@ public class GameLobbyController {
     public static SimpleStringProperty getChat() {
         return model.getChatText();
     }
-
+    // @stefan updates the chat with the chatmessage
     public void updateChat(String message) {
         LogHandling.logOnFile(Level.INFO, "Chat is appended " + message);
         message = message + "\n";
         view.chat.appendText(message);
     }
-
+    // @stefan Updates the gamelist with new games
     public void updateGameList(String gameName) {
         if (!checkForGame(gameName)) {
             view.gameListView.getItems().add(gameName);
         }
     }
-
+    // @stefan checks the gamelist for games and shos it on the view
     public boolean checkForGame(String gameName) {
         boolean found = false;
         for (int i = 0; view.gameListView.getItems().size() > i; i++) {
@@ -99,6 +99,7 @@ public class GameLobbyController {
             }
         }
     }
+    // @stefan updates the topfive when games have been played
     public static void updateTopFive(String message){
         Platform.runLater(() -> topFive.set(message));
 

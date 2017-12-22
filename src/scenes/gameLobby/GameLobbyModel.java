@@ -24,7 +24,7 @@ public class GameLobbyModel {
         return topFives;
     }
 
-
+    // @stefan adds a new chatmessage to the chat area
 	public static void addChat(String chatMessage) {
 		 Platform.runLater(() -> GameLobbyModel.updateChat(chatMessage));
 		
@@ -35,7 +35,7 @@ public class GameLobbyModel {
     }
 
 
-
+    // @stefan updates the chat area when a player writes a message
 	protected static void updateChat(String chatMessage) {
 			chatText.set(chatMessage);
 		
