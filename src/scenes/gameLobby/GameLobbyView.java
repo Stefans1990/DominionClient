@@ -100,14 +100,6 @@ public class GameLobbyView {
         leftOptions.getChildren().addAll(newGame, twoPlayer, threePlayer,fourPlayer);
 
 
-        Label winCondition = new Label(bundle.getString("gl_wincondition_title"));
-        winCondition.setFont(new Font("Arial", 16));
-        RadioButton shortGame = new RadioButton(bundle.getString(("gl_shortgame")));
-        shortGame.setSelected(true);
-        RadioButton longGame = new RadioButton(bundle.getString("gl_longgame"));
-        ToggleGroup gameOptionsToggleGroup = new ToggleGroup();
-        gameOptionsToggleGroup.getToggles().addAll(shortGame, longGame);
-
         Label actionCards = new Label(bundle.getString("gl_actioncards"));
         actionCards.setFont(new Font("Arial", 16));
         RadioButton amountFive = new RadioButton(bundle.getString("gl_amountFive"));
@@ -146,7 +138,7 @@ public class GameLobbyView {
         });
 
 
-        rightOptions.getChildren().addAll(winCondition, shortGame, longGame, actionCards, amountFive, amountTen);
+        rightOptions.getChildren().addAll( actionCards, amountFive, amountTen);
 
         gameOptions.getChildren().addAll(leftOptions, rightOptions);
         createGameBox.getChildren().addAll(gameOptions, gameNameLabel, gameNameTextField, createGameButton
@@ -174,10 +166,6 @@ public class GameLobbyView {
 
 
         Label title = new Label(bundle.getString("gl_topfive_title"));
-        /* Label gamesPlayed = new Label(bundle.getString("gl_topfive_playedGames"));
-        Label gamesWon = new Label(bundle.getString("gl_topfive_gamesWon"));
-        Label gamesHighScore = new Label(bundle.getString("gl_topfive_gamesHighscore"));
-        */
 
         topFiveLabels.getChildren().addAll(title/*,gamesPlayed, gamesWon, gamesHighScore*/);
         topLabels = new ArrayList<>();
@@ -238,6 +226,7 @@ public class GameLobbyView {
 
     public void show(Stage stage) {
         Scene scene = new Scene(parent);
+        scene.getStylesheets().add("scenes/gameLobby/gameLobbyStyleSheet.css");
         stage.setTitle("Dominion");
         stage.setScene(scene);
         stage.show();

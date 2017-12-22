@@ -1,4 +1,9 @@
 #root {
+    -fx-background-insets: -20, -10;
+    -fx-background-image: url("../../assets/newspic-49514.jpg");
+    -fx-background-position: left top, center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
 
 }
 
@@ -12,3 +17,4 @@
     -fx-border-width: 3;
     -fx-border-radius: 5;
 }
+

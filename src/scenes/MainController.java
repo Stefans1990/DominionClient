@@ -2,23 +2,16 @@ package scenes;
 
 
 import Handlers.GameStartGameMessageHandler;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
 import scenes.game.GameController;
 import scenes.gameLobby.GameLobbyController;
 import scenes.serverConnection.ServerConnectionController;
 import scenes.verification.VerificationController;
-import scenes.verification.VerificationModel;
 import util.LogHandling;
-
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import Handlers.MessageHandler;
-import Handlers.MessageHandlerFactory;
+
 
 public class MainController {
 

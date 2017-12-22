@@ -9,6 +9,9 @@ import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -16,6 +19,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import util.ServiceLocator;
 
+import java.awt.*;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -62,7 +66,6 @@ public class VerificationView {
         languageChoiceBox.setOnAction(e -> {
             if (languageChoiceBox.getValue().equalsIgnoreCase("English")) {
                 ServiceLocator.setLocale("en", "US");
-
             } else if (languageChoiceBox.getValue().equalsIgnoreCase("Deutsch")) {
                 ServiceLocator.setLocale("de", "CH");
             }Locale.setDefault(ServiceLocator.getLocale());
@@ -100,19 +103,20 @@ public class VerificationView {
         languageBox.setAlignment(Pos.CENTER);
         languageBox.getChildren().addAll(comboBoxLabel, languageChoiceBox);
         VBox content = new VBox(30);
-        content.getChildren().addAll(title, userPassBox, buttonBox);
+        content.getChildren().addAll(title, languageBox, userPassBox, buttonBox);
         content.setMaxWidth(300);
         content.setAlignment(Pos.CENTER);
         parent = new BorderPane();
         BorderPane.setAlignment(content, Pos.CENTER);
         BorderPane.setMargin(content, new Insets(100));
         parent.setCenter(content);
-        parent.setTop(languageBox);
 
     }
 
     public void show(Stage stage) {
+        parent.setStyle("-fx-background-color: #333333");
         Scene scene = new Scene(parent);
+        scene.getStylesheets().add("scenes/verification/verificationStyleSheet.css");
         stage.setTitle("Dominion");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 

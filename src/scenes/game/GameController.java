@@ -25,11 +25,7 @@ public class GameController {
         this.localPlayerName = localPlayerName;
         this.model = new GameModel(localPlayerName);
         this.view = new GameView(model);
-
     }
-
-
-
 
     public void initGame(Stage stage, String initConfig) {
         String[] splitMessage = initConfig.split("@");
