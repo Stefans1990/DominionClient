@@ -15,12 +15,7 @@ import java.util.logging.Level;
 public class GameStartGameMessageHandler extends GameMessageHandler {
     private final String CLASSNAME = GameMessageType.STARTGAME.toString();
     private String message = null;
-    private MessageHandler superHandler;
     private static String config;
-    //ArrayList<TempGame> list;
-
-    //List<Observer> observers;
-
 
     public GameStartGameMessageHandler(String message) throws UnknownFormatException {
         if (!CLASSNAME.equals(message)) {
@@ -32,10 +27,10 @@ public class GameStartGameMessageHandler extends GameMessageHandler {
 
     }
 
-    public void write(String message, Boolean privateMessage) {
+    public void write(String message) {
         message = addDelimiter(message);
         String newMessage = CLASSNAME + message;
-        super.write(newMessage, privateMessage);
+        super.write(newMessage);
     }
 
     @Override

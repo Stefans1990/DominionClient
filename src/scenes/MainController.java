@@ -2,23 +2,16 @@ package scenes;
 
 
 import Handlers.GameStartGameMessageHandler;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import Handlers.MessageHandler;
 import javafx.stage.Stage;
 import scenes.game.GameController;
 import scenes.gameLobby.GameLobbyController;
 import scenes.serverConnection.ServerConnectionController;
 import scenes.verification.VerificationController;
-import scenes.verification.VerificationModel;
 import util.LogHandling;
 
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import Handlers.MessageHandler;
-import Handlers.MessageHandlerFactory;
 
 public class MainController {
 
@@ -47,7 +40,6 @@ public class MainController {
         } else {
             messageHandler = new MessageHandler();
             MessageHandler.setSocket(socket);
-
             MessageHandler.openResources();
             MessageHandler.read();
             showVerificationScene();
@@ -76,16 +68,10 @@ public class MainController {
         listenForGameList(gameLobbyController);
         listenForTopFive(gameLobbyController);
         listenForStartGame(gameLobbyController);
-        //TODO When we get the signal to show the game we show the game
-        //TODO Listen for game start here
-
     }
 
     private void showGameScene() {
-
         GameController gameController = new GameController(localPlayerName);
-        //TODO: Before showing the stage, set the players through Tim's playerlist message
-
         while (!GameStartGameMessageHandler.isConfigSet()) {
             try {
                 Thread.sleep(100);
@@ -94,23 +80,18 @@ public class MainController {
             }
         }
         String init = GameStartGameMessageHandler.getConfig();
-        //gameController.init(init);
-        //TODO: We need the game options somehow here, to pass to initGame();
-
         gameController.initGame(stage, init);
         gameController.show();
     }
 
     private void listenForChat(GameLobbyController gameLobbyController) {
         gameLobbyController.getChat().addListener((observable, oldValue, newValue) -> {
-            //showGameScene();
             gameLobbyController.updateChat(newValue);
         });
     }
 
     private void listenForGameList(GameLobbyController gameLobbyController) {
         gameLobbyController.getGameList().addListener((observable, oldValue, newValue) -> {
-            System.out.println(newValue);
             gameLobbyController.updateGameList(newValue);
         });
     }
@@ -121,6 +102,7 @@ public class MainController {
             gameLobbyController.setTopFive(list);
         });
     }
+
     private void listenForStartGame(GameLobbyController gameLobbyController) {
         gameLobbyController.getGameStarted().addListener(((observable, oldValue, newValue) -> showGameScene()));
     }

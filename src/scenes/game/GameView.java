@@ -590,18 +590,13 @@ public class GameView {
     }
 
     private void buy(String cardName) {
-        gameMessageHandler.write("buy@" + cardName, false);
-        // TODO: Damiano has to adjust his methods to accept only complete lowercase names: councilroom instead of councilRoom
-        // TODO: Send "buy@cardName" with PlayerName, Ask Damiano
-
+        gameMessageHandler.write("buy@" + cardName);
     }
 
     @FXML
     void treasureButtonClicked(ActionEvent event) {
-
-        //TODO: send message to Damiano: "playTreasure" with playername. Ask Damiano
         if (model.getLocalPlayerName().equals(model.getCurrentPlayerName())) {
-            gameMessageHandler.write("playTreasure", false);
+            gameMessageHandler.write("playTreasure");
             Button treasureButton = (Button) event.getSource();
             treasureButton.setVisible(true);
         }
@@ -614,14 +609,13 @@ public class GameView {
 
         LogHandling.logOnFile(Level.INFO, "Current Player: " + currentPlayerName + "Local Player: " + localPlayerName);
         if (localPlayerName.equals(currentPlayerName)) {
-            gameMessageHandler.write("endTurn", false);
-            // TODO: Message to send: "endTurn" and playerName. Ask Damiano
+            gameMessageHandler.write("endTurn");
         }
     }
 
     @FXML
     void chatTextInputClicked(ActionEvent event) {
-        chatHandler.write(chatTextInputField.getText(), false);
+        chatHandler.write(chatTextInputField.getText());
     }
 
     @FXML
@@ -713,9 +707,7 @@ public class GameView {
                 String cardName = clickedCardImage.getId();
                 for (Player player : model.getPlayers()) {
                     if (player.getPlayerName().equals(model.getLocalPlayerName())) {
-                        //TODO: DO nothing else here, except sending the cardName to Damiano
-                        //TODO: send: "cardName" maybe with the playerName
-                        gameMessageHandler.write("play@" + cardName, false);
+                        gameMessageHandler.write("play@" + cardName);
                     }
                 }
             }

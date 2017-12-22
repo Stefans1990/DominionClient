@@ -1,371 +1,132 @@
-2017/12/22 13:12:27 DominionClient method: init
+2017/12/22 14:07:42 DominionClient method: init
 INFO: >> DominionClient Application started
-2017/12/22 13:12:29 Handlers.MessageHandler method: openResources
+2017/12/22 14:07:44 Handlers.MessageHandler method: openResources
 INFO: Resources are opened
-2017/12/22 13:12:29 Handlers.MessageHandler method: addMessageHandler
+2017/12/22 14:07:44 Handlers.MessageHandler method: addMessageHandler
 INFO: Adding MessageHandlers
-2017/12/22 13:12:29 Handlers.MessageHandler method: addMessageHandler
+2017/12/22 14:07:44 Handlers.MessageHandler method: addMessageHandler
 INFO: All MessageHandlers added successfully
-2017/12/22 13:12:33 Handlers.MessageHandler method: write
-INFO: The message is: SERVER@LOGIN@player2@1 It is a private message: false
-2017/12/22 13:12:33 Handlers.MessageHandler method: tryReadMessage
+2017/12/22 14:07:46 Handlers.MessageHandler method: write
+INFO: The message is: SERVER@LOGIN@player2@1
+2017/12/22 14:07:46 Handlers.MessageHandler method: tryReadMessage
 INFO: incoming message: SERVER@LOGIN@successful@player2
-2017/12/22 13:12:33 Handlers.MessageHandler method: tryReadMessage
+2017/12/22 14:07:46 Handlers.MessageHandler method: tryReadMessage
 INFO: incoming message: SERVER@LOBBY@TOPFIVE@Tim;Damiano;Stefan;Loris;Hermann;
-2017/12/22 13:12:33 Handlers.ServerLobbyMessageHandler method: handleMessage
+2017/12/22 14:07:46 Handlers.ServerLobbyMessageHandler method: handleMessage
 INFO: MessageType: TOPFIVE
-2017/12/22 13:12:33 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: SERVER@LOBBY@GameList/adwaw/
-2017/12/22 13:12:33 Handlers.ServerLobbyMessageHandler method: handleMessage
-INFO: MessageType: GameList/adwaw/
-2017/12/22 13:12:33 scenes.gameLobby.GameLobbyController method: setTopFive
+2017/12/22 14:07:46 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: SERVER@LOBBY@GameList/awdd/
+2017/12/22 14:07:46 Handlers.ServerLobbyMessageHandler method: handleMessage
+INFO: MessageType: GameList/awdd/
+2017/12/22 14:07:47 scenes.gameLobby.GameLobbyController method: setTopFive
 INFO: TopFive is updated5
-2017/12/22 13:12:35 Handlers.GameMessageHandler method: setGameName
-INFO: GameName is set to: adwaw
-2017/12/22 13:12:35 Handlers.MessageHandler method: write
-INFO: The message is: GAME@JOINGAME@adwaw It is a private message: true
-2017/12/22 13:12:35 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@STARTGAME@*config@10@player1/player2/
-2017/12/22 13:12:35 Handlers.GameStartGameMessageHandler method: handleMessage
+2017/12/22 14:07:48 Handlers.GameMessageHandler method: setGameName
+INFO: GameName is set to: awdd
+2017/12/22 14:07:48 Handlers.MessageHandler method: write
+INFO: The message is: GAME@JOINGAME@awdd
+2017/12/22 14:07:48 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@STARTGAME@*config@10@tim/player2/
+2017/12/22 14:07:48 Handlers.GameStartGameMessageHandler method: handleMessage
 INFO: Game is starting
-2017/12/22 13:12:35 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/initCards@player1@copper@copper@copper@copper@copper@
-2017/12/22 13:12:35 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/initCards@player2@estate@copper@copper@copper@copper@
-2017/12/22 13:12:35 scenes.game.GameController method: processMessage
-INFO: Message being processed: initCards@player1@copper@copper@copper@copper@copper
-2017/12/22 13:12:35 scenes.game.GameController method: processMessage
-INFO: Message being processed: initCards@player2@estate@copper@copper@copper@copper
-2017/12/22 13:14:01 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/playTreasures@player1@playedCard/copper,5@hand/empty@coinValue,5
-2017/12/22 13:14:01 scenes.game.GameController method: processMessage
-INFO: Message being processed: playTreasures@player1@playedCard/copper,5@hand/empty@coinValue,5
-2017/12/22 13:14:01 scenes.game.GameController method: playTreasure
+2017/12/22 14:07:48 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/initCards@tim@estate@copper@copper@copper@copper@
+2017/12/22 14:07:48 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/initCards@player2@estate@estate@copper@copper@copper@
+2017/12/22 14:07:49 scenes.game.GameController method: processMessage
+INFO: Message being processed: initCards@tim@estate@copper@copper@copper@copper
+2017/12/22 14:07:49 scenes.game.GameController method: processMessage
+INFO: Message being processed: initCards@player2@estate@estate@copper@copper@copper
+2017/12/22 14:07:53 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/playTreasures@tim@playedCard/copper,4@hand/estate,1@coinValue,4
+2017/12/22 14:07:53 scenes.game.GameController method: processMessage
+INFO: Message being processed: playTreasures@tim@playedCard/copper,4@hand/estate,1@coinValue,4
+2017/12/22 14:07:53 scenes.game.GameController method: playTreasure
 INFO: copper is added to PlayedArea
-2017/12/22 13:14:01 scenes.game.GameController method: playTreasure
+2017/12/22 14:07:53 scenes.game.GameController method: playTreasure
 INFO: copper is added to PlayedArea
-2017/12/22 13:14:01 scenes.game.GameController method: playTreasure
+2017/12/22 14:07:53 scenes.game.GameController method: playTreasure
 INFO: copper is added to PlayedArea
-2017/12/22 13:14:01 scenes.game.GameController method: playTreasure
+2017/12/22 14:07:53 scenes.game.GameController method: playTreasure
 INFO: copper is added to PlayedArea
-2017/12/22 13:14:01 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:14:07 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/buy@player1@buyValue,0@coinValue,0@actionCards/festival,9@discard,1
-2017/12/22 13:14:07 scenes.game.GameController method: processMessage
-INFO: Message being processed: buy@player1@buyValue,0@coinValue,0@actionCards/festival,9@discard,1
-2017/12/22 13:14:08 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/endTurn@player1@victoryPoints,3@discard,6
-2017/12/22 13:14:08 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newDeckValues@player1@discard,0@deck,6
-2017/12/22 13:14:08 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player1@hand/estate,3;copper,2@deck,6
-2017/12/22 13:14:08 scenes.game.GameController method: processMessage
-INFO: Message being processed: endTurn@player1@victoryPoints,3@discard,6
-2017/12/22 13:14:08 scenes.game.GameModel method: setNextPlayerCurrentPlayer
+2017/12/22 14:07:55 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/buy@tim@buyValue,0@coinValue,1@actionCards/village,9@discard,1
+2017/12/22 14:07:55 scenes.game.GameController method: processMessage
+INFO: Message being processed: buy@tim@buyValue,0@coinValue,1@actionCards/village,9@discard,1
+2017/12/22 14:07:56 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/endTurn@tim@victoryPoints,3@discard,6
+2017/12/22 14:07:56 scenes.game.GameController method: processMessage
+INFO: Message being processed: endTurn@tim@victoryPoints,3@discard,6
+2017/12/22 14:07:56 scenes.game.GameModel method: setNextPlayerCurrentPlayer
 INFO: The current player is: player2
-2017/12/22 13:14:08 scenes.game.GameController method: processMessage
-INFO: Message being processed: newDeckValues@player1@discard,0@deck,6
-2017/12/22 13:14:08 scenes.game.GameController method: processMessage
-INFO: Message being processed: newCards@player1@hand/estate,3;copper,2@deck,6
-2017/12/22 13:14:14 Handlers.MessageHandler method: write
-INFO: The message is: GAME@playTreasure It is a private message: false
-2017/12/22 13:14:14 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/playTreasures@player2@playedCard/copper,4@hand/estate,1@coinValue,4
-2017/12/22 13:14:14 scenes.game.GameController method: processMessage
-INFO: Message being processed: playTreasures@player2@playedCard/copper,4@hand/estate,1@coinValue,4
-2017/12/22 13:14:14 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:14:14 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:14:14 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:14:14 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:14:14 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:14:14 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:14:14 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:14:14 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:14:16 Handlers.MessageHandler method: write
-INFO: The message is: GAME@buy@smithy It is a private message: false
-2017/12/22 13:14:16 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/buy@player2@buyValue,0@coinValue,0@actionCards/smithy,9@discard,1
-2017/12/22 13:14:16 scenes.game.GameController method: processMessage
-INFO: Message being processed: buy@player2@buyValue,0@coinValue,0@actionCards/smithy,9@discard,1
-2017/12/22 13:14:18 scenes.game.GameView method: playButtonClicked
-INFO: Current Player: player2Local Player: player2
-2017/12/22 13:14:18 Handlers.MessageHandler method: write
-INFO: The message is: GAME@endTurn It is a private message: false
-2017/12/22 13:14:18 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/endTurn@player2@victoryPoints,3@discard,6
-2017/12/22 13:14:18 scenes.game.GameController method: processMessage
-INFO: Message being processed: endTurn@player2@victoryPoints,3@discard,6
-2017/12/22 13:14:18 scenes.game.GameModel method: setNextPlayerCurrentPlayer
-INFO: The current player is: player1
-2017/12/22 13:14:18 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newDeckValues@player2@discard,0@deck,6
-2017/12/22 13:14:18 scenes.game.GameController method: processMessage
-INFO: Message being processed: newDeckValues@player2@discard,0@deck,6
-2017/12/22 13:14:18 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player2@hand/estate,2;copper,3@deck,6
-2017/12/22 13:14:18 scenes.game.GameController method: processMessage
-INFO: Message being processed: newCards@player2@hand/estate,2;copper,3@deck,6
-2017/12/22 13:14:18 scenes.game.GameController method: newCards
-INFO: Expected: deck, 5 in this case: deck, 6
-2017/12/22 13:14:23 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/playTreasures@player1@playedCard/copper,2@hand/estate,3@coinValue,2
-2017/12/22 13:14:23 scenes.game.GameController method: processMessage
-INFO: Message being processed: playTreasures@player1@playedCard/copper,2@hand/estate,3@coinValue,2
-2017/12/22 13:14:23 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:14:23 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:14:24 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/buy@player1@buyValue,0@coinValue,0@victoryCards/estate,7@discard,1
-2017/12/22 13:14:24 scenes.game.GameController method: processMessage
-INFO: Message being processed: buy@player1@buyValue,0@coinValue,0@victoryCards/estate,7@discard,1
-2017/12/22 13:14:25 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/endTurn@player1@victoryPoints,4@discard,6
-2017/12/22 13:14:25 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player1@hand/copper,4;festival,1@deck,1
-2017/12/22 13:14:25 scenes.game.GameController method: processMessage
-INFO: Message being processed: endTurn@player1@victoryPoints,4@discard,6
-2017/12/22 13:14:25 scenes.game.GameModel method: setNextPlayerCurrentPlayer
-INFO: The current player is: player2
-2017/12/22 13:14:25 scenes.game.GameController method: processMessage
-INFO: Message being processed: newCards@player1@hand/copper,4;festival,1@deck,1
-2017/12/22 13:14:28 Handlers.MessageHandler method: write
-INFO: The message is: GAME@playTreasure It is a private message: false
-2017/12/22 13:14:28 Handlers.MessageHandler method: tryReadMessage
+2017/12/22 14:07:56 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/newDeckValues@tim@discard,0@deck,6
+2017/12/22 14:07:56 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/newCards@tim@hand/estate,2;copper,3@deck,6
+2017/12/22 14:07:56 scenes.game.GameController method: processMessage
+INFO: Message being processed: newDeckValues@tim@discard,0@deck,6
+2017/12/22 14:07:56 scenes.game.GameController method: processMessage
+INFO: Message being processed: newCards@tim@hand/estate,2;copper,3@deck,6
+2017/12/22 14:07:59 Handlers.MessageHandler method: write
+INFO: The message is: GAME@buy@woodcutter
+2017/12/22 14:07:59 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/Not@ enough Coins or Buys left!
+2017/12/22 14:07:59 scenes.game.GameController method: processMessage
+INFO: Message being processed: Not@ enough Coins or Buys left!
+2017/12/22 14:07:59 scenes.game.GameController method: processMessage
+SEVERE:  enough Coins or Buys left!
+2017/12/22 14:07:59 Handlers.MessageHandler method: write
+INFO: The message is: GAME@buy@smithy
+2017/12/22 14:08:00 Handlers.MessageHandler method: write
+INFO: The message is: GAME@buy@councilroom
+2017/12/22 14:08:00 Handlers.MessageHandler method: write
+INFO: The message is: GAME@playTreasure
+2017/12/22 14:08:00 Handlers.MessageHandler method: tryReadMessage
 INFO: incoming message: GAME@/playTreasures@player2@playedCard/copper,3@hand/estate,2@coinValue,3
-2017/12/22 13:14:28 scenes.game.GameController method: processMessage
+2017/12/22 14:08:00 scenes.game.GameController method: processMessage
 INFO: Message being processed: playTreasures@player2@playedCard/copper,3@hand/estate,2@coinValue,3
-2017/12/22 13:14:28 scenes.game.GameController method: playTreasure
+2017/12/22 14:08:00 scenes.game.GameController method: playTreasure
 INFO: copperis removed from Hand
-2017/12/22 13:14:28 scenes.game.GameController method: playTreasure
+2017/12/22 14:08:00 scenes.game.GameController method: playTreasure
 INFO: copper is added to PlayedArea
-2017/12/22 13:14:28 scenes.game.GameController method: playTreasure
+2017/12/22 14:08:00 scenes.game.GameController method: playTreasure
 INFO: copperis removed from Hand
-2017/12/22 13:14:28 scenes.game.GameController method: playTreasure
+2017/12/22 14:08:00 scenes.game.GameController method: playTreasure
 INFO: copper is added to PlayedArea
-2017/12/22 13:14:28 scenes.game.GameController method: playTreasure
+2017/12/22 14:08:00 scenes.game.GameController method: playTreasure
 INFO: copperis removed from Hand
-2017/12/22 13:14:28 scenes.game.GameController method: playTreasure
+2017/12/22 14:08:00 scenes.game.GameController method: playTreasure
 INFO: copper is added to PlayedArea
-2017/12/22 13:14:30 Handlers.MessageHandler method: write
-INFO: The message is: GAME@buy@village It is a private message: false
-2017/12/22 13:14:30 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/buy@player2@buyValue,0@coinValue,0@actionCards/village,9@discard,1
-2017/12/22 13:14:30 scenes.game.GameController method: processMessage
-INFO: Message being processed: buy@player2@buyValue,0@coinValue,0@actionCards/village,9@discard,1
-2017/12/22 13:14:31 scenes.game.GameView method: playButtonClicked
+2017/12/22 14:08:02 Handlers.MessageHandler method: write
+INFO: The message is: GAME@buy@village
+2017/12/22 14:08:02 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/buy@player2@buyValue,0@coinValue,0@actionCards/village,8@discard,1
+2017/12/22 14:08:02 scenes.game.GameController method: processMessage
+INFO: Message being processed: buy@player2@buyValue,0@coinValue,0@actionCards/village,8@discard,1
+2017/12/22 14:08:03 scenes.game.GameView method: playButtonClicked
 INFO: Current Player: player2Local Player: player2
-2017/12/22 13:14:31 Handlers.MessageHandler method: write
-INFO: The message is: GAME@endTurn It is a private message: false
-2017/12/22 13:14:31 Handlers.MessageHandler method: tryReadMessage
+2017/12/22 14:08:03 Handlers.MessageHandler method: write
+INFO: The message is: GAME@endTurn
+2017/12/22 14:08:03 Handlers.MessageHandler method: tryReadMessage
 INFO: incoming message: GAME@/endTurn@player2@victoryPoints,3@discard,6
-2017/12/22 13:14:31 scenes.game.GameController method: processMessage
+2017/12/22 14:08:03 scenes.game.GameController method: processMessage
 INFO: Message being processed: endTurn@player2@victoryPoints,3@discard,6
-2017/12/22 13:14:31 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player2@hand/estate,1;copper,3;smithy,1@deck,1
-2017/12/22 13:14:31 scenes.game.GameModel method: setNextPlayerCurrentPlayer
-INFO: The current player is: player1
-2017/12/22 13:14:31 scenes.game.GameController method: processMessage
-INFO: Message being processed: newCards@player2@hand/estate,1;copper,3;smithy,1@deck,1
-2017/12/22 13:14:31 scenes.game.GameController method: newCards
-INFO: Expected: deck, 5 in this case: deck, 1
-2017/12/22 13:14:42 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/play@player1@null@actionValue,1@coinValue,0@buyValue,1
-2017/12/22 13:14:42 scenes.game.GameController method: processMessage
-INFO: Message being processed: play@player1@null@actionValue,1@coinValue,0@buyValue,1
-2017/12/22 13:14:42 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/play@player1@festival@actionValue,2@coinValue,2@buyValue,2
-2017/12/22 13:14:42 scenes.game.GameController method: processMessage
-INFO: Message being processed: play@player1@festival@actionValue,2@coinValue,2@buyValue,2
-2017/12/22 13:15:05 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/playTreasures@player1@playedCard/copper,4@hand/empty@coinValue,6
-2017/12/22 13:15:05 scenes.game.GameController method: processMessage
-INFO: Message being processed: playTreasures@player1@playedCard/copper,4@hand/empty@coinValue,6
-2017/12/22 13:15:05 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:05 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:05 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:05 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:06 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/buy@player1@buyValue,1@coinValue,2@actionCards/smithy,8@discard,7
-2017/12/22 13:15:06 scenes.game.GameController method: processMessage
-INFO: Message being processed: buy@player1@buyValue,1@coinValue,2@actionCards/smithy,8@discard,7
-2017/12/22 13:15:08 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/endTurn@player1@victoryPoints,4@discard,12
-2017/12/22 13:15:08 scenes.game.GameController method: processMessage
-INFO: Message being processed: endTurn@player1@victoryPoints,4@discard,12
-2017/12/22 13:15:08 scenes.game.GameModel method: setNextPlayerCurrentPlayer
-INFO: The current player is: player2
-2017/12/22 13:15:08 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newDeckValues@player1@discard,0@deck,12
-2017/12/22 13:15:08 scenes.game.GameController method: processMessage
-INFO: Message being processed: newDeckValues@player1@discard,0@deck,12
-2017/12/22 13:15:08 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player1@hand/estate,3;copper,2@deck,8
-2017/12/22 13:15:08 scenes.game.GameController method: processMessage
-INFO: Message being processed: newCards@player1@hand/estate,3;copper,2@deck,8
-2017/12/22 13:15:10 Handlers.MessageHandler method: write
-INFO: The message is: GAME@play@smithy It is a private message: false
-2017/12/22 13:15:10 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/play@player2@smithy@actionValue,0@coinValue,0@buyValue,1
-2017/12/22 13:15:10 scenes.game.GameController method: processMessage
-INFO: Message being processed: play@player2@smithy@actionValue,0@coinValue,0@buyValue,1
-2017/12/22 13:15:10 Handlers.MessageHandler method: tryReadMessage
+2017/12/22 14:08:03 scenes.game.GameModel method: setNextPlayerCurrentPlayer
+INFO: The current player is: tim
+2017/12/22 14:08:03 Handlers.MessageHandler method: tryReadMessage
 INFO: incoming message: GAME@/newDeckValues@player2@discard,0@deck,6
-2017/12/22 13:15:10 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player2@hand/estate,1;copper,6@deck,4
-2017/12/22 13:15:10 scenes.game.GameController method: processMessage
+2017/12/22 14:08:03 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/newCards@player2@hand/estate,1;copper,4@deck,6
+2017/12/22 14:08:03 scenes.game.GameController method: processMessage
 INFO: Message being processed: newDeckValues@player2@discard,0@deck,6
-2017/12/22 13:15:10 scenes.game.GameController method: processMessage
-INFO: Message being processed: newCards@player2@hand/estate,1;copper,6@deck,4
-2017/12/22 13:15:10 scenes.game.GameController method: newCards
-INFO: Expected: deck, 5 in this case: deck, 4
-2017/12/22 13:15:12 Handlers.MessageHandler method: write
-INFO: The message is: GAME@playTreasure It is a private message: false
-2017/12/22 13:15:12 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/playTreasures@player2@playedCard/copper,6@hand/estate,1@coinValue,6
-2017/12/22 13:15:12 scenes.game.GameController method: processMessage
-INFO: Message being processed: playTreasures@player2@playedCard/copper,6@hand/estate,1@coinValue,6
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
+2017/12/22 14:08:03 scenes.game.GameController method: processMessage
+INFO: Message being processed: newCards@player2@hand/estate,1;copper,4@deck,6
+2017/12/22 14:08:03 scenes.game.GameController method: newCards
+INFO: Expected: deck, 5 in this case: deck, 6
+2017/12/22 14:08:32 Handlers.MessageHandler method: tryReadMessage
+INFO: incoming message: GAME@/playTreasures@tim@playedCard/copper,3@hand/estate,2@coinValue,3
+2017/12/22 14:08:32 scenes.game.GameController method: processMessage
+INFO: Message being processed: playTreasures@tim@playedCard/copper,3@hand/estate,2@coinValue,3
+2017/12/22 14:08:32 scenes.game.GameController method: playTreasure
 INFO: copper is added to PlayedArea
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:15:12 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:20 Handlers.MessageHandler method: write
-INFO: The message is: GAME@buy@chancellor It is a private message: false
-2017/12/22 13:15:20 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/buy@player2@buyValue,0@coinValue,3@actionCards/chancellor,9@discard,1
-2017/12/22 13:15:20 scenes.game.GameController method: processMessage
-INFO: Message being processed: buy@player2@buyValue,0@coinValue,3@actionCards/chancellor,9@discard,1
-2017/12/22 13:15:21 scenes.game.GameView method: playButtonClicked
-INFO: Current Player: player2Local Player: player2
-2017/12/22 13:15:21 Handlers.MessageHandler method: write
-INFO: The message is: GAME@endTurn It is a private message: false
-2017/12/22 13:15:21 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/endTurn@player2@victoryPoints,3@discard,9
-2017/12/22 13:15:21 scenes.game.GameController method: processMessage
-INFO: Message being processed: endTurn@player2@victoryPoints,3@discard,9
-2017/12/22 13:15:21 scenes.game.GameModel method: setNextPlayerCurrentPlayer
-INFO: The current player is: player1
-2017/12/22 13:15:21 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newDeckValues@player2@discard,0@deck,9
-2017/12/22 13:15:21 scenes.game.GameController method: processMessage
-INFO: Message being processed: newDeckValues@player2@discard,0@deck,9
-2017/12/22 13:15:21 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player2@hand/estate,2;copper,2;village,1@deck,8
-2017/12/22 13:15:22 scenes.game.GameController method: processMessage
-INFO: Message being processed: newCards@player2@hand/estate,2;copper,2;village,1@deck,8
-2017/12/22 13:15:22 scenes.game.GameController method: newCards
-INFO: Expected: deck, 5 in this case: deck, 8
-2017/12/22 13:15:25 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/playTreasures@player1@playedCard/copper,2@hand/estate,3@coinValue,2
-2017/12/22 13:15:25 scenes.game.GameController method: processMessage
-INFO: Message being processed: playTreasures@player1@playedCard/copper,2@hand/estate,3@coinValue,2
-2017/12/22 13:15:25 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:25 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:26 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/buy@player1@buyValue,0@coinValue,0@victoryCards/estate,6@discard,1
-2017/12/22 13:15:26 scenes.game.GameController method: processMessage
-INFO: Message being processed: buy@player1@buyValue,0@coinValue,0@victoryCards/estate,6@discard,1
-2017/12/22 13:15:28 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/endTurn@player1@victoryPoints,5@discard,6
-2017/12/22 13:15:28 scenes.game.GameController method: processMessage
-INFO: Message being processed: endTurn@player1@victoryPoints,5@discard,6
-2017/12/22 13:15:28 scenes.game.GameModel method: setNextPlayerCurrentPlayer
-INFO: The current player is: player2
-2017/12/22 13:15:28 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player1@hand/estate,1;copper,3;smithy,1@deck,3
-2017/12/22 13:15:28 scenes.game.GameController method: processMessage
-INFO: Message being processed: newCards@player1@hand/estate,1;copper,3;smithy,1@deck,3
-2017/12/22 13:15:32 Handlers.MessageHandler method: write
-INFO: The message is: GAME@play@village It is a private message: false
-2017/12/22 13:15:32 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/play@player2@village@actionValue,2@coinValue,0@buyValue,1
-2017/12/22 13:15:32 scenes.game.GameController method: processMessage
-INFO: Message being processed: play@player2@village@actionValue,2@coinValue,0@buyValue,1
-2017/12/22 13:15:32 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player2@hand/chancellor,1;estate,2;copper,2@deck,7
-2017/12/22 13:15:32 scenes.game.GameController method: processMessage
-INFO: Message being processed: newCards@player2@hand/chancellor,1;estate,2;copper,2@deck,7
-2017/12/22 13:15:32 scenes.game.GameController method: newCards
-INFO: Expected: deck, 5 in this case: deck, 7
-2017/12/22 13:15:35 Handlers.MessageHandler method: write
-INFO: The message is: GAME@playTreasure It is a private message: false
-2017/12/22 13:15:35 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/playTreasures@player2@playedCard/copper,2@hand/chancellor,1;estate,2@coinValue,2
-2017/12/22 13:15:35 scenes.game.GameController method: processMessage
-INFO: Message being processed: playTreasures@player2@playedCard/copper,2@hand/chancellor,1;estate,2@coinValue,2
-2017/12/22 13:15:35 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:15:35 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:35 scenes.game.GameController method: playTreasure
-INFO: copperis removed from Hand
-2017/12/22 13:15:35 scenes.game.GameController method: playTreasure
-INFO: copper is added to PlayedArea
-2017/12/22 13:15:44 Handlers.MessageHandler method: write
-INFO: The message is: GAME@buy@estate It is a private message: false
-2017/12/22 13:15:44 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/buy@player2@buyValue,0@coinValue,0@victoryCards/estate,5@discard,1
-2017/12/22 13:15:44 scenes.game.GameController method: processMessage
-INFO: Message being processed: buy@player2@buyValue,0@coinValue,0@victoryCards/estate,5@discard,1
-2017/12/22 13:15:45 scenes.game.GameView method: playButtonClicked
-INFO: Current Player: player2Local Player: player2
-2017/12/22 13:15:45 Handlers.MessageHandler method: write
-INFO: The message is: GAME@endTurn It is a private message: false
-2017/12/22 13:15:45 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/endTurn@player2@victoryPoints,4@discard,7
-2017/12/22 13:15:45 scenes.game.GameController method: processMessage
-INFO: Message being processed: endTurn@player2@victoryPoints,4@discard,7
-2017/12/22 13:15:45 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player2@hand/estate,1;copper,3;smithy,1@deck,2
-2017/12/22 13:15:45 scenes.game.GameModel method: setNextPlayerCurrentPlayer
-INFO: The current player is: player1
-2017/12/22 13:15:45 scenes.game.GameController method: processMessage
-INFO: Message being processed: newCards@player2@hand/estate,1;copper,3;smithy,1@deck,2
-2017/12/22 13:15:45 scenes.game.GameController method: newCards
-INFO: Expected: deck, 5 in this case: deck, 2
-2017/12/22 13:15:47 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/play@player1@smithy@actionValue,0@coinValue,0@buyValue,1
-2017/12/22 13:15:47 scenes.game.GameController method: processMessage
-INFO: Message being processed: play@player1@smithy@actionValue,0@coinValue,0@buyValue,1
-2017/12/22 13:15:47 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newDeckValues@player1@discard,0@deck,6
-2017/12/22 13:15:47 Handlers.MessageHandler method: tryReadMessage
-INFO: incoming message: GAME@/newCards@player1@hand/estate,1;copper,5;festival,1@deck,6
-2017/12/22 13:15:47 scenes.game.GameController method: processMessage
-INFO: Message being processed: newDeckValues@player1@discard,0@deck,6
-2017
+2017/12/22 14:08:32 scenes.game.GameController method: playTreasure
+INFO: copper is added to Pl

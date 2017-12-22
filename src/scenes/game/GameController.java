@@ -17,7 +17,6 @@ public class GameController {
     private GameModel model;
     private GameView view;
 
-    //TODO: Replace this with Tim's SimpleStringProperty
     private static SimpleStringProperty newMessage = new SimpleStringProperty();
     private static SimpleStringProperty chatText = new SimpleStringProperty();
 
@@ -117,10 +116,6 @@ public class GameController {
     }
 
 
-    // TODO: Damiano needs to send this message for each player separately in the beginning
-    // TODO: I need to know the initial hand cards to display. We forgot that these are different
-    // TODO: every time.
-    // TODO: I am assuming that the message looks like the next line
     // playername@woodcutter@gold@market@market
     private void initCards(String message) {
         String[] messageParts = split(message, "@");
@@ -284,7 +279,7 @@ public class GameController {
                     */
                     // 2: hand/estate,1;woodcutter,1
 
-                    String[] handCardsParts = split(messageParts[2], "/"); //todo semicolon trennen
+                    String[] handCardsParts = split(messageParts[2], "/");
 
                     String[] cardNamesSplit = split(handCardsParts[1], ";");
                     //String[] cardNames = Arrays.copyOfRange(handCardsParts, 1, messageParts.length);
@@ -438,7 +433,7 @@ public class GameController {
         // 1: playerName,5
         // 2: playerName,6
 
-        //TODO: Still need to do this.
+        //TODO: how to set the end window?.
 
 
     }

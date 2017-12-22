@@ -12,9 +12,6 @@ import java.util.logging.Level;
 public class ServerLobbyMessageHandler extends ServerMessageHandler {
     private final String CLASSNAME = ServerMessageType.LOBBY.toString();
     private String message = null;
-    private MessageHandler superHandler;
-    String replyMessage;
-
 
     public ServerLobbyMessageHandler(String message) throws UnknownFormatException {
         if (!CLASSNAME.equals(message)) {
@@ -25,10 +22,10 @@ public class ServerLobbyMessageHandler extends ServerMessageHandler {
     public ServerLobbyMessageHandler() {
     }
 
-    public void write(String message,Boolean privateMessage) {
+    public void write(String message) {
         message = addDelimiter(message);
         String newMessage = CLASSNAME + message;
-        super.write(newMessage,privateMessage);
+        super.write(newMessage);
     }
 
     @Override
@@ -37,7 +34,7 @@ public class ServerLobbyMessageHandler extends ServerMessageHandler {
         message = msgIn;
         String fiveOrGamesList = splitMessage(message, 2);
         LogHandling.logOnFile(Level.INFO,"MessageType: " +fiveOrGamesList);
-        String game = splitMessage(message,2); //todo define position
+        String game = splitMessage(message,2);
         String[] games= game.split("/");
         if(game.contains("GameList")){
         for(int i= 1;games.length>i; i++){
@@ -57,11 +54,6 @@ public class ServerLobbyMessageHandler extends ServerMessageHandler {
     public String splitMessage(String message, int tokenIndex) {
         return super.splitMessage(message, tokenIndex);
     }
-
-    public Socket getClientSocket() {
-        return superHandler.getClientSocket();
-    }
-
 
 }
 

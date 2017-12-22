@@ -11,21 +11,17 @@ import java.util.logging.Logger;
 import Handlers.MessageHandlerFactory;
 
 public class DominionClient extends Application {
-	public static void main(String [] args)
-	{
-	launch(args);
-	}
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void init() throws Exception {
         //super.init();
-  
         //TODO: load language from last session
-        ServiceLocator.setLocale("de","CH");
+        ServiceLocator.setLocale("de", "CH");
         Locale.setDefault(ServiceLocator.getLocale());
-
-
-       LogHandling.logOnFile(Level.INFO, ">> DominionClient Application started");
+        LogHandling.logOnFile(Level.INFO, ">> DominionClient Application started");
     }
 
     @Override
@@ -35,12 +31,10 @@ public class DominionClient extends Application {
         mainController.runApplication();
     }
 
-
     @Override
     public void stop() throws Exception {
         super.stop();
     }
 
-   
 
 }

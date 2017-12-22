@@ -3,23 +3,16 @@ package Handlers;
 
 
 
-import java.io.*;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.logging.Level;
-
-import javafx.application.Application;
-import javafx.application.Platform;
-import scenes.verification.VerificationModel;
 import util.LogHandling;
+
+import java.io.*;
+import java.net.Socket;
+import java.util.logging.Level;
 
 /**
  * Created by Tim on 23.08.2017.
  */
-public class MessageHandler  implements Observer {
+public class MessageHandler  {
    
 
     private static Socket socket;
@@ -38,10 +31,6 @@ public class MessageHandler  implements Observer {
     	
     }
 
-
-
-
-
 	public static void openResources() {
         try {
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -54,17 +43,12 @@ public class MessageHandler  implements Observer {
     }
 
     public static void read() {
-    	//ExecutorService executor = Executors.newSingleThreadExecutor();
-    	Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public void run(){           
-               while(true){
-                   tryReadMessage(reader);
-               }
-            }
+    	Thread thread1 = new Thread(() -> {
+           while(true){
+               tryReadMessage(reader);
+           }
         });
     	thread1.start();
-    	//executor.submit(thread1);
     }
 
     private static void tryReadMessage(BufferedReader input) {
@@ -75,7 +59,6 @@ public class MessageHandler  implements Observer {
                 LogHandling.logOnFile(Level.INFO,"incoming message: "+message);
                 MessageHandler handler = MessageHandlerFactory.getMessageHandler(message);
                 handler.handleMessage(message);
-
             }
         } catch (IOException e) {
             closeResources();
@@ -85,8 +68,8 @@ public class MessageHandler  implements Observer {
         }
     }
    
-    public void write(String message, Boolean privateMessage) {
-        LogHandling.logOnFile(Level.INFO, "The message is: "+message+" It is a private message: "+privateMessage);
+    public void write(String message) {
+        LogHandling.logOnFile(Level.INFO, "The message is: "+message);
         try {
         	writer.write(message + "\n");
 			writer.flush();
@@ -126,9 +109,6 @@ public class MessageHandler  implements Observer {
     	socket = serverSocket;
     }
 
-    public BufferedWriter getWriter() {
-        return this.writer;
-    }
     private static void addMessageHandler() {
         LogHandling.logOnFile(Level.INFO, "Adding MessageHandlers");
 
@@ -143,24 +123,8 @@ public class MessageHandler  implements Observer {
         MessageHandlerFactory.addHandler("Handlers.GameStartGameMessageHandler");
         MessageHandlerFactory.addHandler("Handlers.ServerChatMessageHandler");
         MessageHandlerFactory.addHandler("Handlers.GameEndGameMessageHandler");
-        //MessageHandlerFactory.addHandler("Handlers.GameMessageHandler");
-        //MessageHandlerFactory.addHandler("Handlers.GameMessageHandler");
 
         LogHandling.logOnFile(Level.INFO, "All MessageHandlers added successfully");
-    }
-    
-
-    @Override
-    public void update(Observable o, Object arg) {
-
-    }
-    public static void reportAndLogException(final Throwable t)
-    {
-      Platform.runLater(new Runnable() {
-        @Override public void run() {
-        	VerificationModel.setIsConnected(true);
-        }
-      });
     }
 }
 

@@ -1,8 +1,6 @@
 package Handlers;
 
 import scenes.verification.VerificationController;
-
-
 import scenes.verification.VerificationModel;
 
 /**
@@ -11,7 +9,6 @@ import scenes.verification.VerificationModel;
 public class ServerRegisterMessageHandler extends ServerMessageHandler {
     private String message = null;
     private final String CLASSNAME = ServerMessageType.REGISTER.toString();
-    private MessageHandler superHandler;
 
     public ServerRegisterMessageHandler(String message) throws UnknownFormatException {
         if (!CLASSNAME.equals(message)) {
@@ -25,21 +22,19 @@ public class ServerRegisterMessageHandler extends ServerMessageHandler {
 
     @Override
     public void handleMessage(String msgIn) throws UnknownFormatException {
-
         message = msgIn;
-        String successfulOrFailed = splitMessage(message, 2);//todo set token
+        String successfulOrFailed = splitMessage(message, 2);
 
         if (successfulOrFailed.equalsIgnoreCase("successful")) {
             VerificationModel.setLoggedIn();
             VerificationController.setLocalName(splitMessage(message, 3));
         }
-
     }
 
-    public void write(String message, Boolean privateMessage) {
+    public void write(String message) {
         message = addDelimiter(message);
         String newMessage = CLASSNAME + message;
-        super.write(newMessage, privateMessage);
+        super.write(newMessage);
     }
 
     public String getMessage() {

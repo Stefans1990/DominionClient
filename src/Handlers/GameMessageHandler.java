@@ -15,8 +15,7 @@ import java.util.logging.Level;
 /**
  * Created by Tim on 23.08.2017.
  */
-public class GameMessageHandler extends MessageHandler implements Observer {
-    private MessageHandler superHandler;
+public class GameMessageHandler extends MessageHandler {
     private static String gameName;
 
     private final String CLASSNAME = MessageType.GAME.toString();
@@ -43,60 +42,24 @@ public class GameMessageHandler extends MessageHandler implements Observer {
         }else{
             setGameMessage(message);
         }
-
-        //get the game name --> String gameName = splitMessage(message,3);
-        //GameHandlers game = GameManager.getGame(gameName);
-        //returnMessage = game.handleMessage()
-
-        //die unteren muessen zu damiano in das jeweilige GameHandlers
-
-
-        /*Player player = socketPlayerHashMap.get(getClientSocket().getInetAddress());
-        if (gameList.get(player) == null || subHandler.equalsIgnoreCase("ENDGAME")) {
-            MessageHandler handler = MessageHandlerFactory.getMessageHandler(subHandler);
-            ;
-        } else {
-            gameList.get(player).readMessage(message);
-        }*/
-
-
     }
 
-    public void write(String message,Boolean privateMessage) {
+    public void write(String message) {
         message = addDelimiter(message);
         String newMessage = CLASSNAME + message;
-        super.write(newMessage,privateMessage);
+        super.write(newMessage);
     }
 
 
-    @Override
-    public void update(Observable o, Object arg) {
-        String response = (String) arg;
-        if (splitMessage(response, 0).equalsIgnoreCase("end")) {
-            endGame();
-        }
-        write(response, false);
-        //todo what to do with the response?
-    }
 
     private void endGame() {
-
         topFiveUpdate();
         //showLobby();
         //deleteGameFromList();
     }
 
     private void topFiveUpdate() {
-
         //Database.getDatabase().updateAfterGame();
-    }
-
-  
-
-    //sobald nachricht hierhin kommt muss geprüft werden ob game = null ist. wenn ja dann wird diese method ausgelöst?
-
-    public Socket getClientSocket() {
-        return superHandler.getClientSocket();
     }
     private void setGameMessage(String message) {
         if(message.charAt(message.length()-1)=='@'){

@@ -68,14 +68,13 @@ public class GameLobbyView {
 
         gameListView.getItems().addAll("your game could be here");
         Button joinButton = new Button(bundle.getString("gl_joinButton"));
-        //TODO Button action
-        // TODO remove later
+
         joinButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 GameJoinGameMessageHandler joinHandler = new GameJoinGameMessageHandler();
                 String joinedGame = gameListView.getSelectionModel().getSelectedItem();
-                joinHandler.write(joinedGame, true);
+                joinHandler.write(joinedGame);
             }
         });
 
@@ -140,7 +139,7 @@ public class GameLobbyView {
                 }
                 String gameName = gameNameTextField.getText();
                 String message = gameName + "@" + actionCards + "@" + maxPlayers;
-                newGameHandler.write(message, false);
+                newGameHandler.write(message);
             }
         });
 
@@ -225,7 +224,7 @@ public class GameLobbyView {
             @Override
             public void handle(ActionEvent event) {
                 ServerChatMessageHandler chatHandler = new ServerChatMessageHandler();
-                chatHandler.write(chatText.getText(), false);
+                chatHandler.write(chatText.getText());
             }
         });
 

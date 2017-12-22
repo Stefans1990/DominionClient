@@ -1,13 +1,6 @@
 package Handlers;
 
-import Handlers.MessageHandler;
-import Handlers.ServerMessageType;
-import Handlers.UnknownFormatException;
 import scenes.gameLobby.GameLobbyController;
-
-
-import java.net.Socket;
-import java.util.ArrayList;
 
 /**
  * Created by Tim on 14.09.2017.
@@ -15,46 +8,37 @@ import java.util.ArrayList;
 public class ServerNewGameMessageHandler extends ServerMessageHandler {
 
     private final String CLASSNAME = ServerMessageType.NEWGAME.toString();
-    private  MessageHandler superHandler;
-    private String message =null;
+    private String message = null;
 
     public ServerNewGameMessageHandler(String message) throws UnknownFormatException {
-        if(!CLASSNAME.equals(message)){
+        if (!CLASSNAME.equals(message)) {
             throw new UnknownFormatException(message);
         }
     }
-    public ServerNewGameMessageHandler(){
-       
+
+    public ServerNewGameMessageHandler() {
+
     }
 
-    public void write(String message,Boolean privateMessage) {
+    public void write(String message) {
         GameMessageHandler.setGameName(splitMessage(message, 0));
         message = addDelimiter(message);
         String newMessage = CLASSNAME + message;
-        super.write(newMessage,privateMessage);
+        super.write(newMessage);
     }
 
     @Override
     public void handleMessage(String msgIn) throws UnknownFormatException {
-    
-        message=msgIn;
+        message = msgIn;
         //GameMessageHandler.games.add(new TempGame(...))
-        String game = splitMessage(message,2); //todo define position
-        String[] games= game.split("/");
-        for(int i= 0;games.length<0; i++){
+        String game = splitMessage(message, 2);
+        String[] games = game.split("/");
+        for (int i = 0; games.length < 0; i++) {
             GameLobbyController.setGameList(games[i]);
         }
-
-
-
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return message;
     }
-
-    public Socket getClientSocket(){
-        return superHandler.getClientSocket();
-    }
-
 }

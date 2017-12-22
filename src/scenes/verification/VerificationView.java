@@ -72,12 +72,10 @@ public class VerificationView {
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //TODO: send username and pw to server
-
                 ServerLoginMessageHandler loginHandler = new ServerLoginMessageHandler();
                 String userName = userNameField.getText();
                 String password = passwordField.getText();
-                loginHandler.write(userName + "@" + password, false);
+                loginHandler.write(userName + "@" + password);
 
 
             }
@@ -91,7 +89,7 @@ public class VerificationView {
                 ServerRegisterMessageHandler registerHandler = new ServerRegisterMessageHandler();
                 String userName = userNameField.getText();
                 String password = passwordField.getText();
-                registerHandler.write(userName + "@" + password, false);
+                registerHandler.write(userName + "@" + password);
 
             }
         });

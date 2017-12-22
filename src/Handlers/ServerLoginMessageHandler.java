@@ -12,7 +12,6 @@ import scenes.verification.VerificationModel;
 public class ServerLoginMessageHandler extends ServerMessageHandler {
     private final String CLASSNAME = ServerMessageType.LOGIN.toString();
     private String message = null;
-    private MessageHandler superHandler;
 
     public ServerLoginMessageHandler(String message) throws UnknownFormatException {
         if (!CLASSNAME.equals(message)) {
@@ -23,17 +22,17 @@ public class ServerLoginMessageHandler extends ServerMessageHandler {
     public ServerLoginMessageHandler() {
     }
 
-    public void write(String message, Boolean privateMessage) {
+    public void write(String message) {
         message = addDelimiter(message);
         String newMessage = CLASSNAME + message;
-        super.write(newMessage, privateMessage);
+        super.write(newMessage);
     }
 
     @Override
     public void handleMessage(String msgIn) throws UnknownFormatException {
 
         message = msgIn;
-        String successfulOrFailed = splitMessage(message, 2);//todo set token
+        String successfulOrFailed = splitMessage(message, 2);
 
         if (successfulOrFailed.equalsIgnoreCase("successful")) {
             VerificationModel.setLoggedIn();
@@ -48,10 +47,6 @@ public class ServerLoginMessageHandler extends ServerMessageHandler {
     @Override
     public String splitMessage(String message, int tokenIndex) {
         return super.splitMessage(message, tokenIndex);
-    }
-
-    public Socket getClientSocket() {
-        return superHandler.getClientSocket();
     }
 
 }
