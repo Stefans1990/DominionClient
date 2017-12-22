@@ -66,7 +66,7 @@ public class GameLobbyView {
         gameList.setMaxHeight(200);
 
 
-        gameListView.getItems().addAll("your game could be here");
+        gameListView.getItems().addAll();
         Button joinButton = new Button(bundle.getString("gl_joinButton"));
 
         joinButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -93,11 +93,11 @@ public class GameLobbyView {
         RadioButton twoPlayer = new RadioButton(bundle.getString("gl_2player"));
         twoPlayer.setSelected(true);
         RadioButton threePlayer = new RadioButton(bundle.getString("gl_3player"));
-        RadioButton againstAi = new RadioButton(bundle.getString("gl_againstAI"));
+        RadioButton fourPlayer = new RadioButton(bundle.getString("gl_4player"));
         ToggleGroup playerRadioToggleGroup = new ToggleGroup();
-        playerRadioToggleGroup.getToggles().addAll(twoPlayer, threePlayer, againstAi);
+        playerRadioToggleGroup.getToggles().addAll(twoPlayer, threePlayer, fourPlayer);
 
-        leftOptions.getChildren().addAll(newGame, twoPlayer, threePlayer, againstAi);
+        leftOptions.getChildren().addAll(newGame, twoPlayer, threePlayer,fourPlayer);
 
 
         Label winCondition = new Label(bundle.getString("gl_wincondition_title"));
@@ -134,8 +134,10 @@ public class GameLobbyView {
                 }
                 if (twoPlayer.isSelected()) {
                     maxPlayers = "2";
-                } else {
-                    maxPlayers = "4";
+                } else if(threePlayer.isSelected()){
+                    maxPlayers = "3";
+                }else if(fourPlayer.isSelected()){
+                    maxPlayers="4";
                 }
                 String gameName = gameNameTextField.getText();
                 String message = gameName + "@" + actionCards + "@" + maxPlayers;
