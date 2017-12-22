@@ -78,11 +78,7 @@ public class MainController {
         listenForStartGame(gameLobbyController);
         //TODO When we get the signal to show the game we show the game
         //TODO Listen for game start here
-        gameLobbyController.isGameStarted().addListener((observable, oldValue, isGameStarted) -> {
-            if (isGameStarted.booleanValue() == Boolean.TRUE) {
-                // showGameScene();
-            }
-        });
+
     }
 
     private void showGameScene() {

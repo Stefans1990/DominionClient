@@ -370,7 +370,7 @@ public class GameView {
     private Label userMessageLabel;
 
     @FXML
-    private TextArea chatTextArea;
+    protected TextArea chatTextArea;
 
     @FXML
     private TextField chatTextInputField;

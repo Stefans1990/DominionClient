@@ -42,23 +42,11 @@ public class GameLobbyController {
     public void show(Stage stage) {
         view.createLayout();
         view.show(stage);
-        listenForGameStart();
     }
 
-    private void listenForGameStart() {
-        view.isGameStartedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean isGameStarted) {
-                if (isGameStarted.booleanValue() == Boolean.TRUE) {
-                    //gameStarted.setValue(true);
-                    //gameStarted.setValue(false);
-                }
-            }
-        });
-    }
 
-    public SimpleBooleanProperty isGameStarted() {
-        return gameStarted;
+    public static boolean isGameStarted() {
+        return gameStarted.getValue();
     }
 
     public SimpleBooleanProperty getGameStarted() {

@@ -1,5 +1,7 @@
 package Handlers;
 
+import scenes.game.GameController;
+import scenes.gameLobby.GameLobbyController;
 import scenes.gameLobby.GameLobbyModel;
 import util.LogHandling;
 
@@ -35,9 +37,14 @@ public class ServerChatMessageHandler extends ServerMessageHandler{
     public void handleMessage(String msgIn) throws UnknownFormatException {
         LogHandling.logOnFile(Level.INFO, "Message Handling: "+msgIn);
         message = msgIn;
-
         String chatMessage = splitMessage(message, 2);
-        GameLobbyModel.addChat(chatMessage);
+        if(GameLobbyController.isGameStarted()){
+            GameController.addChat(chatMessage);
+        }else{
+            GameLobbyModel.addChat(chatMessage);
+        }
+
+
 
         //code with observable and observer -- notify and update() -- send this with it write getMessage Method to return the string to the model
 

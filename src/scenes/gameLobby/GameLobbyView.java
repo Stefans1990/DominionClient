@@ -76,9 +76,6 @@ public class GameLobbyView {
                 GameJoinGameMessageHandler joinHandler = new GameJoinGameMessageHandler();
                 String joinedGame = gameListView.getSelectionModel().getSelectedItem();
                 joinHandler.write(joinedGame, true);
-
-                isGameStartedProperty().setValue(true);
-                isGameStartedProperty().setValue(false);
             }
         });
 
@@ -144,8 +141,6 @@ public class GameLobbyView {
                 String gameName = gameNameTextField.getText();
                 String message = gameName + "@" + actionCards + "@" + maxPlayers;
                 newGameHandler.write(message, false);
-                isGameStartedProperty().setValue(true);
-                isGameStartedProperty().setValue(false);
             }
         });
 
@@ -245,13 +240,6 @@ public class GameLobbyView {
         stage.setTitle("Dominion");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public SimpleBooleanProperty isGameStartedProperty() {
-        return isGameStarted;
-    }
-    public static void setGameStarted(boolean isStarted){
-        isGameStarted.set(isStarted);
     }
 
 }

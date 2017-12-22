@@ -2,6 +2,7 @@ package scenes.game;
 
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import sun.rmi.runtime.Log;
 import util.LogHandling;
@@ -18,6 +19,7 @@ public class GameController {
 
     //TODO: Replace this with Tim's SimpleStringProperty
     private static SimpleStringProperty newMessage = new SimpleStringProperty();
+    private static SimpleStringProperty chatText = new SimpleStringProperty();
 
 
     public GameController(String localPlayerName) {
@@ -26,6 +28,8 @@ public class GameController {
         this.view = new GameView(model);
 
     }
+
+
 
 
     public void initGame(Stage stage, String initConfig) {
@@ -45,6 +49,7 @@ public class GameController {
     public void show() {
         view.show();
         listenForMessages();
+        listenForChatMessages();
     }
 
     public static void setNewMessage(String message) {
@@ -432,6 +437,27 @@ public class GameController {
 
     private String[] split(String message, String splitter) {
         return message.split(splitter);
+    }
+
+    private void listenForChatMessages() {
+        chatText.addListener((observable, oldMessage, newMessage) -> {
+            System.out.println(newMessage);
+            if(view.chatTextArea==null){
+                view.chatTextArea=new TextArea();
+            }
+            newMessage = newMessage+ "\n";
+            view.chatTextArea.appendText(newMessage);
+        });
+    }
+
+    public static void setChatText(String chatText) {
+        GameController.chatText.set(chatText);
+    }
+
+    public static void addChat(String message){
+        Platform.runLater(()->{
+            setChatText(message);
+        });
     }
 
 }
