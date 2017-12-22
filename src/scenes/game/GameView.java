@@ -4,6 +4,7 @@ import Handlers.GameMessageHandler;
 import Handlers.ServerChatMessageHandler;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -727,5 +728,40 @@ public class GameView {
 
     public void setModel(GameModel model) {
         this.model = model;
+    }
+
+    public void showGameOver(String[] messageParts) {
+        ArrayList<Label> playerLabels = new ArrayList<>();
+        String winner = null;
+        int currentRecord = 0;
+
+        for (String playerName  :messageParts ) {
+            String[] playerSplit = playerName.split(",");
+            int playerScore = Integer.parseInt(playerSplit[1]);
+            if (playerScore>currentRecord){
+                currentRecord = playerScore;
+                winner = playerSplit[0];
+            }
+        }
+        for (String playerName  :messageParts ) {
+            String[] playerSplit = playerName.split(",");
+            Label label = new Label();
+            if (playerName.equals(winner)){
+                label.setText(playerSplit[0]+ " Victory Points: "+ playerSplit[1]+ " winner");
+                label.setStyle("-fx-font: bold");
+                label.setStyle("-fx-text-fill: springgreen");
+            } else {
+                label.setText(playerSplit[0]+ " Victory Points: "+ playerSplit[1]);
+            }
+            playerLabels.add(label);
+        }
+
+
+
+        controller.overlayPane.getChildren().clear();
+        ObservableList<Label> labels = FXCollections.observableArrayList(playerLabels);
+        controller.overlayPane.getChildren().addAll(labels);
+        controller.isOverlayVisible = true;
+        controller.swapOverlay();
     }
 }
