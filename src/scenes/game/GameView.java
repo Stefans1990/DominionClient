@@ -83,7 +83,7 @@ public class GameView {
             if (!player.getPlayerName().equals(model.getLocalPlayerName())) {
                 Label opponentLabel = iterator.next();
                 opponentLabel.setVisible(true);
-                opponentLabel.setText(player.getPlayerName() + " VP: 0");
+                opponentLabel.setText(player.getPlayerName() + " VP: 3");
             }
         }
     }
@@ -219,6 +219,7 @@ public class GameView {
             if (!player.getPlayerName().equals(model.getLocalPlayerName())) {
                 player.getOpponentVictoryPoints().addListener((observable, oldValue, newValue) -> {
                     Label opponentLabel = iterator.next();
+                    System.out.print(newValue);
                     opponentLabel.setText(player.getPlayerName() + " VP: " + newValue);
                 });
             }
@@ -755,9 +756,6 @@ public class GameView {
             }
             playerLabels.add(label);
         }
-
-
-
         controller.overlayPane.getChildren().clear();
         ObservableList<Label> labels = FXCollections.observableArrayList(playerLabels);
         controller.overlayPane.getChildren().addAll(labels);
