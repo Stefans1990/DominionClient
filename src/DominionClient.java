@@ -14,12 +14,12 @@ public class DominionClient extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+    /*
+    * this class is responsible for the
+    * */
     @Override
     public void init() throws Exception {
-        //super.init();
-        //TODO: load language from last session
-        ServiceLocator.setLocale("en", "UK");
+        ServiceLocator.setLocale("de", "CH");
         Locale.setDefault(ServiceLocator.getLocale());
         LogHandling.logOnFile(Level.INFO, ">> DominionClient Application started");
     }

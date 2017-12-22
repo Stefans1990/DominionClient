@@ -61,7 +61,6 @@ public class GameLobbyView {
     private VBox createGameList() {
         VBox gameList = new VBox();
         Label gameListLabel = new Label(bundle.getString("gl_gameListLabel"));
-        gameListLabel.setFont(new Font("Arial", 16));
         gameListView = new ListView<>();
         gameList.setMaxHeight(200);
 
@@ -101,7 +100,6 @@ public class GameLobbyView {
 
 
         Label actionCards = new Label(bundle.getString("gl_actioncards"));
-        actionCards.setFont(new Font("Arial", 16));
         RadioButton amountFive = new RadioButton(bundle.getString("gl_amountFive"));
         amountFive.setSelected(true);
         RadioButton amountTen = new RadioButton(bundle.getString("gl_amountTen"));
